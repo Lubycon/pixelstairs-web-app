@@ -1,0 +1,8 @@
+
+bower_components/
+coverage/
+.sass-cache/
+.idea/
+.tmp/
+dist/
+src/app/env.js
