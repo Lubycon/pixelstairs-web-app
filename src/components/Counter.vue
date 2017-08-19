@@ -26,6 +26,8 @@ export default {
 
 <style>
 body {
-    background: gray;
+    background: {
+        repeat: no-repeat;
+    };
 }
 </style>

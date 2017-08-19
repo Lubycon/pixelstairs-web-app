@@ -1,5 +1,6 @@
 const path = require('path');
 // const projectRoot = path.resolve(__dirname, '../')
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const vueConfig = require('./vue-loader.config');
 
 module.exports = {
@@ -54,6 +55,10 @@ module.exports = {
                 options: {
                     name: '[name].[ext]?[hash]'
                 }
+            },
+            {
+                test: /\.(css|s[a|c]ss)$/,
+                loaders: ExtractTextPlugin.extract('css-loader?minimize!sass-loader')
             }
         ]
     }

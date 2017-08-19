@@ -11,9 +11,12 @@
     </div>
 </template>
 
-<style>
+<style lang="scss">
 body {
     font-family: Helvetica, sans-serif;
+    background: {
+        color: #000;
+    }
 }
 .router-link-active{
     color: red ;
