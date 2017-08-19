@@ -72,7 +72,7 @@
     "stylus-loader": "^2.4.0",
     "sw-precache-webpack-plugin": "^0.9.1",
     "ts-loader": "^2.3.3",
-    "vue-loader": "^11.3.4",
+    "vue-loader": "^12.0.0",
     "vue-ssr-webpack-plugin": "^1.0.2",
     "vue-template-compiler": "^2.4.2",
     "vue-ts-loader": "0.0.3",

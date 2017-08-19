@@ -2,7 +2,7 @@
     <div>Home</div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
     @import './Home.scss';
 </style>
 

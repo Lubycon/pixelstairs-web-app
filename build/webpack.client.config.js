@@ -4,6 +4,7 @@ const base = require('./webpack.base.config');
 const vueConfig = require('./vue-loader.config');
 const HTMLPlugin = require('html-webpack-plugin');
 const SWPrecachePlugin = require('sw-precache-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const config = merge(base, {
     resolve: {
@@ -23,8 +24,9 @@ const config = merge(base, {
         }),
         // generate output HTML
         new HTMLPlugin({
-            template: 'src/index.template.html'
-        })
+            template: 'src/index.tmpl.html'
+        }),
+        new ExtractTextPlugin("bundle.css")
     ]
 });
 

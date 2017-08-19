@@ -15,7 +15,7 @@
 body {
     font-family: Helvetica, sans-serif;
     background: {
-        color: #000;
+        color: #fff;
     }
 }
 .router-link-active{
