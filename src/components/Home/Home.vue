@@ -1,5 +1,8 @@
 <template>
-    <div>Home</div>
+    <div>
+        Home
+        <p>{{msg}}</p>
+    </div>
 </template>
 
 <style lang="scss" scoped>
