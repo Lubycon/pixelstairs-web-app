@@ -10,10 +10,10 @@ const defaultState = {
     count: 0
 };
 
-const inBrowser = typeof window !== 'undefined';
+const isClient = typeof window !== 'undefined';
 
 // if in browser, use pre-fetched state injected by SSR
-const state = (inBrowser && window.__INITIAL_STATE__) || defaultState;
+const state = (isClient && window.__INITIAL_STATE__) || defaultState;
 
 const mutations = {
     TOPICS_LIST: (state, topics) => {
