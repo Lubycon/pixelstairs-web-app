@@ -57,4 +57,4 @@ module.exports = function setupDevServer (app, cb) {
             cb(bundle, template);
         }
     });
-}
+};

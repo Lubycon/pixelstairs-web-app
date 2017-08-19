@@ -14,3 +14,9 @@ export const getTopics = ({ commit, state }) => {
 
 export const increment = ({ commit }) => commit('INCREMENT');
 export const decrement = ({ commit }) => commit('DECREMENT');
+
+export default {
+    getTopics,
+    increment,
+    decrement
+};
