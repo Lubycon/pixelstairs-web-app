@@ -1,8 +1,19 @@
+#Pakage modules
 node_modules/
 bower_components/
-coverage/
+yarn.lock
+npm-debug.log
+
+#Temp
 .sass-cache/
-.idea/
 .tmp/
+.idea/
+
+#Built Files
 dist/
-src/app/env.js
+
+#OSX
+.DS_Store
+
+#IDE
+.vscode/
