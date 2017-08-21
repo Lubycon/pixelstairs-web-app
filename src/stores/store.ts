@@ -2,11 +2,15 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 
 /* STORES START */
-import AuthStore from './auth/+store';
+import { AuthStoreModule } from './auth/';
 /* STORES END */
 
 Vue.use(Vuex);
 
 const isClient = typeof window !== 'undefined';
 
-export default {};
+export default new Vuex.Store({
+    modules: {
+        auth: new AuthStoreModule()
+    }
+})

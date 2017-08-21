@@ -1,9 +1,12 @@
-import { State } from './state';
+import { Mutation, MutationTree } from 'vuex';
+import { AuthState } from './state';
 
 export type identify = 'user' | 'token';
 
-export class Mutations {
-    setToken (state: State, token: string) {
-        state.token = token;
-    }
+export function SET_TOKEN (state: AuthState, token: string) {
+    state.token = token;
+}
+
+export default <MutationTree<AuthState>> {
+    SET_TOKEN
 }

@@ -1,7 +1,10 @@
-import { State } from './state';
+import { Store, ActionTree, ActionContext } from 'vuex';
+import { AuthState } from './state';
 
-export class Actions {
-    setToken ({ commit }) {
-        commit('setToken');
-    }
+export function setToken(store: ActionContext<AuthState, any>, token:string) {
+    store.commit('SET_TOKEN', token);
+}
+
+export default <ActionTree<AuthState, any>> {
+    setToken
 }

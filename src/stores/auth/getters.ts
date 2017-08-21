@@ -1,7 +1,10 @@
-import { State } from './state';
+import { Getter, GetterTree } from 'vuex';
+import { AuthState } from './state';
 
-export class Getters {
-    getToken (state: State) {
-        return state.token;
-    }
+export function getToken (state: AuthState) {
+    return state.token;
+}
+
+export default <GetterTree<AuthState, any>> {
+    getToken
 }
