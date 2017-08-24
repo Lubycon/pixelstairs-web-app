@@ -6,7 +6,6 @@ import { sync } from 'vuex-router-sync';
 
 export function createApp () {
     sync(store, router);
-    console.log(store);
 
     const app = new Vue({
         router,

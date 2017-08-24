@@ -1,9 +1,14 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../components/Home/Home.vue';
-import About from '../components/About.vue';
-import Counter from '../components/Counter.vue';
-import Topics from '../components/Topics.vue';
+
+/* Global Components */
+import Header from '../components/header.vue';
+import Footer from '../components/footer.vue';
+/* /Global Components */
+
+/* PAGES */
+import Home from '../components/pages/home/home.vue';
+/* /PAGES */
 
 Vue.use(VueRouter);
 
@@ -12,16 +17,16 @@ const router = new VueRouter({
     base: __dirname,
     routes: [{
         path: '/',
-        component: Home
+        components: {
+            header: Header,
+            content: Home,
+            footer: Footer
+        }
     }, {
-        path: '/Topics',
-        component: Topics
-    }, {
-        path: '/Counter',
-        component: Counter
-    }, {
-        path: '/About',
-        component: About
+        path: '/full',
+        components: {
+            content: Home
+        }
     }]
 });
 
