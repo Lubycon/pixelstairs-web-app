@@ -1,3 +1,5 @@
+declare var __dirname;
+
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
