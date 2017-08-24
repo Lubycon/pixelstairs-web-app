@@ -24,6 +24,9 @@ module.exports = function (config) {
         webpack: webpackConfig,
         webpackMiddleware: {
             noInfo: true
-        }
+        },
+        port: 9876,
+        colors: true,
+        autoWatch: true
     });
 };

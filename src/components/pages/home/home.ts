@@ -7,10 +7,10 @@ import Component from 'vue-class-component';
 class Home extends Vue {
     msg: string = 'Home: Welcome to Your Vue.js App';
     created (): void {
-        console.log('From Server', this.msg);
+        console.log('From Server');
     }
     mounted (): void {
-        console.log('From client', this.msg);
+        console.log('From client');
     }
 }
 export default Home;
