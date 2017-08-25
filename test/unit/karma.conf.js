@@ -14,7 +14,7 @@ delete webpackConfig.entry;
 
 module.exports = function (config) {
     config.set({
-        browsers: ['PhantomJS'],
+        browsers: ['PhantomJS', 'Safari'],
         frameworks: ['mocha', 'sinon-chai'],
         reporters: ['spec'],
         files: ['./index.js'],
