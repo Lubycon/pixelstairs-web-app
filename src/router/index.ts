@@ -4,12 +4,12 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 /* Global Components */
-import Header from '../components/Header.vue';
-import Footer from '../components/Footer.vue';
+import Header from '../components/Header/Header.vue';
+import Footer from '../components/Footer/Footer.vue';
 /* /Global Components */
 
 /* PAGES */
-import Home from '../components/pages/Home/Home.vue';
+import Home from '../pages/Home/Home.vue';
 /* /PAGES */
 
 Vue.use(VueRouter);

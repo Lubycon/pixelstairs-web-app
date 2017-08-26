@@ -9,7 +9,6 @@ export default context => {
             if (!matchedComponents.length) {
                 return reject({ code: 404 });
             }
-            // 对所有匹配的路由组件调用 `asyncData()`
             Promise.all(matchedComponents.map(Component => {
                 if (Component.asyncData) {
                     return Component.asyncData({
@@ -18,11 +17,11 @@ export default context => {
                     });
                 }
             })).then(() => {
-                // 在所有预取钩子(preFetch hook) resolve 后，
-                // 我们的 store 现在已经填充入渲染应用程序所需的状态。
-                // 当我们将状态附加到上下文，
-                // 并且 `template` 选项用于 renderer 时，
-                // 状态将自动序列化为 `window.__INITIAL_STATE__`，并注入 HTML。
+                /*
+                 * 모든 프리 페치 후크가 해결 된 후 저장소가 렌더링 응용 프로그램에 필요한 상태로 채워집니다.
+                 * 컨텍스트에 상태를 첨부하고 렌더러에`template` 옵션을 사용하면 상태는
+                 * 자동으로`window .__ INITIAL_STATE__`로 직렬화되어 HTML에 주입됩니다.
+                 */
                 context.state = store.state;
                 resolve(app);
             }).catch(reject);

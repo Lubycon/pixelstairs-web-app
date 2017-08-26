@@ -4,18 +4,16 @@ const { app, router, store } = createApp();
 
 if (window.__INITIAL_STATE__) {
     store.replaceState(window.__INITIAL_STATE__);
+    console.log(window.__INITIAL_STATE__);
 }
 
 router.onReady(() => {
-    // 添加路由钩子函数，用于处理 asyncData.
-    // 在初始路由 resolve 后执行，
-    // 以便我们不会二次预取(double-fetch)已有的数据。
-    // 使用 `router.beforeResolve()`，以便确保所有异步组件都 resolve。
+    // asyncData를 위한 route 훅.
+    // asyncData가 존재할 경우 이 호출이 완료된 후 route가 이동된다.，
+    // 이전 라우트에서 가져온 중복 데이터는 다시 가져오지 않는다.
     router.beforeResolve((to, from, next) => {
         const matched = router.getMatchedComponents(to);
         const prevMatched = router.getMatchedComponents(from);
-        // 我们只关心之前没有渲染的组件
-        // 所以我们对比它们，找出两个匹配列表的差异组件
         let diffed = false;
         const activated = matched.filter((c, i) => {
             return diffed || (diffed = (prevMatched[i] !== c));
@@ -23,13 +21,13 @@ router.onReady(() => {
         if (!activated.length) {
             return next();
         }
-        // 这里如果有加载指示器(loading indicator)，就触发
         Promise.all(activated.map(c => {
             if (c.asyncData) {
                 return c.asyncData({ store, route: to });
             }
         })).then(() => {
-            // 停止加载指示器(loading indicator)
+            /* LOADING INDICATOR */
+
             next();
         }).catch(next);
     });

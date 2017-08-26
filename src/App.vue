@@ -5,3 +5,7 @@
     <router-view name="footer" />
 </div>
 </template>
+
+<style lang="scss">
+    @import './app.scss';
+</style>
