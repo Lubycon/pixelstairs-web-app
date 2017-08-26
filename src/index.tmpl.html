@@ -46,27 +46,10 @@
 </head>
 <body>
     <!--vue-ssr-outlet-->
-    <div class="global-loading-indicator">
-        <div id="loading-element"></div>
-    </div>
 </body>
 <!-- Sentry Error Tracker -->
 <script src="https://cdn.ravenjs.com/3.17.0/angular/raven.min.js" crossorigin="anonymous"></script>
 <script>
     Raven.config('https://9c4f8ad9f1884aed9d00fbd685023dfc@sentry.pixelstairs.com:9443/4').install();
 </script>
-<!-- LOADING ICON -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/4.10.2/bodymovin_light.min.js"></script>
-<script>
-    window.onload = function() {
-        bodymovin.loadAnimation({
-            container: document.getElementById('loading-element'),
-            renderer: 'svg',
-            loop: true,
-            autoplay: true,
-            path: '/assets/loading.json'
-        });
-    }
-</script>
-<!-- /LOADING ICON -->
 </html>
