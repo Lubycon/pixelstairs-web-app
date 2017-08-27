@@ -1,3 +1,4 @@
+/* Main application bootstrapper */
 import { createApp } from './app';
 
 export default context => {

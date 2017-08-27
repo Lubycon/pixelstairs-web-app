@@ -1,10 +1,11 @@
 const path = require('path');
-// const projectRoot = path.resolve(__dirname, '../')
+// const projectRoot = path.resolve(__dirname, '../');
 const vueConfig = require('./vue-loader.config');
 
 module.exports = {
     devtool: '#source-map',
     entry: {
+        'babel-polyfill': 'babel-polyfill',
         app: './src/client-entry.js',
         vendor: ['vue', 'vue-router', 'vuex', 'vuex-router-sync', 'axios']
     },

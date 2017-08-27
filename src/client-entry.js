@@ -1,4 +1,8 @@
+/* Main application bootstrapper */
 import { createApp } from './app';
+
+/* Global jQuery lib with expose-loader */
+import 'expose-loader?$!expose-loader?jQuery!jquery';
 
 const { app, router, store } = createApp();
 
