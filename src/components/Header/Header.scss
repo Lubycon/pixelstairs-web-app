@@ -1,0 +1,15 @@
+@import '~bootstrap/scss/mixins';
+
+header#app-header {
+    margin: 0;
+    padding: 15px 0;
+    .header--global-logo {
+        text-align: center;
+        img {
+            width: 160px;
+        }
+    }
+    .header--user-menu {
+        text-align: right;
+    }
+}
