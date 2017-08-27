@@ -1,8 +1,17 @@
+/*
+    @name: app.ts
+    @desc: app init 파일
+    @author: Evan Moon
+    @created_at: 2017.08.19
+*/
+
 import Vue from 'vue';
 import App from './App.vue';
 import store from './stores/store';
 import router from './router';
 import { sync } from 'vuex-router-sync';
+
+import APIService from './services/API.service';
 
 export function createApp () {
     sync(store, router);

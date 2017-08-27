@@ -26,7 +26,7 @@ if (isProd) {
 } else {
     /*
      * @개발환경:
-     * webpack-dev-middleware와 webpack-hot-middlewareㅇ로 세팅된 node express서버를 띄운다.
+     * webpack-dev-middleware와 webpack-hot-middleware로 세팅된 node express서버를 띄운다.
      * webpack-dev-middleware는 기본적인 서버세팅을, hot-middleware는 hot loading을 담당한다.
      */
     require('./build/dev-server')(app, (bundle, template) => {

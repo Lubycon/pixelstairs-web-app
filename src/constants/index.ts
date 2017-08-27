@@ -6,3 +6,5 @@ export const LOGOS = {
     vp: `${LOGO_HOST}vp.svg`,
     text: `${LOGO_HOST}text.svg`
 };
+
+export const CUSTOM_HEADER_PREFIX = 'X-pixel-';
