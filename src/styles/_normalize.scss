@@ -2,8 +2,17 @@
     font-family: 'helvetica', sans-serif ;
     -webkit-font-smoothing: antialiased;
     outline: none;
+    color: $black;
     font-weight: lighter;
     &:focus {
         outline: none;
+    }
+}
+
+// Dev
+#webpack-hot-middleware-clientOverlay {
+    * {
+        color: $white;
+        font-family: Menlo, Consolas, monospace;
     }
 }

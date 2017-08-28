@@ -1,8 +1,10 @@
 <template>
 <div id="app">
-    <router-view name="header" />
-    <router-view name="content" />
-    <router-view name="footer" />
+    <router-view id="app-header" name="header" />
+    <div id="app-body">
+        <router-view name="content" />
+    </div>
+    <router-view id="app-footer" name="footer" />
 </div>
 </template>
 
