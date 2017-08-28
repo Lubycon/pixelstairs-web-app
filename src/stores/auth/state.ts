@@ -7,19 +7,19 @@ export class AuthState {
 
     constructor() {
         this.user = {
-            id: 'unknown',
-            email: '',
-            nickname: '',
-            status: '',
+            id: null,
+            email: null,
+            nickname: null,
+            status: null,
             profileImg: {
-                id: '',
-                file: '',
-                deleted: false,
-                index: -1,
-                isPixelOwn: -1
+                id: null,
+                file: null,
+                deleted: null,
+                index: null,
+                isPixelOwn: null
             }
         };
-        this.token = '';
+        this.token = null;
         this.isAuthenticated = false;
     }
 }

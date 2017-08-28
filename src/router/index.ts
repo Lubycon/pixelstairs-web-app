@@ -4,12 +4,13 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 /* Global Components */
-import Header from '../components/Header/Header.vue';
-import Footer from '../components/Footer/Footer.vue';
+import Header from 'src/components/Header/Header.vue';
+import Footer from 'src/components/Footer/Footer.vue';
 /* /Global Components */
 
 /* PAGES */
-import Home from '../pages/Home/Home.vue';
+import Home from 'src/pages/Home/Home.vue';
+import Signin from 'src/pages/Account/Signin/Signin.vue';
 /* /PAGES */
 
 Vue.use(VueRouter);
@@ -25,9 +26,9 @@ const router = new VueRouter({
             footer: Footer
         }
     }, {
-        path: '/full',
+        path: '/signin',
         components: {
-            content: Home
+            content: Signin
         }
     }]
 });

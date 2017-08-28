@@ -37,51 +37,51 @@ class APIService {
     get authToken () {
         return this.authToken;
     }
+
+    private getURI (api: string, id: string, uri: string, list: any = API_LIST, index: number = 0): string {
+        let tmp: string[] = api.split('.');
+        let type: string = typeof list[tmp[index]];
+        uri = uri;
+
+        if(list[tmp[index]]) {
+            if(type === 'string') {
+                uri = list[tmp[index]];
+                return this.setParamsToAPI(uri, id);
+            }
+            else if(type === 'object') {
+                return this.getURI(api, id, tmp[index], list[tmp[index]], index + 1);
+            }
+        }
+        else {
+            return uri;
+        }
+    }
+
+    private setParamsToAPI (uri:string, uriParams:any): string {
+        const regx = /\{.+\}/gi;
+        const braket_regx = /[\{|\}]/g;
+
+        let params: string[] = uri.match(regx);
+        if(!params) {
+            return uri;
+        }
+
+        params = params.map(v => {
+            return v.replace(braket_regx, '');
+        });
+
+        let uriArr: string[] = uri.split('/').map(v => {
+            return v.replace(braket_regx, '');
+        });
+
+        params.forEach(v => {
+            let position: number = uri.indexOf(v);
+            if(position > -1) uriArr[position] = uriParams[v];
+        });
+
+        return uriArr.join('/');
+    }
 }
 
 const instance = new APIService(axios, API_LIST);
 export default instance;
-
-function __getURI__(api: string, id: string, uri: string, list: any = API_LIST, index: number = 0): string {
-    let tmp: string[] = api.split('.');
-    let type: string = typeof list[tmp[index]];
-    uri = uri;
-
-    if(list[tmp[index]]) {
-        if(type === 'string') {
-            uri = list[tmp[index]];
-            return __setParamsToAPI__(uri, id);
-        }
-        else if(type === 'object') {
-            return __getURI__(api, id, tmp[index], list[tmp[index]], index + 1);
-        }
-    }
-    else {
-        return uri;
-    }
-}
-
-function __setParamsToAPI__(uri:string, uriParams:any): string {
-    const regx = /\{.+\}/gi;
-    const braket_regx = /[\{|\}]/g;
-
-    let params: string[] = uri.match(regx);
-    if(!params) {
-        return uri;
-    }
-
-    params = params.map(v => {
-        return v.replace(braket_regx, '');
-    });
-
-    let uriArr: string[] = uri.split('/').map(v => {
-        return v.replace(braket_regx, '');
-    });
-
-    params.forEach(v => {
-        let position: number = uri.indexOf(v);
-        if(position > -1) uriArr[position] = uriParams[v];
-    });
-
-    return uriArr.join('/');
-}
