@@ -18,27 +18,30 @@ const AUTH_KEY: string = `${CUSTOM_HEADER_PREFIX}token`;
 class APIService {
     private _axios: any;
     private _apilist: any;
-    private _authToken: string;
+    private _myAuthToken: string;
 
     constructor(axios: any, API_LIST: any) {
         this._axios = axios.create({
             baseURL: 'http://192.168.99.100:8080/v1',
-            timeout: 2000
+            headers: {
+                common: {
+                    [VERSION_KEY]: '1.2.0',
+                    [DEVICE_KEY]: 'bs=dvc=os='
+                }
+            }
         });
-        this._apilist = this.generateAPI(API_LIST);
 
-        this._axios.defaults.headers.common[VERSION_KEY] = '1.2.0';
-        this._axios.defaults.headers.common[DEVICE_KEY] = 'bs=dvc=os=';
+        this._apilist = this.generateAPI(API_LIST);
     }
 
-    // set authToken (newToken: string) {
-    //     this._authToken = newToken;
-    //     this._axios.defaults.headers.common[AUTH_KEY] = this._authToken;
-    // }
-    //
-    // get authToken () {
-    //     return this.authToken;
-    // }
+    set authToken (newToken: string) {
+        this._myAuthToken = newToken;
+        this._axios.defaults.headers.common[AUTH_KEY] = this._myAuthToken;
+    }
+
+    get authToken (): string {
+        return this._myAuthToken;
+    }
 
     public resource(api: string, id: string = null): any {
         return {
@@ -50,17 +53,42 @@ class APIService {
     }
 
     private GET (api: string, id: string, params: any) {
-
-    }
-    private POST (api: string, id: string, data: any): any {
-        let defer:any = $.Deferred();
+        let defer: any = $.Deferred();
         api = this.getURI(api, id);
-        console.log(api);
 
-        return this._axios.post(api, data, {
-
+        this._axios.get(api, {
+            params
+        }).then(res => {
+            defer.resolve(res.data);
+        }, err => {
+            defer.reject({
+                status: err.response.status,
+                statusText: err.response.statusText,
+                data: err.response.data
+            });
         });
+
+        return defer;
     }
+
+    private POST (api: string, id: string, data: any): any {
+        let defer: any = $.Deferred();
+        api = this.getURI(api, id);
+
+        this._axios.post(api, data)
+        .then(res => {
+            defer.resolve(res.data);
+        }, err => {
+            defer.reject({
+                status: err.response.status,
+                statusText: err.response.statusText,
+                data: err.response.data
+            });
+        });
+
+        return defer;
+    }
+
     private PUT (api, id, data) {}
     private DELETE (api, id) {}
 

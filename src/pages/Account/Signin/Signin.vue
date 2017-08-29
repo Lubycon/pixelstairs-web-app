@@ -2,7 +2,7 @@
 <div class="container">
     <h2>{{ title }}</h2>
 
-    <b-form @submit.prevent="Signin">
+    <b-form @submit.prevent="postData">
         <b-form-group
             label="Email"
             description="We'll never share your email with anyone else."
