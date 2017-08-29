@@ -11,13 +11,7 @@ export class AuthState {
             email: null,
             nickname: null,
             status: null,
-            profileImg: {
-                id: null,
-                file: null,
-                deleted: null,
-                index: null,
-                isPixelOwn: null
-            }
+            profileImg: null
         };
         this.token = null;
         this.isAuthenticated = false;
