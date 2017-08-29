@@ -20,6 +20,7 @@ const router = new VueRouter({
     base: __dirname,
     routes: [{
         path: '/',
+        name: 'home',
         components: {
             header: Header,
             content: Home,
@@ -27,6 +28,7 @@ const router = new VueRouter({
         }
     }, {
         path: '/signin',
+        name: 'signin',
         components: {
             content: Signin
         }

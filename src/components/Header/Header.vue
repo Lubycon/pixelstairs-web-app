@@ -5,9 +5,11 @@
         <img :src="logoSrc" alt="pixelstairs-text-logo">
     </div>
     <div class="col header--user-menu">
-        <button class="btn btn-round">
-            Login
-        </button>
+        <router-link to="signin">
+            <button class="btn btn-round">
+                Login
+            </button>
+        </router-link>
     </div>
 </div>
 </template>

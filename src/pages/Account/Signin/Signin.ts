@@ -28,10 +28,10 @@ class Signin extends Vue {
             password: this.form.password
         };
         console.log(APIService);
-        // APIService._axios.post('/members/signin', DATA)
-        // .then(res => {
-        //     console.log(res);
-        // });
+        APIService.resource('members.signin').post(DATA)
+        .then(res => {
+            console.log(res);
+        });
     }
 }
 

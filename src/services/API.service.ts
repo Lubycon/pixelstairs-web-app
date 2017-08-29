@@ -6,6 +6,8 @@
 */
 
 import axios from 'axios';
+import $ from 'jquery';
+
 import { CUSTOM_HEADER_PREFIX } from '../constants';
 import { API_LIST } from '../constants/api.constant';
 
@@ -18,27 +20,51 @@ class APIService {
     private _apilist: any;
     private _authToken: string;
 
-    constructor(axios: any, apilist: any) {
+    constructor(axios: any, API_LIST: any) {
         this._axios = axios.create({
             baseURL: 'http://192.168.99.100:8080/v1',
             timeout: 2000
         });
-        this._apilist = apilist;
+        this._apilist = this.generateAPI(API_LIST);
 
         this._axios.defaults.headers.common[VERSION_KEY] = '1.2.0';
         this._axios.defaults.headers.common[DEVICE_KEY] = 'bs=dvc=os=';
     }
 
-    set authToken (newToken: string) {
-        this._authToken = newToken;
-        this._axios.defaults.headers.common[AUTH_KEY] = this._authToken;
+    // set authToken (newToken: string) {
+    //     this._authToken = newToken;
+    //     this._axios.defaults.headers.common[AUTH_KEY] = this._authToken;
+    // }
+    //
+    // get authToken () {
+    //     return this.authToken;
+    // }
+
+    public resource(api: string, id: string = null): any {
+        return {
+            get: (params) => this.GET(api, id, params),
+            post: (data) => this.POST(api, id, data),
+            put: (data) => this.PUT(api, id, data),
+            delete: () => this.DELETE(api, id)
+        }
     }
 
-    get authToken () {
-        return this.authToken;
-    }
+    private GET (api: string, id: string, params: any) {
 
-    private getURI (api: string, id: string, uri: string, list: any = API_LIST, index: number = 0): string {
+    }
+    private POST (api: string, id: string, data: any): any {
+        let defer:any = $.Deferred();
+        api = this.getURI(api, id);
+        console.log(api);
+
+        return this._axios.post(api, data, {
+
+        });
+    }
+    private PUT (api, id, data) {}
+    private DELETE (api, id) {}
+
+    private getURI (api: string, id: string, uri: string = null, list: any = this._apilist, index: number = 0): string {
         let tmp: string[] = api.split('.');
         let type: string = typeof list[tmp[index]];
         uri = uri;
@@ -80,6 +106,21 @@ class APIService {
         });
 
         return uriArr.join('/');
+    }
+
+    private generateAPI (API_LIST: any): any {
+        let tmp: any = {};
+
+        Object.keys(API_LIST).forEach((v: string) => {
+            if(API_LIST[v] instanceof Function) {
+                tmp[v] = API_LIST[v]();
+            }
+            else {
+                tmp[v] = API_LIST[v];
+            }
+        });
+
+        return tmp;
     }
 }
 
