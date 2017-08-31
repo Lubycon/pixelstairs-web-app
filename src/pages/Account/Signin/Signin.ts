@@ -1,9 +1,5 @@
-import Vue from 'vue';
-import Component from 'vue-class-component';
-import {
-    State,
-    Action,
-} from 'vuex-class';
+import { Vue, Component } from 'vue-property-decorator';
+import { State, Action } from 'vuex-class';
 
 import APIService from 'src/services/API.service';
 
