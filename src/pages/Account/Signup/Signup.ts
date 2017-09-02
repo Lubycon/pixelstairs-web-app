@@ -1,5 +1,4 @@
-import { Vue, Component, Provide, Watch } from 'vue-property-decorator';
-import { State, Action } from 'vuex-class';
+import { Vue, Component, Provide, Prop } from 'vue-property-decorator';
 
 import APIService from 'src/services/API.service';
 
@@ -11,13 +10,9 @@ interface UserAuthData {
 }
 
 @Component({
-    name: 'Signin'
+    name: 'Signup'
 })
-class Signin extends Vue {
-    @State('auth') AuthState
-    @Action('setToken') setToken
-    @Action('setUser') setUser
-
+class Signup extends Vue {
     @Provide() logo: string = LOGOS.text;
 
     form: UserAuthData = {
@@ -37,12 +32,11 @@ class Signin extends Vue {
 
         APIService.resource('members.signin').post(DATA)
         .then(res => {
-            this.setToken(res.result.token);
-            this.setUser();
+            // this.setToken(res.result.token);
+            // this.setUser();
         }, err => {
             console.log(err);
         });
     }
 }
-
-export default Signin;
+export default Signup;

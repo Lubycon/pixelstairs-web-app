@@ -100,7 +100,6 @@ class APIService {
         if (list[tmp[index]]) {
             if (type === 'string') {
                 uri = list[tmp[index]];
-                console.log(uri, id);
                 return this.setParamsToAPI(uri, id);
             }
             else if (type === 'object') {

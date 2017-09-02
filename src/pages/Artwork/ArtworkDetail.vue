@@ -1,5 +1,5 @@
 <template>
-<div>
+<div class="container">
     <div v-if="isLoading">Loading....</div>
     <div v-else>
         id: {{ artId }}
