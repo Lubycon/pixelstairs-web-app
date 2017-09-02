@@ -4,10 +4,28 @@ import { createApp } from './app';
 /* Global jQuery lib with expose-loader */
 import 'expose-loader?$!expose-loader?jQuery!jquery';
 
+/* LocalStorage module */
+import LocalStorageService from 'src/services/LocalStorage.service';
+
 const { app, router, store } = createApp();
 
 if (window.__INITIAL_STATE__) {
     store.replaceState(window.__INITIAL_STATE__);
+}
+
+/*
+    Read LocalStorage and Commit to Store
+*/
+if (window.localStorage) {
+    let token = LocalStorageService.get('auth');
+    let user = LocalStorageService.get('user');
+
+    if (token) {
+        store.commit('SET_TOKEN', token);
+        if (user) {
+            store.commit('SET_USER', user);
+        }
+    }
 }
 
 router.onReady(() => {
@@ -30,7 +48,6 @@ router.onReady(() => {
             }
         })).then(() => {
             /* LOADING INDICATOR */
-
             next();
         }).catch(next);
     });

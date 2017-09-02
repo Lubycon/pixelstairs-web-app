@@ -97,12 +97,12 @@ class APIService {
         let type: string = typeof list[tmp[index]];
         uri = uri;
 
-        if(list[tmp[index]]) {
-            if(type === 'string') {
+        if (list[tmp[index]]) {
+            if (type === 'string') {
                 uri = list[tmp[index]];
                 return this.setParamsToAPI(uri, id);
             }
-            else if(type === 'object') {
+            else if (type === 'object') {
                 return this.getURI(api, id, tmp[index], list[tmp[index]], index + 1);
             }
         }
@@ -116,7 +116,7 @@ class APIService {
         const braket_regx = /[\{|\}]/g;
 
         let params: string[] = uri.match(regx);
-        if(!params) {
+        if (!params) {
             return uri;
         }
 
@@ -130,7 +130,7 @@ class APIService {
 
         params.forEach(v => {
             let position: number = uri.indexOf(v);
-            if(position > -1) uriArr[position] = uriParams[v];
+            if (position > -1) uriArr[position] = uriParams[v];
         });
 
         return uriArr.join('/');
@@ -140,7 +140,7 @@ class APIService {
         let tmp: any = {};
 
         Object.keys(API_LIST).forEach((v: string) => {
-            if(API_LIST[v] instanceof Function) {
+            if (API_LIST[v] instanceof Function) {
                 tmp[v] = API_LIST[v]();
             }
             else {

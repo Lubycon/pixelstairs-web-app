@@ -10,13 +10,8 @@ export function SET_TOKEN (state: AuthState, token: string) {
     APIService.authToken = token;
     LocalStorageService.save({
         key: 'auth',
-        value: token,
-        options: {
-            expires: 1
-        }
+        value: token
     });
-
-    console.log(LocalStorageService.get('auth'));
 }
 
 export function SET_USER (state: AuthState, user: UserSimple) {
@@ -24,13 +19,8 @@ export function SET_USER (state: AuthState, user: UserSimple) {
     state.isAuthenticated = true;
     LocalStorageService.save({
         key: 'user',
-        value: user,
-        options: {
-            expires: 1
-        }
+        value: user
     });
-
-    console.log(LocalStorageService.get('user'));
 }
 
 export default <MutationTree<AuthState>> {

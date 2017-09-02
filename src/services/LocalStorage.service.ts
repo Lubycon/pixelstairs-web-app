@@ -1,45 +1,40 @@
 /*
     @name: LocalStorage.service.ts
-    @desc: Cookie 인코딩, 디코딩 서비스
+    @desc: LocalStorage 인코딩, 디코딩 서비스
     @author: Evan Moon
     @created_at: 2017.09.02
 */
 
-import Cookies from 'js-cookie';
 import Base64Service from 'src/services/Base64.service';
 
-interface Cookie {
+interface Dataset {
     key: string;
     value: any;
-    options: any;
 }
 
 class LocalStorageService {
-    private _cookie: any;
-    constructor (CookieModule: any) {
-        this._cookie = CookieModule;
-    }
+    constructor () {}
 
-    public save(val: Cookie): void {
+    public save(val: Dataset): void {
         const KEY: string = this._encodeKey(val.key);
         const VALUE: string = this._encodeValue(val.value);
 
-        localStorage.setItem(KEY, VALUE);
+        window.localStorage.setItem(KEY, VALUE);
     }
 
     public get(key: string): any {
         const KEY: string = this._encodeKey(key);
-        const VALUE: any = localStorage.getItem(KEY);
+        const VALUE: any = window.localStorage.getItem(KEY);
 
         return this._decode(VALUE);
     }
 
     public clear(): void {
-        localStorage.clear();
+        window.localStorage.clear();
     }
 
     private _encodeKey(key: string): string {
-        if(!key) {
+        if (!key) {
             return null;
         }
         else {
@@ -48,7 +43,7 @@ class LocalStorageService {
     }
 
     private _encodeValue(value: string): string {
-        if(!value) {
+        if (!value) {
             return null;
         }
         else {
@@ -58,7 +53,7 @@ class LocalStorageService {
     }
 
     private _decode(value: string): any {
-        if(!value) {
+        if (!value) {
             return null;
         }
         else {
@@ -68,5 +63,5 @@ class LocalStorageService {
     }
 }
 
-const instance = new LocalStorageService(Cookies);
+const instance = new LocalStorageService();
 export default instance;

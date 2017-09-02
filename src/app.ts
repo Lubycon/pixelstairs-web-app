@@ -12,10 +12,9 @@ import router from './router';
 import { sync } from 'vuex-router-sync';
 
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
-
-import APIService from './services/API.service';
-
 Vue.use(BootstrapVue);
+
+
 
 export function createApp () {
     sync(store, router);

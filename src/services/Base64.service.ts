@@ -57,7 +57,7 @@ class Base64Service {
             enc3 = '';
             enc4 = '';
         }
-        while(i < str.length);
+        while (i < str.length);
 
         return output;
     }
@@ -115,7 +115,7 @@ class Base64Service {
             enc3 = '';
             enc4 = '';
         }
-        while(i < str.length);
+        while (i < str.length);
 
         return unescape(output);
     }
