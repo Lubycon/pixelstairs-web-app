@@ -1,3 +1,10 @@
+/*
+    @name: client-entry.js
+    @desc: 클라이언트 사이드 렌더링 초기화 파일
+    @author: Evan Moon
+    @created_at: 2017.08.21
+*/
+
 /* Main application bootstrapper */
 import { createApp } from './app';
 

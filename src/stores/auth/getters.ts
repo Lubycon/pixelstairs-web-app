@@ -1,3 +1,10 @@
+/*
+    @name: auth/getters.ts
+    @desc: Auth스토어 Getter
+    @author: Evan Moon
+    @created_at: 2017.08.27
+*/
+
 import { Getter, GetterTree } from 'vuex';
 import { AuthState } from './state';
 import { UserSimple } from 'src/interfaces/User.interface';

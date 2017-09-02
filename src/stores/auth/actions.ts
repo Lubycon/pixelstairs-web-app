@@ -1,3 +1,10 @@
+/*
+    @name: auth/actions.ts
+    @desc: Auth스토어 액션 생성자
+    @author: Evan Moon
+    @created_at: 2017.08.27
+*/
+
 import { Store, ActionTree, ActionContext } from 'vuex';
 import { AuthState } from './state';
 import APIService from 'src/services/API.service';

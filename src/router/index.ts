@@ -1,3 +1,10 @@
+/*
+    @name: router/index.ts
+    @desc: 픽셀스테어스 라우팅 모듈
+    @author: Evan Moon
+    @created_at: 2017.08.26
+*/
+
 declare var __dirname;
 
 import Vue from 'vue';

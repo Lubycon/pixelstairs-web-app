@@ -1,3 +1,10 @@
+/*
+    @name: auth/mutations.ts
+    @desc: Auth스토어 변이 모듈
+    @author: Evan Moon
+    @created_at: 2017.08.27
+*/
+
 import { Mutation, MutationTree } from 'vuex';
 import { AuthState } from './state';
 import { UserSimple } from 'src/interfaces/User.interface';
