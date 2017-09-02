@@ -13,10 +13,17 @@ class ArtworkCard extends Vue {
     @Provide() thumbnail: string = null;
 
     created () {
+        let thumbnail: string;
+
         if(this.image.isPixelOwn) {
-            this.$set(this, 'thumbnail', this.image.file + '30');
-            this.image.file += '640';
+            thumbnail = this.image.file + '30';
+            this.$set(this.image, 'file', this.image.file + '640');
         }
+        else {
+            thumbnail = this.image.file;
+        }
+
+        this.$set(this, 'thumbnail', thumbnail);
     }
 }
 
