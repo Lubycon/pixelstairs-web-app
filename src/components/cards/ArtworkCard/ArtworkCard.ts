@@ -1,3 +1,10 @@
+/*
+    @name: ArtworkCard.ts
+    @desc: 아트워크 카드 컴포넌트
+    @author: Evan Moon
+    @created_at: 2017.09.02
+*/
+
 import { Vue, Component, Prop, Provide } from 'vue-property-decorator';
 import { Image } from 'src/interfaces/Image.interface';
 

@@ -16,10 +16,10 @@
 </template>
 
 <style lang="scss" scoped>
-@import './Artwork-card';
+@import './ArtworkCard';
 </style>
 
 <script lang="ts">
-import ArtworkCard from './Artwork-card';
+import ArtworkCard from './ArtworkCard';
 export default ArtworkCard;
 </script>

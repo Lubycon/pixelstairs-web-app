@@ -1,3 +1,10 @@
+/*
+    @name: ArtworkDetail.ts
+    @desc: 아트워크 디테일 페이지 컴포넌트
+    @author: Evan Moon
+    @created_at: 2017.09.02
+*/
+
 import { Vue, Component, Prop, Provide } from 'vue-property-decorator';
 import { Artwork } from 'src/interfaces/Artwork.interface';
 
