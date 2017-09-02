@@ -1,10 +1,12 @@
-@import '~bootstrap/scss/mixins';
 @import 'src/styles/utils/__module__';
 
 #app-header {
     margin: 0;
     height: $global-header-height;
     border-bottom: 1px solid $grey-1;
+    background: {
+        color: $white;
+    }
     .header--global-logo {
         text-align: center;
         img {

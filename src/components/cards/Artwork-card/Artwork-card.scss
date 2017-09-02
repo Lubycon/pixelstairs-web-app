@@ -1,0 +1,18 @@
+@import 'src/styles/utils/__module__';
+
+.artwork-card--image {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    img {
+        width: 100%;
+        @include floatToCenter;
+    }
+}
+
+.card-body {
+    .card-title {
+        font-size: 20px;
+        @include ellipsis;
+    }
+}

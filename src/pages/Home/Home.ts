@@ -3,13 +3,35 @@ import { Artwork } from 'src/interfaces/Artwork.interface';
 
 import APIService from 'src/services/API.service';
 
+import ArtworkCard from 'src/components/cards/Artwork-card/Artwork-card.vue';
+
 @Component({
-    name: 'Home'
+    name: 'Home',
+    components: {
+        ArtworkCard
+    }
 })
 class Home extends Vue {
-    @Provide() msg: string = 'Home: Welcome to Your Vue.js App';
     @Provide() pageIndex: number = 1;
-    @Provide() artworks: Artwork[];
+    @Provide() totalCount: number = 0;
+    @Provide() artworks: Artwork[] = [];
+    @Provide() loadingMsg: string = 'Loading...';
+
+    @Watch('pageIndex')
+    getContents(val: number): any {
+        return APIService.resource('contents.list').get({
+            pageIndex: this.pageIndex
+        }).then(res => {
+            this.totalCount = res.result.totalCount;
+            this.addToArtworkList(res.result.contents);
+        });
+    }
+
+
+
+    addToArtworkList(artworks:Artwork[]) {
+        this.$set(this, 'artworks', [...this.artworks, ...artworks]);
+    }
 
     created () {
 
@@ -17,15 +39,6 @@ class Home extends Vue {
 
     mounted () {
         this.getContents(this.pageIndex);
-    }
-
-    @Watch('pageIndex')
-    getContents(val: number): any {
-        return APIService.resource('contents.list').get({
-            pageIndex: this.pageIndex
-        }).then(res => {
-            console.log(res);
-        });
     }
 }
 export default Home;

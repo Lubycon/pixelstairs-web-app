@@ -1,6 +1,21 @@
 <template>
-<div class="container">
-    <h2>{{ msg }}</h2>
+<div class="container-fluid">
+
+    <div class="container">
+        <div v-if="artworks.length < 1">
+            {{ loadingMsg }}
+        </div>
+        <ul class="row" v-if="artworks.length > 0">
+            <li class="col-4" v-for="artwork in artworks">
+                <artwork-card
+                    :title="artwork.title"
+                    :image="artwork.image"
+                    :author-name="artwork.user.nickname"
+                    :author-profile="artwork.user.profileImg"
+                />
+            </li>
+        </ul>
+    </div>
 </div>
 </template>
 

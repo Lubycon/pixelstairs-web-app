@@ -1,5 +1,15 @@
+// APP LAYOUT
+
 #app-header {}
 #app-body {
-    padding: $global-header-height;
+    padding-top: $global-header-height;
 }
 #app-footer {}
+
+// BOOTSTRAP GRID
+.container-fluid {
+    padding: 0;
+}
+.container {
+    max-width: 1200px;
+}
