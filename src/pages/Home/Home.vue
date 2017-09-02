@@ -8,6 +8,7 @@
         <ul class="row" v-if="artworks.length > 0">
             <li class="col-4" v-for="artwork in artworks">
                 <artwork-card
+                    :art-id="artwork.id"
                     :title="artwork.title"
                     :image="artwork.image"
                     :author-name="artwork.user.nickname"

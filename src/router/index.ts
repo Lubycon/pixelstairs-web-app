@@ -11,6 +11,8 @@ import Footer from 'src/components/Footer/Footer.vue';
 /* PAGES */
 import Home from 'src/pages/Home/Home.vue';
 import Signin from 'src/pages/Account/Signin/Signin.vue';
+
+import ArtworkDetail from 'src/pages/Artwork/ArtworkDetail.vue';
 /* /PAGES */
 
 Vue.use(VueRouter);
@@ -31,6 +33,17 @@ const router = new VueRouter({
         name: 'signin',
         components: {
             content: Signin
+        }
+    }, {
+        path: '/artwork/:artId',
+        name: 'artwork-detail',
+        components: {
+            header: Header,
+            content: ArtworkDetail,
+            footer: Footer
+        },
+        props: {
+            content: true
         }
     }]
 });

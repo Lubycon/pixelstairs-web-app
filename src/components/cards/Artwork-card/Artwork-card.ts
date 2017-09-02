@@ -5,6 +5,7 @@ import { Image } from 'src/interfaces/Image.interface';
     name: 'Artwork-card'
 })
 class ArtworkCard extends Vue {
+    @Prop() artId: string;
     @Prop() title: string;
     @Prop() authorName: string;
     @Prop() authorProfile: Image;

@@ -1,7 +1,9 @@
-import { Vue, Component } from 'vue-property-decorator';
+import { Vue, Component, Provide, Watch } from 'vue-property-decorator';
 import { State, Action } from 'vuex-class';
 
 import APIService from 'src/services/API.service';
+
+import { LOGOS } from 'src/constants';
 
 interface UserAuthData {
     email: string;
@@ -15,6 +17,8 @@ class Signin extends Vue {
     @State('auth') AuthState
     @Action('setToken') setToken
     @Action('setUser') setUser
+
+    @Provide() logo: string = LOGOS.text;
 
     title: string = 'This is Signin page';
     form: UserAuthData = {

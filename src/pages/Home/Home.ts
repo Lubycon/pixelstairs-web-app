@@ -27,9 +27,7 @@ class Home extends Vue {
         });
     }
 
-
-
-    addToArtworkList(artworks:Artwork[]) {
+    addToArtworkList(artworks:Artwork[]): void {
         this.$set(this, 'artworks', [...this.artworks, ...artworks]);
     }
 

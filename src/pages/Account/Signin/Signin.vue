@@ -1,6 +1,8 @@
 <template>
 <div class="container">
-    <h2>{{ title }}</h2>
+    <router-link :to="{ name: 'home' }">
+        <img :src="logo" alt="">
+    </router-link>
 
     <b-form @submit.prevent="postData">
         <b-form-group

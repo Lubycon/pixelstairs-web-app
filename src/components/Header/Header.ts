@@ -1,5 +1,4 @@
-import Vue from 'vue';
-import Component from 'vue-class-component';
+import { Vue, Component, Provide, Watch } from 'vue-property-decorator';
 
 import { LOGOS } from '../../constants';
 

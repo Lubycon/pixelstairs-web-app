@@ -5,7 +5,7 @@
         <img :src="logoSrc" alt="pixelstairs-text-logo">
     </div>
     <div class="col header--user-menu">
-        <router-link to="signin">
+        <router-link :to="{ name: 'signin' }">
             <button class="btn btn-round">
                 Login
             </button>

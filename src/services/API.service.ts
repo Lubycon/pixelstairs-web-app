@@ -6,7 +6,7 @@
 */
 
 import axios from 'axios';
-import $ from 'jquery';
+import Q from 'q';
 
 import { CUSTOM_HEADER_PREFIX } from '../constants';
 import { API_LIST } from '../constants/api.constant';
@@ -43,7 +43,7 @@ class APIService {
         return this._myAuthToken;
     }
 
-    public resource(api: string, id: string = null): any {
+    public resource(api: string, id: any = null): any {
         return {
             get: (params) => this.GET(api, id, params),
             post: (data) => this.POST(api, id, data),
@@ -52,8 +52,8 @@ class APIService {
         }
     }
 
-    private GET (api: string, id: string, params: any) {
-        let defer: any = $.Deferred();
+    private GET (api: string, id: any = null, params: any) {
+        let defer: any = Q.defer();
         api = this.getURI(api, id);
 
         this._axios.get(api, {
@@ -68,11 +68,11 @@ class APIService {
             });
         });
 
-        return defer;
+        return defer.promise;
     }
 
-    private POST (api: string, id: string, data: any): any {
-        let defer: any = $.Deferred();
+    private POST (api: string, id: string = null, data: any): any {
+        let defer: any = Q.defer();
         api = this.getURI(api, id);
 
         this._axios.post(api, data)
@@ -86,13 +86,13 @@ class APIService {
             });
         });
 
-        return defer;
+        return defer.promise;
     }
 
     private PUT (api, id, data) {}
     private DELETE (api, id) {}
 
-    private getURI (api: string, id: string, uri: string = null, list: any = this._apilist, index: number = 0): string {
+    private getURI (api: string, id: any = null, uri: string = null, list: any = this._apilist, index: number = 0): string {
         let tmp: string[] = api.split('.');
         let type: string = typeof list[tmp[index]];
         uri = uri;
@@ -100,6 +100,7 @@ class APIService {
         if (list[tmp[index]]) {
             if (type === 'string') {
                 uri = list[tmp[index]];
+                console.log(uri, id);
                 return this.setParamsToAPI(uri, id);
             }
             else if (type === 'object') {
@@ -112,7 +113,7 @@ class APIService {
     }
 
     private setParamsToAPI (uri:string, uriParams:any): string {
-        const regx = /\{.+\}/gi;
+        const regx = /\{\w+\}/gi;
         const braket_regx = /[\{|\}]/g;
 
         let params: string[] = uri.match(regx);
@@ -129,7 +130,7 @@ class APIService {
         });
 
         params.forEach(v => {
-            let position: number = uri.indexOf(v);
+            let position: number = uriArr.indexOf(v);
             if (position > -1) uriArr[position] = uriParams[v];
         });
 
