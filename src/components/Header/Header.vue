@@ -15,10 +15,10 @@
 </template>
 
 <style lang="scss" scoped>
-    @import './Header.scss';
+    @import './Header';
 </style>
 
 <script lang="ts">
-    import Header from './Header.ts';
+    import Header from './Header';
     export default Header;
 </script>

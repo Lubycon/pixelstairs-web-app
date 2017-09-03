@@ -1,6 +1,5 @@
 <template>
 <div class="container-fluid">
-
     <div class="container">
         <div v-if="artworks.length < 1">
             {{ loadingMsg }}
@@ -21,10 +20,10 @@
 </template>
 
 <style lang="scss" scoped>
-    @import './Home.scss';
+    @import './Home';
 </style>
 
 <script lang="ts">
-    import Home from './Home.ts';
+    import Home from './Home';
     export default Home;
 </script>

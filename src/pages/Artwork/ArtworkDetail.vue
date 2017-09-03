@@ -56,10 +56,10 @@
 </template>
 
 <style lang="scss" scoped>
-@import './ArtworkDetail';
+    @import './ArtworkDetail';
 </style>
 
 <script lang="ts">
-import ArtworkDetail from './ArtworkDetail';
-export default ArtworkDetail;
+    import ArtworkDetail from './ArtworkDetail';
+    export default ArtworkDetail;
 </script>

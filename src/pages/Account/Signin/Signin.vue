@@ -36,10 +36,10 @@
 </template>
 
 <style lang="scss" scoped>
-    @import './Signin.scss';
+    @import './Signin';
 </style>
 
 <script lang="ts">
-    import Signin from './Signin.ts';
+    import Signin from './Signin';
     export default Signin;
 </script>

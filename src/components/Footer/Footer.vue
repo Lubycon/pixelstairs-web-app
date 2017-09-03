@@ -5,10 +5,10 @@
 </template>
 
 <style lang="scss" scoped>
-    @import './Footer.scss';
+    @import './Footer';
 </style>
 
 <script lang="ts">
-    import Footer from './Footer.ts';
+    import Footer from './Footer';
     export default Footer;
 </script>
