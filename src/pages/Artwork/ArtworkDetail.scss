@@ -1,11 +1,18 @@
+@import 'src/styles/utils/__module__';
+
 section {
+    max-width: 50%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid $grey-1;
+
     &[data-section="artwork"] {
         h1 {
             text-align: center;
             font-weight: 600;
+            margin: 20px 0;
         }
-
-
     }
     &[data-section="counter"] {}
     &[data-section="author"] {}
