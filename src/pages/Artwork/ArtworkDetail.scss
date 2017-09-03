@@ -1,0 +1,12 @@
+section {
+    &[data-section="artwork"] {
+        h1 {
+            text-align: center;
+            font-weight: 600;
+        }
+
+
+    }
+    &[data-section="counter"] {}
+    &[data-section="author"] {}
+}

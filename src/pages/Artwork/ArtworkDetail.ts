@@ -9,6 +9,9 @@ import { Vue, Component, Prop, Provide } from 'vue-property-decorator';
 import { Artwork } from 'src/interfaces/Artwork.interface';
 
 import APIService from 'src/services/API.service';
+import ImageService from 'src/services/Image.service';
+
+import { Image } from 'src/interfaces/Image.interface';
 
 @Component({
     name: 'ArtworkDetail'
@@ -17,6 +20,8 @@ class ArtworkDetail extends Vue {
     @Prop({ type: String }) artId: string;
     @Provide() isLoading: boolean = false;
     @Provide() artworkData: Artwork = null;
+    @Provide() artworkImage: Image = null;
+    @Provide() thumbnail: string = null;
 
     fetchArtworkData(): void {
         this.$set(this, 'isLoading', true);
@@ -26,6 +31,13 @@ class ArtworkDetail extends Vue {
         }).get().then(res => {
             this.$set(this, 'isLoading', false);
             this.$set(this, 'artworkData', res.result);
+
+            // Generate Images
+            let img = res.result.image;
+            let userProfile = res.result.user.profileImg;
+            this.$set(this, 'artworkImage', ImageService.getResolution(img));
+            this.$set(this, 'thumbnail', ImageService.getResolution(img, 320));
+            this.$set(this.artworkData.user, 'profileImg', ImageService.getUserProfile(userProfile))
         }, err => {
             this.$set(this, 'isLoading', false);
         });
