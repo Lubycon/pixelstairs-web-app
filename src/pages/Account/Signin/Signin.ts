@@ -9,6 +9,8 @@
 import { Vue, Component, Provide, Watch } from 'vue-property-decorator';
 import { State, Action } from 'vuex-class';
 
+import SigninForm from 'src/components/forms/Signin/Signin.form.vue';
+
 import APIService from 'src/services/API.service';
 
 import { LOGOS } from 'src/constants';
@@ -19,7 +21,10 @@ interface UserAuthData {
 }
 
 @Component({
-    name: 'Signin'
+    name: 'Signin',
+    components: {
+        SigninForm
+    }
 })
 class Signin extends Vue {
     @State('auth') AuthState
@@ -28,22 +33,9 @@ class Signin extends Vue {
 
     @Provide() logo: string = LOGOS.text;
 
-    form: UserAuthData = {
-        email: null,
-        password: null
-    };
+    postData (authData: UserAuthData): void {
 
-    get emailState (): string {
-        return this.form.email ? null : 'invalid';
-    }
-
-    postData (): void {
-        const DATA: UserAuthData = {
-            email: this.form.email,
-            password: this.form.password
-        };
-
-        APIService.resource('members.signin').post(DATA)
+        APIService.resource('members.signin').post(authData)
         .then(res => {
             this.setToken(res.result.token);
             this.setUser();
