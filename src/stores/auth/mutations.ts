@@ -23,14 +23,30 @@ export function SET_TOKEN (state: AuthState, token: string) {
 
 export function SET_USER (state: AuthState, user: UserSimple) {
     state.user = user;
-    state.isAuthenticated = true;
+    state.isAuthorized = true;
     LocalStorageService.save({
         key: 'user',
         value: user
     });
 }
 
+export function DESTROY_TOKEN (state: AuthState) {
+    state.token = null;
+    state.user = {
+        id: null,
+        email: null,
+        nickname: null,
+        status: null,
+        profileImg: null
+    };
+    state.isAuthorized = false;
+    APIService.destroyToken();
+    LocalStorageService.clear('auth');
+    LocalStorageService.clear('user');
+}
+
 export default <MutationTree<AuthState>> {
     SET_TOKEN,
-    SET_USER
+    SET_USER,
+    DESTROY_TOKEN
 }

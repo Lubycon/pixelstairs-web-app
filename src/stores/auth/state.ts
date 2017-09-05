@@ -10,7 +10,7 @@ import { UserSimple } from '../../interfaces/User.interface';
 export class AuthState {
     public user: UserSimple;
     public token: string;
-    public isAuthenticated: boolean;
+    public isAuthorized: boolean;
 
     constructor() {
         this.user = {
@@ -21,6 +21,6 @@ export class AuthState {
             profileImg: null
         };
         this.token = null;
-        this.isAuthenticated = false;
+        this.isAuthorized = false;
     }
 }

@@ -29,7 +29,13 @@ class LocalStorageService {
         return this._decode(VALUE);
     }
 
-    public clear(): void {
+    public clear(key: string): void {
+        const KEY: string = this._encodeKey(key);
+
+        window.localStorage.removeItem(KEY);
+    }
+
+    public clearAll(): void {
         window.localStorage.clear();
     }
 

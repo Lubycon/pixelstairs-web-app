@@ -6,13 +6,22 @@
 */
 
 import { Vue, Component, Provide, Watch } from 'vue-property-decorator';
+import { State, Getter } from 'vuex-class';
 
-import { LOGOS } from '../../constants';
+import { LOGOS } from 'src/constants';
+
+import UserMenu from 'src/components/menus/UserMenu/UserMenu.vue';
 
 @Component({
-    name: 'GlobalHeader'
+    name: 'GlobalHeader',
+    components: {
+        UserMenu
+    }
 })
 class Header extends Vue {
+    @State('auth') AuthState
+    @Getter('isAuthorized') isAuthorized
+
     public logoSrc: string = LOGOS.text;
 }
 

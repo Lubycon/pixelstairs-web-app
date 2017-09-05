@@ -15,5 +15,8 @@
     }
     .header--user-menu {
         text-align: right;
+
+        *[data-type="unauthorized"] {}
+        *[data-type="authorized"] {}
     }
 }

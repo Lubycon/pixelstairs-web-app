@@ -43,6 +43,11 @@ class APIService {
         return this._myAuthToken;
     }
 
+    public destroyToken (): void {
+        this._myAuthToken = null;
+        delete this._axios.defaults.headers.common[AUTH_KEY];
+    }
+
     public resource(api: string, id: any = null): any {
         return {
             get: (params) => this.GET(api, id, params),

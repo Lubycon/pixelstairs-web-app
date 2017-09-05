@@ -26,7 +26,12 @@ export function setUser(store: ActionContext<AuthState, any>) {
     });
 }
 
+export function destroyToken(store: ActionContext<AuthState, any>) {
+    store.commit('DESTROY_TOKEN');
+}
+
 export default <ActionTree<AuthState, any>> {
     setToken,
-    setUser
+    setUser,
+    destroyToken
 }

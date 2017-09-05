@@ -13,14 +13,16 @@ export function getToken (state: AuthState): string {
     return state.token;
 }
 
-export function isAuthenticated (state: AuthState): boolean {
-    return state.isAuthenticated;
+export function isAuthorized (state: AuthState): boolean {
+    return state.isAuthorized;
 }
 
 export function getUser (state: AuthState): UserSimple {
-    return state.isAuthenticated && state.user;
+    return state.isAuthorized && state.user;
 }
 
 export default <GetterTree<AuthState, any>> {
-    getToken
+    getToken,
+    getUser,
+    isAuthorized
 }
