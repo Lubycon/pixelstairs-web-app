@@ -36,7 +36,7 @@ class ArtworkDetail extends Vue {
             let img = res.result.image;
             let userProfile = res.result.user.profileImg;
             this.$set(this, 'artworkImage', ImageService.getResolution(img));
-            this.$set(this, 'thumbnail', ImageService.getResolution(img, 320));
+            this.$set(this, 'thumbnail', ImageService.getResolution(img, 30));
             this.$set(this.artworkData.user, 'profileImg', ImageService.getUserProfile(userProfile))
         }, err => {
             this.$set(this, 'isLoading', false);

@@ -13,6 +13,12 @@ section {
             font-weight: 600;
             margin: 20px 0;
         }
+        img {
+            background: {
+                repeat: no-repeat;
+                size: cover;
+            }
+        }
     }
     &[data-section="counter"] {}
     &[data-section="author"] {}
