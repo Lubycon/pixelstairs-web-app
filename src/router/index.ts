@@ -20,7 +20,8 @@ import Home from 'src/pages/Home/Home.vue';
 import Signin from 'src/pages/Account/Signin/Signin.vue';
 import Signup from 'src/pages/Account/Signup/Signup.vue';
 
-import ArtworkDetail from 'src/pages/Artwork/ArtworkDetail.vue';
+import ArtworkDetail from 'src/pages/Artwork/ArtworkDetail/ArtworkDetail.vue';
+import ArtworkUpload from 'src/pages/Artwork/ArtworkUpload/ArtworkUpload.vue';
 /* /PAGES */
 
 Vue.use(VueRouter);
@@ -49,7 +50,7 @@ const router = new VueRouter({
             content: Signup
         }
     }, {
-        path: '/artwork/:artId',
+        path: '/artwork/detail/:artId',
         name: 'artwork-detail',
         components: {
             header: Header,
@@ -58,6 +59,14 @@ const router = new VueRouter({
         },
         props: {
             content: true
+        }
+    }, {
+        path: '/artwork/upload',
+        name: 'artwork-upload',
+        components: {
+            header: Header,
+            content: ArtworkUpload,
+            footer: Footer
         }
     }]
 });

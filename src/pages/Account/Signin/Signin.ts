@@ -39,6 +39,7 @@ class Signin extends Vue {
         .then(res => {
             this.setToken(res.result.token);
             this.setUser();
+            this.$router.push({ name: 'home' });
         }, err => {
             console.log(err);
         });
