@@ -6,16 +6,61 @@
 */
 
 import { Vue, Component, Provide } from 'vue-property-decorator';
+import { ArtworkForm } from 'src/interfaces/Form.interface';
 import APIService from 'src/services/API.service';
+
+import { ARTWORK_UPLOAD_FORM } from 'src/constants/form.constant';
+
+interface ArtworkData {
+    title: string;
+    hashTags: string[];
+    licenseCode: string;
+    description: string;
+}
+interface UploadFileData {
+    contentId: string;
+    file: File;
+}
 
 @Component({
     name: 'ArtworkUpload'
 })
 class ArtworkUpload extends Vue {
-    @Provide() uploadedFile: File = null;
+    public $refs: {
+        fileinput: any;
+    }
+    @Provide() formList: Array<ArtworkForm> = ARTWORK_UPLOAD_FORM;
+    @Provide() previewImgSrc: string = null;
 
-    mounted () {
-        console.log(this.$refs.fileinput);
+    @Provide() artworkFile: File = null;
+    @Provide() artworkTitle: string = null;
+    @Provide() artworkTags: string[] = null;
+    @Provide() artworkDesc: string = null;
+
+    @Provide() pageIndex: number = 0;
+
+    public onChangedFile (): void {
+        let reader = new FileReader();
+        reader.onload = (e: any) => {
+            this.previewImgSrc = e.target.result;
+        }
+        reader.readAsDataURL(this.artworkFile);
+    }
+
+    resetFile (): void {
+        this.$refs.fileinput.reset();
+    }
+
+    nextPage (): void {
+        this.$validator.validateAll();
+        if((<any>this).errors.any()) {
+            return null;
+        }
+        this.pageIndex++;
+    }
+
+    prevPage (): void {
+        this.pageIndex--;
     }
 }
 

@@ -1,0 +1,29 @@
+section {
+    &[data-section="intro"] {
+        text-align: center;
+        margin: 40px 0;
+        h1 {
+            font-size: 24px;
+            font-weight: bolder;
+            margin: 20px 0;
+        }
+        p {
+            font-size: 14px;
+        }
+    }
+
+    &[data-section="pages"] {
+        max-width: 800px;
+        margin: 0 auto;
+
+        .file-upload--dropzone {
+            height: 200px;
+        }
+    }
+
+    &[data-section="control"] {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+    }
+}
