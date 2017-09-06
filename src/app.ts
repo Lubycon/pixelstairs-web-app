@@ -14,6 +14,9 @@ import { sync } from 'vuex-router-sync';
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 Vue.use(BootstrapVue);
 
+import VeeValidate from 'vee-validate';
+Vue.use(VeeValidate);
+
 export function createApp () {
     sync(store, router);
 
