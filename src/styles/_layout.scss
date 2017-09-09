@@ -3,6 +3,7 @@
 #app-header {}
 #app-body {
     padding-top: $global-header-height;
+    min-height: 100vh;
 }
 #app-footer {}
 
