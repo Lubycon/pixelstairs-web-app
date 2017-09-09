@@ -23,6 +23,7 @@ class UserSetting extends Vue {
     @State('auth') AuthState
     @Getter('getUser') user
     @Getter('getUserProfileSrc') userProfileSrc
+    @Getter('hasProfileSrc') hasProfileSrc
     @Action('setUser') setUser
 
     @Provide() newProfile: File = null;
@@ -43,7 +44,7 @@ class UserSetting extends Vue {
     }
 
     public postData ():void {
-        let data: UserSimple = (<any>Vue).util.extend({}, this.user);
+        let data: UserSimple = { ...this.user };
         data.nickname = this.newUsername;
         data.profileImg = {
             id: null,

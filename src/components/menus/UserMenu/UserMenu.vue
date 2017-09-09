@@ -1,7 +1,10 @@
 <template>
 <b-dropdown class="user-menu--basic dropdown" right>
     <div slot="button-content">
-        <img :src="userProfileSrc">
+
+        <img v-if="!hasProfileSrc" :src="userProfileSrc">
+        <img v-if="hasProfileSrc" :src="userProfileSrc">
+
         <h3>{{ user.nickname }}</h3>
     </div>
 

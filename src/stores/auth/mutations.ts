@@ -31,6 +31,7 @@ export function SET_USER (state: AuthState, user: UserSimple) {
 
     if(user.profileImg) {
         state.userProfileSrc = user.profileImg.file + '320';
+        state.hasProfileSrc = true;
     }
 }
 

@@ -7,7 +7,10 @@
     <section class="row" data-section="profile-img">
         <div class="setting--profile-img" @click="uploadTrigger">
             <!-- Profile Image DOM -->
-            <img v-if="!newProfileSrc" :src="userProfileSrc">
+
+            <img v-if="!newProfileSrc && hasProfileSrc" :src="userProfileSrc">
+            <img v-if="!newProfileSrc && !hasProfileSrc" :src="userProfileSrc">
+
             <img v-if="newProfileSrc" :src="newProfileSrc">
             <!-- /Profile Image DOM -->
             <div class="setting--profile-img overlay">

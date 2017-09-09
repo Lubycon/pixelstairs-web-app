@@ -13,6 +13,7 @@ export class AuthState {
     public userProfileSrc: string;
     public token: string;
     public isAuthorized: boolean;
+    public hasProfileSrc: boolean;
 
     constructor() {
         this.user = {
@@ -25,5 +26,6 @@ export class AuthState {
         this.userProfileSrc = DEFAULT_USER_PROFILE;
         this.token = null;
         this.isAuthorized = false;
+        this.hasProfileSrc = false;
     }
 }

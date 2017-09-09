@@ -19,10 +19,15 @@ class UserMenu extends Vue {
     @State('auth') AuthState
     @Getter('getUser') user
     @Getter('getUserProfileSrc') userProfileSrc
-    @Action('destroyToken') destroyToken;
+    @Getter('hasProfileSrc') hasProfileSrc
+    @Action('destroyToken') destroyToken
 
     public signout (): void {
         this.destroyToken();
+    }
+
+    created (): void {
+        this.$forceUpdate();
     }
 }
 
