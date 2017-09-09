@@ -94,7 +94,23 @@ class APIService {
         return defer.promise;
     }
 
-    private PUT (api, id, data) {}
+    private PUT (api, id, data) {
+        let defer: any = Q.defer();
+        api = this.getURI(api, id);
+
+        this._axios.put(api, data)
+        .then(res => {
+            defer.resolve(res.data)
+        }, err => {
+            defer.reject({
+                status: err.response.status,
+                statusText: err.response.statusText,
+                data: err.response.data
+            });
+        });
+
+        return defer.promise;
+    }
     private DELETE (api, id) {}
 
     private getURI (api: string, id: any = null, uri: string = null, list: any = this._apilist, index: number = 0): string {
