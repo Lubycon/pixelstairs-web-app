@@ -19,7 +19,9 @@ import Footer from 'src/components/Footer/Footer.vue';
 import Home from 'src/pages/Home/Home.vue';
 import Signin from 'src/pages/Account/Signin/Signin.vue';
 import Signup from 'src/pages/Account/Signup/Signup.vue';
-import UserSetting from 'src/pages/Account/UserSetting/UserSetting.vue';
+import User from 'src/pages/User/User.vue';
+import UserProfile from 'src/pages/User/Profile/UserProfile.vue';
+import UserSetting from 'src/pages/User/Setting/UserSetting.vue';
 
 import ArtworkDetail from 'src/pages/Artwork/ArtworkDetail/ArtworkDetail.vue';
 import ArtworkUpload from 'src/pages/Artwork/ArtworkUpload/ArtworkUpload.vue';
@@ -51,13 +53,26 @@ const router = new VueRouter({
             content: Signup
         }
     }, {
-        path: '/user/:userId/setting',
-        name: 'user-setting',
+        path: '/user/:userId',
         components: {
             header: Header,
-            content: UserSetting,
-            footer: Footer
-        }
+            content: User,
+            footer: Footer,
+        },
+        props: {
+            content: true
+        },
+        children: [{
+            path: 'setting',
+            name: 'user-setting',
+            component: UserSetting,
+            props: true
+        },{
+            path: '',
+            name: 'user-profile',
+            component: UserProfile,
+            props: true
+        }]
     }, {
         path: '/artwork/detail/:artId',
         name: 'artwork-detail',

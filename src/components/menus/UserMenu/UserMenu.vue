@@ -5,7 +5,9 @@
         <h3>{{ user.nickname }}</h3>
     </div>
 
-    <b-dropdown-item>Setting</b-dropdown-item>
+    <b-dropdown-item :to="{ name: 'user-setting', params: { userId: user.id } }">
+        Settings
+    </b-dropdown-item>
     <b-dropdown-item>Change password</b-dropdown-item>
     <b-dropdown-item @click="signout">Sign out</b-dropdown-item>
 </b-dropdown>
