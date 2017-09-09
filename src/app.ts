@@ -10,6 +10,13 @@ import App from './App.vue';
 import store from './stores/store';
 import router from './router';
 import { sync } from 'vuex-router-sync';
+import Component from 'vue-class-component';
+
+Component.registerHooks([
+    'beforeRouteEnter',
+    'beforeRouteLeave',
+    'beforeRouteUpdate'
+]);
 
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 Vue.use(BootstrapVue);
