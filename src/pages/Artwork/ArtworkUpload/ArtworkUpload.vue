@@ -53,6 +53,7 @@
         <button class="btn" @click="prevPage">Prev</button>
         <button class="btn" @click="resetFile">reset</button>
         <button class="btn" @click="nextPage">Next</button>
+        <button v-if="pageIndex >= formList.length" class="btn" @click="submit">Submit</button>
     </section>
 </div>
 </template>

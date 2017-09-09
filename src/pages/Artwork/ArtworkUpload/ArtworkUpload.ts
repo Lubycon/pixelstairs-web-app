@@ -6,6 +6,8 @@
 */
 
 import { Vue, Component, Provide } from 'vue-property-decorator';
+import { Response } from 'src/interfaces/Response.interface';
+
 import { ArtworkForm } from 'src/interfaces/Form.interface';
 import APIService from 'src/services/API.service';
 
@@ -43,7 +45,7 @@ class ArtworkUpload extends Vue {
 
     @Provide() pageIndex: number = 0;
 
-    public onChangedFile (): void {
+    onChangedFile (): void {
         let reader = new FileReader();
         reader.onload = (e: any) => {
             this.previewImgSrc = e.target.result;
@@ -65,6 +67,49 @@ class ArtworkUpload extends Vue {
 
     prevPage (): void {
         this.pageIndex--;
+    }
+
+    submit (): void {
+        let contentId: string = null;
+
+        this.postData()
+        .then(res => {
+            contentId = res.result.id;
+            return this.postFile(contentId);
+        }, err => {
+            // Content data upload has been failed
+        }).then(res =>{
+            // All uploading has been succeed
+        }, err => {
+            // File data upload has been failed
+        });
+    }
+
+    postData (): Promise<Response> {
+        const DATA: ArtworkData = {
+            title: this.artworkTitle,
+            hashTags: this.artworkTags,
+            licenseCode: '1101',
+            description: this.artworkDesc
+        };
+
+        return APIService.resource('contents.upload').post(DATA);
+    }
+
+    postFile (contentId: string): Promise<Response> {
+        const DATA: UploadFileData = {
+            contentId,
+            file: this.artworkFile
+        };
+        let form: FormData = new FormData();
+
+        Object.keys(DATA).forEach((v: any) => {
+            form.append(v, DATA[v]);
+        });
+
+        return APIService.resource('contents.image', {
+            id: contentId
+        }).post(form);
     }
 }
 
