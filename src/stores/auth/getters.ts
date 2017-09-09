@@ -21,8 +21,13 @@ export function getUser (state: AuthState): UserSimple {
     return state.isAuthorized && state.user;
 }
 
+export function getUserProfileSrc (state: AuthState): string {
+    return state.userProfileSrc;
+}
+
 export default <GetterTree<AuthState, any>> {
     getToken,
     getUser,
+    getUserProfileSrc,
     isAuthorized
 }

@@ -28,6 +28,10 @@ export function SET_USER (state: AuthState, user: UserSimple) {
         key: 'user',
         value: user
     });
+
+    if(user.profileImg) {
+        state.userProfileSrc = user.profileImg.file + '320';
+    }
 }
 
 export function DESTROY_TOKEN (state: AuthState) {
