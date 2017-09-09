@@ -1,7 +1,7 @@
 <template>
 <b-dropdown class="user-menu--basic dropdown" right>
     <div slot="button-content">
-        <img :src="getUserProfile()">
+        <img :src="userProfileSrc">
         <h3>{{ user.nickname }}</h3>
     </div>
 

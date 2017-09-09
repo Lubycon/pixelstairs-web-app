@@ -28,7 +28,7 @@ interface UserAuthData {
 class Signin extends Vue {
     @State('auth') AuthState
     @Action('setToken') setToken
-    @Action('setUser') setUser
+    @Action('setUserByAPI') setUserByAPI
 
     @Provide() logo: string = LOGOS.text;
 
@@ -37,7 +37,7 @@ class Signin extends Vue {
         APIService.resource('members.signin').post(authData)
         .then(res => {
             this.setToken(res.result.token);
-            this.setUser();
+            this.setUserByAPI();
             this.$router.push({ name: 'home' });
         }, err => {
             console.log(err);
