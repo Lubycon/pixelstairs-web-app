@@ -10,6 +10,7 @@ import { ArtworkForm } from 'src/interfaces/Form.interface';
 import APIService from 'src/services/API.service';
 
 import { ARTWORK_UPLOAD_FORM } from 'src/constants/form.constant';
+import TagInput from 'src/components/Tag.vue';
 
 interface ArtworkData {
     title: string;
@@ -23,7 +24,10 @@ interface UploadFileData {
 }
 
 @Component({
-    name: 'ArtworkUpload'
+    name: 'ArtworkUpload',
+    components: {
+        TagInput
+    }
 })
 class ArtworkUpload extends Vue {
     public $refs: {
@@ -34,7 +38,7 @@ class ArtworkUpload extends Vue {
 
     @Provide() artworkFile: File = null;
     @Provide() artworkTitle: string = null;
-    @Provide() artworkTags: string[] = null;
+    @Provide() artworkTags: string[] = [];
     @Provide() artworkDesc: string = null;
 
     @Provide() pageIndex: number = 0;

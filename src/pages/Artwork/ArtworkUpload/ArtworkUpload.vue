@@ -6,7 +6,6 @@
             Your artwork will be posted under the terms of Pixelstairs Service<br>
             and will be subject to the Creative Commons licenseas stipulated.
         </p>
-        {{ errors }}
     </section>
 
     <section data-section="pages">
@@ -36,7 +35,7 @@
             </div>
 
             <div data-form="tag" v-if="page.type === 'tag'">
-                <p>Tag</p>
+                <tag-input :tags="artworkTags"></tag-input>
             </div>
 
             <div data-form="description" v-if="page.type === 'description'">
