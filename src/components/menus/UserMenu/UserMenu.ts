@@ -25,10 +25,6 @@ class UserMenu extends Vue {
     public signout (): void {
         this.destroyToken();
     }
-
-    created (): void {
-        this.$forceUpdate();
-    }
 }
 
 export default UserMenu;

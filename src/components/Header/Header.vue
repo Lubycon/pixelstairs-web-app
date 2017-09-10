@@ -7,15 +7,15 @@
         </router-link>
     </div>
     <div class="col header--user-menu">
-        <div v-show="!isAuthorized" data-type="unauthorized">
+        <div v-if="isAuthorized">
+            <user-menu></user-menu>
+        </div>
+        <div v-else>
             <router-link :to="{ name: 'signin' }">
                 <button class="btn btn-round">
                     Login
                 </button>
             </router-link>
-        </div>
-        <div v-show="isAuthorized" data-type="authorized">
-            <user-menu></user-menu>
         </div>
     </div>
 </div>

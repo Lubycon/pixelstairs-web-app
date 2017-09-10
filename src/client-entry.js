@@ -25,13 +25,10 @@ if (window.__INITIAL_STATE__) {
 */
 if (window.localStorage) {
     let token = LocalStorageService.get('auth');
-    let user = LocalStorageService.get('user');
-
     if (token) {
-        store.commit('SET_TOKEN', token);
-        if (user) {
-            store.commit('SET_USER', user);
-        }
+        store.dispatch('setToken', token).then(res => {
+            store.dispatch('setUserByAPI');
+        });
     }
 }
 

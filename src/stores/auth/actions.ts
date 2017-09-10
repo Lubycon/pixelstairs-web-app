@@ -7,17 +7,21 @@
 
 import { Store, ActionTree, ActionContext } from 'vuex';
 import { AuthState } from './state';
+import Q from 'q';
 import { UserSimple } from 'src/interfaces/user.interface';
 
 import ImageService from 'src/services/Image.service';
 import APIService from 'src/services/API.service';
 
 export function setToken(store: ActionContext<AuthState, any>, token:string) {
+    let defer = Q.defer();
     store.commit('SET_TOKEN', token);
+    defer.resolve();
+    return defer.promise;
 }
 
 export function setUserByAPI(store: ActionContext<AuthState, any>) {
-    APIService.resource('members.simple').get()
+    return APIService.resource('members.simple').get()
     .then(res => {
         delete res.result.newsletterAccepted;
         delete res.result.gender;
@@ -29,11 +33,17 @@ export function setUserByAPI(store: ActionContext<AuthState, any>) {
 }
 
 export function setUser(store: ActionContext<AuthState, any>, user: UserSimple) {
+    let defer = Q.defer();
     store.commit('SET_USER', user);
+    defer.resolve();
+    return defer.promise;
 }
 
 export function destroyToken(store: ActionContext<AuthState, any>) {
+    let defer = Q.defer();
     store.commit('DESTROY_TOKEN');
+    defer.resolve();
+    return defer.promise;
 }
 
 export default <ActionTree<AuthState, any>> {

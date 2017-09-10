@@ -65,8 +65,7 @@ const router = new VueRouter({
         children: [{
             path: 'setting',
             name: 'user-setting',
-            component: UserSetting,
-            props: true
+            component: UserSetting
         },{
             path: '',
             name: 'user-profile',
