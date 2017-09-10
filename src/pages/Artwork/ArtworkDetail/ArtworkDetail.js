@@ -5,7 +5,7 @@
     @created_at: 2017.09.02
 */
 import { mapGetters } from 'vuex';
-import APIService from 'src/services/API.service';
+// import APIService from 'src/services/API.service';
 
 export default {
     name: 'ArtworkDetail',
@@ -16,13 +16,13 @@ export default {
         }
     },
     asyncData ({ store, route }) {
-        // return store.dispatch('setArtwork', route.params.artId);
-        return APIService.resource('contents.detail', {
-            id: route.params.artId
-        }).get().then(res => {
-            console.log('res => ', res);
-            console.log('route => ', route.matched[0].components.content);
-        });
+        return store.dispatch('setArtwork', route.params.artId);
+        // return APIService.resource('contents.detail', {
+        //     id: route.params.artId
+        // }).get().then(res => {
+        //     console.log('res => ', res);
+        //     console.log('route => ', route.matched[0].components.content);
+        // });
     },
     data () {
         return {
