@@ -22,7 +22,7 @@ class APIService {
 
     constructor(axios: any, API_LIST: any) {
         this._axios = axios.create({
-            baseURL: 'http://192.168.99.100:8080/v1',
+            baseURL: 'https://apidev.pixelstairs.com/v1',
             headers: {
                 common: {
                     [VERSION_KEY]: '1.2.0',
