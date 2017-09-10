@@ -10,6 +10,7 @@ import Vuex from 'vuex';
 
 /* STORES START */
 import { AuthStoreModule } from './auth/';
+import { ArtworkStoreModule } from './artwork/';
 /* STORES END */
 
 Vue.use(Vuex);
@@ -18,6 +19,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     modules: {
-        auth: AuthStoreModule
+        auth: AuthStoreModule,
+        artwork: ArtworkStoreModule
     }
 });

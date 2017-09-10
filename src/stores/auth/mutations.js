@@ -1,5 +1,5 @@
 /*
-    @name: auth/mutations.ts
+    @name: auth/mutations.js
     @desc: Auth스토어 변이 모듈
     @author: Evan Moon
     @created_at: 2017.08.27
