@@ -4,7 +4,7 @@
     @author: Evan Moon
     @created_at: 2017.08.26
 */
-
+import { mapGetters } from 'vuex';
 import APIService from 'src/services/API.service';
 import ArtworkCard from 'src/components/cards/ArtworkCard/ArtworkCard.vue';
 
@@ -13,13 +13,22 @@ export default {
     components: {
         ArtworkCard
     },
+    asyncData ({ store }) {
+        return store.dispatch('setArtworkList', {
+            pageIndex: 0
+        });
+    },
     data () {
         return {
-            pageIndex: 1,
+            pageIndex: 2,
             totalCount: 0,
-            artworks: [],
             loadingMsg: 'Loading...'
         };
+    },
+    computed: {
+        ...mapGetters({
+            firstPageArtworks: 'getArtworkList'
+        })
     },
     watch: {
         pageIndex (val) {
@@ -43,9 +52,5 @@ export default {
                 this.addToArtworkList(res.result.contents);
             });
         }
-
-    },
-    mounted () {
-        this.getContents(this.pageIndex);
     }
 };

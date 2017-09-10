@@ -6,9 +6,14 @@
 */
 
 export function getArtworkDetailView (state) {
-    return state.artwork;
+    return state.artworkDetailView;
+}
+
+export function getArtworkList (state) {
+    return state.artworkList;
 }
 
 export default {
-    getArtworkDetailView
+    getArtworkDetailView,
+    getArtworkList
 };

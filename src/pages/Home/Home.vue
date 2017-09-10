@@ -1,10 +1,18 @@
 <template>
 <div class="container-fluid">
     <div class="container">
-        <div v-if="artworks.length < 1">
-            {{ loadingMsg }}
-        </div>
-        <ul class="row" v-if="artworks.length > 0">
+        <ul class="row">
+            <!-- SSR FOR SEO -->
+            <li class="col-4" v-for="artwork in firstPageArtworks.contents">
+                <artwork-card
+                    :art-id="artwork.id"
+                    :title="artwork.title"
+                    :image="artwork.image"
+                    :author-name="artwork.user.nickname"
+                    :author-profile="artwork.user.profileImg"
+                />
+            </li>
+            <!-- /SSR FOR SEO -->
             <li class="col-4" v-for="artwork in artworks">
                 <artwork-card
                     :art-id="artwork.id"

@@ -6,5 +6,6 @@
 */
 
 export const ArtworkState = {
-    artwork: null
+    artworkDetailView: null,
+    artworkList: []
 };

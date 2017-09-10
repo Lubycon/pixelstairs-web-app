@@ -6,9 +6,14 @@
 */
 
 export function SET_ARTWORK_DETAIL_VIEW (state, artwork) {
-    state.artwork = artwork;
+    state.artworkDetailView = artwork;
+}
+
+export function SET_ARTWORK_LIST (state, artworks) {
+    state.artworkList = artworks;
 }
 
 export default {
-    SET_ARTWORK_DETAIL_VIEW
+    SET_ARTWORK_DETAIL_VIEW,
+    SET_ARTWORK_LIST
 };

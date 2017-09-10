@@ -18,8 +18,8 @@ const AUTH_KEY = `${CUSTOM_HEADER_PREFIX}token`;
 class APIService {
     constructor (axios, API_LIST) {
         this._axios = axios.create({
-            baseURL: 'https://apidev.pixelstairs.com/v1',
-            // baseURL: 'http://192.168.99.100:8080/v1',
+            // baseURL: 'https://apidev.pixelstairs.com/v1',
+            baseURL: 'http://192.168.99.100:8080/v1',
             headers: {
                 common: {
                     [VERSION_KEY]: '1.2.0',
