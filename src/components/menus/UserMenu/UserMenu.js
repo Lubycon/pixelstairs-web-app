@@ -4,27 +4,23 @@
     @author: Evan Moon
     @created_at: 2017.09.05
 */
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
     name: 'UserMenu',
+    computed: {
+        ...mapGetters({
+            user: 'getUser',
+            userProfileSrc: 'getUserProfileSrc',
+            hasProfileSrc: 'hasProfileSrc'
+        })
+    },
     methods: {
+        ...mapActions({
+            destroyToken: 'destroyToken'
+        }),
         signout () {
             this.destroyToken();
         }
     }
 };
-
-// @Component({
-//     name: 'UserMenu'
-// })
-// class UserMenu extends Vue {
-//     @State('auth') AuthState
-//     @Getter('getUser') user
-//     @Getter('getUserProfileSrc') userProfileSrc
-//     @Getter('hasProfileSrc') hasProfileSrc
-//     @Action('destroyToken') destroyToken
-//
-//     public
-// }
-//
-// export default UserMenu;

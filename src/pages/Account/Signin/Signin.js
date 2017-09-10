@@ -4,7 +4,7 @@
     @author: Evan Moon
     @created_at: 2017.08.29
 */
-
+import { mapActions } from 'vuex';
 import SigninForm from 'src/components/forms/Signin/Signin.form.vue';
 import APIService from 'src/services/API.service';
 import { LOGOS } from 'src/constants';
@@ -20,6 +20,10 @@ export default {
         };
     },
     methods: {
+        ...mapActions({
+            setToken: 'setToken',
+            setUserByAPI: 'setUserByAPI'
+        }),
         postData (authData) {
             APIService.resource('members.signin').post(authData)
             .then(res => {
@@ -32,14 +36,3 @@ export default {
         }
     }
 };
-// class Signin extends Vue {
-//     @State('auth') AuthState
-//     @Action('setToken') setToken
-//     @Action('setUserByAPI') setUserByAPI
-//
-//     @Provide() logo: string = LOGOS.text;
-//
-//
-// }
-//
-// export default Signin;
