@@ -8,7 +8,7 @@
 import { Store, ActionTree, ActionContext } from 'vuex';
 import { AuthState } from './state';
 import Q from 'q';
-import { UserSimple } from 'src/interfaces/user.interface';
+import { UserSimple } from 'src/interfaces/User.interface';
 
 import ImageService from 'src/services/Image.service';
 import APIService from 'src/services/API.service';

@@ -6,6 +6,7 @@
 */
 
 /* Main application bootstrapper */
+import Q from 'q';
 import { createApp } from './app';
 
 /* Global jQuery lib with expose-loader */
@@ -23,14 +24,30 @@ if (window.__INITIAL_STATE__) {
 /*
     Read LocalStorage and Commit to Store
 */
-if (window.localStorage) {
-    let token = LocalStorageService.get('auth');
-    if (token) {
-        store.dispatch('setToken', token).then(res => {
-            store.dispatch('setUserByAPI');
-        });
+function readLocalStorage () {
+    let defer = Q.defer();
+
+    if (window.localStorage) {
+        let token = LocalStorageService.get('auth');
+        if (token) {
+            store.dispatch('setToken', token).then(res => {
+                store.dispatch('setUserByAPI').then(res => {
+                    defer.resolve();
+                });
+            });
+        }
+        else {
+            defer.resolve();
+        }
     }
+    else {
+        defer.resolve();
+    }
+
+    return defer.promise;
 }
+
+readLocalStorage();
 
 router.onReady(() => {
     // asyncData를 위한 route 훅.
