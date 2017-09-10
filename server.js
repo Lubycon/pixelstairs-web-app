@@ -82,8 +82,13 @@ app.get('*', (req, res) => {
     .pipe(res);
 });
 
-const port = process.env.PORT || 3000;
-if(isProd) port = 8000;
+let port;
+if(isProd) {
+    port = 8000;
+}
+else {
+    port = process.env.PORT || 3000;
+}
 
 app.listen(port, () => {
     console.log(`server started at http://localhost:${port}`);
