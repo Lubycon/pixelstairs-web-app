@@ -59,7 +59,7 @@
     @import './ArtworkDetail';
 </style>
 
-<script lang="ts">
+<script>
     import ArtworkDetail from './ArtworkDetail';
     export default ArtworkDetail;
 </script>

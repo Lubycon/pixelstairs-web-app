@@ -62,7 +62,7 @@
     @import './ArtworkUpload';
 </style>
 
-<script lang="ts">
+<script>
     import ArtworkUpload from './ArtworkUpload';
     export default ArtworkUpload;
 </script>

@@ -23,7 +23,7 @@
     @import './Home';
 </style>
 
-<script lang="ts">
+<script>
     import Home from './Home';
     export default Home;
 </script>

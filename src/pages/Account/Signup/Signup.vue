@@ -12,7 +12,7 @@
 @import './Signup';
 </style>
 
-<script lang="ts">
+<script>
 import Signup from './Signup';
 export default Signup;
 </script>

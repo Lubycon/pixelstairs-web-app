@@ -19,7 +19,7 @@
     @import './ArtworkCard';
 </style>
 
-<script lang="ts">
+<script>
     import ArtworkCard from './ArtworkCard';
     export default ArtworkCard;
 </script>

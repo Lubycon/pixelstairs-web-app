@@ -8,7 +8,7 @@
     @import './UserProfile';
 </style>
 
-<script lang="ts">
+<script>
     import UserProfile from './UserProfile';
     export default UserProfile;
 </script>

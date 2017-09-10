@@ -67,38 +67,44 @@ ul {
 }
 </style>
 
-<script lang="ts">
-import { Vue, Component, Prop, Provide } from 'vue-property-decorator';
-
-@Component({
-    name: 'tag-input'
-})
-export default class TagInput extends Vue {
-    @Prop({ type: Array, required: true }) tags: string[];
-    @Prop({ type: Boolean }) readonly: boolean;
-
-    @Provide() currentTag:string = null;
-
-    addTag (): void {
-        if (!this.currentTag) {
-            return;
+<script>
+export default {
+    name: 'tag-input',
+    props: {
+        tags: {
+            type: Array,
+            required: true
+        },
+        readonly: {
+            type: Boolean
         }
-        this.tags.push(this.currentTag);
-        this.currentTag = null;
-        this.$emit('update');
-    }
-    removeTag (idx): void {
-        if (idx < 0) {
-            return;
+    },
+    data () {
+        return {
+            currentTag: null
+        };
+    },
+    methods: {
+        addTag () {
+            if (!this.currentTag) {
+                return;
+            }
+            this.tags.push(this.currentTag);
+            this.currentTag = null;
+            this.$emit('update');
+        },
+        removeTag (idx) {
+            if (idx < 0) {
+                return;
+            }
+            this.tags.splice(idx, 1);
+            this.$emit('delete');
+        },
+        onDeleteKey () {
+            if (!this.currentTag) {
+                const IDX = this.tags.length - 1;
+                this.removeTag(IDX);
+            }
         }
-        this.tags.splice(idx, 1);
-        this.$emit('delete');
     }
-    onDeleteKey (): void {
-        if (!this.currentTag) {
-            const IDX = this.tags.length - 1;
-            this.removeTag(IDX);
-        }
-    }
-}
-</script>
+};

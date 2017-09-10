@@ -8,7 +8,7 @@
     @import './User';
 </style>
 
-<script lang="ts">
+<script>
     import User from './User';
     export default User;
 </script>

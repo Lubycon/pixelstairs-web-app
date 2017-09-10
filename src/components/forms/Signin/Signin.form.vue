@@ -27,7 +27,7 @@
     @import './Signin.form';
 </style>
 
-<script lang="ts">
+<script>
     import SigninForm from './Signin.form';
     export default SigninForm;
 </script>

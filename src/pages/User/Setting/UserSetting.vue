@@ -54,7 +54,7 @@
     @import './UserSetting';
 </style>
 
-<script lang="ts">
+<script>
 import UserSetting from './UserSetting';
 export default UserSetting;
 </script>

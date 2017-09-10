@@ -1,5 +1,9 @@
 module.exports = {
     root: true,
+    env: {
+        browser: true,
+        node: true
+    },
     parser: 'babel-eslint',
     parserOptions: {
         ecmaVersion: 7,
@@ -21,6 +25,7 @@ module.exports = {
         'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
         'indent': [ 'error', 4 ],
         'semi': [ 'error', 'always' ],
-        'brace-style': [ 'error', 'stroustrup' ]
+        'brace-style': [ 'error', 'stroustrup' ],
+        'no-undef': 'error'
     }
 };

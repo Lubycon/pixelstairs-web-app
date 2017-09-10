@@ -21,7 +21,7 @@
     @import './UserMenu';
 </style>
 
-<script lang="ts">
+<script>
     import UserMenu from './UserMenu';
     export default UserMenu;
 </script>

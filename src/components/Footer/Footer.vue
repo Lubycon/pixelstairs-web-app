@@ -8,7 +8,7 @@
     @import './Footer';
 </style>
 
-<script lang="ts">
+<script>
     import Footer from './Footer';
     export default Footer;
 </script>

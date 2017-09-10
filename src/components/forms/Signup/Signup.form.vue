@@ -23,7 +23,7 @@
                 required
             />
         </b-form-group>
-        
+
         <!-- <b-form-checkbox v-model="newsletter">
             뉴스레터를 구독하겠습니다.(현재 사용 안함)
         </b-form-checkbox> -->
@@ -43,7 +43,7 @@
     @import './Signup.form';
 </style>
 
-<script lang="ts">
+<script>
     import SignupForm from './Signup.form';
     export default SignupForm;
 </script>

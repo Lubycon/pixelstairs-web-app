@@ -18,6 +18,7 @@ export default context => {
                 return reject({ code: 404 });
             }
             Promise.all(matchedComponents.map(Component => {
+                console.log('Component => ', Component);
                 if (Component.asyncData) {
                     return Component.asyncData({
                         store,

@@ -12,7 +12,7 @@
     @import './Signin';
 </style>
 
-<script lang="ts">
+<script>
     import Signin from './Signin';
     export default Signin;
 </script>

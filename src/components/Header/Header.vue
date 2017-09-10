@@ -25,7 +25,7 @@
     @import './Header';
 </style>
 
-<script lang="ts">
+<script>
     import Header from './Header';
     export default Header;
 </script>
