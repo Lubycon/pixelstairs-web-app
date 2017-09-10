@@ -5,10 +5,10 @@
     @created_at: 2017.09.10
 */
 
-export function SET_ARTWORK (state, artwork) {
+export function SET_ARTWORK_DETAIL_VIEW (state, artwork) {
     state.artwork = artwork;
 }
 
 export default {
-    SET_ARTWORK
+    SET_ARTWORK_DETAIL_VIEW
 };

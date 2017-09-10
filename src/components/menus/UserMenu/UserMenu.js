@@ -1,5 +1,5 @@
 /*
-    @name UserMenu.ts
+    @name UserMenu.js
     @desc: 유저 로그인 메뉴 컴포넌트
     @author: Evan Moon
     @created_at: 2017.09.05

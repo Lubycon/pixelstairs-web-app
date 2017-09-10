@@ -7,14 +7,14 @@
 
 import APIService from 'src/services/API.service';
 
-export function setArtwork (store, id) {
+export function setArtworkDetailView (store, id) {
     return APIService.resource('contents.detail', {
         id
     }).get().then(res => {
-        store.commit('SET_ARTWORK', res.result);
+        store.commit('SET_ARTWORK_DETAIL_VIEW', res.result);
     });
 }
 
 export default {
-    setArtwork
+    setArtworkDetailView
 };

@@ -41,7 +41,7 @@
             <p class="row"><small>Artwork by</small></p>
             <div class="row">
                 <div class="col">
-                    <img :src="artworkData.user.profileImg" :alt="`user-${artworkData.user.id}-profile-image`">
+                    <img :src="userProfile" :alt="`user-${artworkData.user.id}-profile-image`">
                 </div>
                 <div class="col">
                     <h2>{{ artworkData.user.nickname }}</h2>

@@ -5,10 +5,10 @@
     @created_at: 2017.09.10
 */
 
-export function getArtwork (state) {
+export function getArtworkDetailView (state) {
     return state.artwork;
 }
 
 export default {
-    getArtwork
+    getArtworkDetailView
 };
