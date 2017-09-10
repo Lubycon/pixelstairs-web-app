@@ -22,7 +22,8 @@ export default {
         return {
             pageIndex: 2,
             totalCount: 0,
-            loadingMsg: 'Loading...'
+            loadingMsg: 'Loading...',
+            artworks: []
         };
     },
     computed: {

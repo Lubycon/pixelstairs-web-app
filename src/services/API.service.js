@@ -50,7 +50,7 @@ class APIService {
             get: (params) => this.GET(api, id, params),
             post: (data) => this.POST(api, id, data),
             put: (data) => this.PUT(api, id, data),
-            delete: () => this.DELETE(api, id)
+            delete: (data) => this.DELETE(api, id, data)
         };
     }
 
@@ -108,7 +108,24 @@ class APIService {
 
         return defer.promise;
     }
-    DELETE (api, id) {}
+
+    DELETE (api, id, data) {
+        let defer = Q.defer();
+        api = this.getURI(api, id);
+
+        this._axios.delete(api, data)
+        .then(res => {
+            defer.resolve(res.data);
+        }, err => {
+            defer.reject({
+                status: err.response.status,
+                statusText: err.response.statusText,
+                data: err.response.data
+            });
+        });
+
+        return defer.promise;
+    }
 
     getURI (api, id, uri, list = this._apilist, index = 0) {
         let tmp = api.split('.');
