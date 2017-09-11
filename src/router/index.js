@@ -21,6 +21,7 @@ import Signup from 'src/pages/Account/Signup/Signup.vue';
 import Signdrop from 'src/pages/Account/Signdrop/Signdrop.vue';
 
 import AuthGrade from 'src/pages/Auth/AuthGrade/AuthGrade.vue';
+import AuthGradeLanding from 'src/pages/Auth/AuthGradeLanding/AuthGradeLanding.vue';
 
 import User from 'src/pages/User/User.vue';
 import UserProfile from 'src/pages/User/Profile/UserProfile.vue';
@@ -70,6 +71,17 @@ const router = new VueRouter({
             header: Header,
             content: AuthGrade,
             footer: Footer
+        }
+    }, {
+        path: '/auth/grade/landing/:code',
+        name: 'auth-grade-landing',
+        components: {
+            header: Header,
+            content: AuthGradeLanding,
+            footer: Footer
+        },
+        props: {
+            content: true
         }
     }, {
         path: '/user/:userId',

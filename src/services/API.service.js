@@ -79,6 +79,7 @@ class APIService {
 
         this._axios.post(api, data)
         .then(res => {
+            console.log('=======API_SERVICE:GET RESPONSE!=======');
             defer.resolve(res.data);
         }, err => {
             defer.reject({
