@@ -5,7 +5,7 @@
     @created_at: 2017.09.11
 */
 import APIService from 'src/services/API.service';
-import axios from 'axios';
+
 export default {
     name: 'AuthGradeLanding',
     data () {
@@ -15,8 +15,10 @@ export default {
     },
     methods: {
         fetchResult () {
-            axios.get('http://192.168.99.100:8080/v1/contents').then(res => {
-
+            APIService.resource('certs.signup.code').post({
+                code: to.params.code
+            }).then(res => {
+                this.result = res.result;
             });
         }
     },
