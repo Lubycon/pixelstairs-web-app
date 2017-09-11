@@ -9,31 +9,17 @@ import axios from 'axios';
 import Q from 'q';
 
 import { CUSTOM_HEADER_PREFIX } from '../constants';
+import { API_BASE_URL } from 'src/constants/env.constant';
 import { API_LIST } from '../constants/api.constant';
 
 const VERSION_KEY = `${CUSTOM_HEADER_PREFIX}version`;
 const DEVICE_KEY = `${CUSTOM_HEADER_PREFIX}device`;
 const AUTH_KEY = `${CUSTOM_HEADER_PREFIX}token`;
 
-let apiBase = '';
-let env = process.env.NODE_ENV;
-if (env === 'local') {
-    apiBase = 'http://192.168.99.100:8080/v1';
-}
-else if (env === 'development') {
-    apiBase = 'https://apidev.pixelstairs.com/v1';
-}
-else if (env === 'production') {
-    apiBase = 'https://api.pixelstairs.com/v1';
-}
-else {
-    apiBase = 'https://api.pixelstairs.com/v1';
-}
-
 class APIService {
     constructor (axios, API_LIST) {
         this._axios = axios.create({
-            baseURL: apiBase,
+            baseURL: API_BASE_URL,
             headers: {
                 common: {
                     [VERSION_KEY]: '1.2.0',
