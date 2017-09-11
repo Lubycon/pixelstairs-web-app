@@ -1,4 +1,3 @@
-// DEV HOST
 const S3_HOST = 'https://s3.ap-northeast-2.amazonaws.com/pixelstairs/';
 const LOGO_HOST = `${S3_HOST}assets/logo/`;
 

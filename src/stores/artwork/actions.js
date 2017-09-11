@@ -17,7 +17,6 @@ export function setArtworkDetailView (store, id) {
 
 export function setArtworkList (store, opt) {
     return APIService.resource('contents.list').get(opt).then(res => {
-        console.log(res.result);
         store.commit('SET_ARTWORK_LIST', res.result);
     });
 }
