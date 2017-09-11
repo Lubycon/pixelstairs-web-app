@@ -4,7 +4,7 @@
     @author: Evan Moon
     @created_at: 2017.09.11
 */
-import APIService from 'src/services/APi.service';
+import APIService from 'src/services/API.service';
 import SigndropForm from 'src/components/forms/Signdrop/Signdrop.form.vue';
 
 export default {

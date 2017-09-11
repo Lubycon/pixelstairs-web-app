@@ -5,6 +5,7 @@
     @created_at: 2017.09.02
 */
 
+import { mapActions } from 'vuex';
 import APIService from 'src/services/API.service';
 import SignupForm from 'src/components/forms/Signup/Signup.form.vue';
 import { LOGOS } from 'src/constants';
@@ -23,10 +24,16 @@ export default {
         postData (authData) {
             APIService.resource('members.signup').post(authData)
             .then(res => {
-                console.log(res);
+                this.setToken(res.result.token);
+                this.setUserByAPI();
+                this.router.push({ name: 'auth-grade' });
             }, err => {
                 console.log(err);
             });
-        }
+        },
+        ...mapActions({
+            setToken: 'setToken',
+            setUserByAPI: 'setUserByAPI'
+        })
     }
 };

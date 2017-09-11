@@ -9,10 +9,10 @@
 </template>
 
 <style lang="scss">
-@import './Signup';
+    @import './Signup';
 </style>
 
 <script>
-import Signup from './Signup';
-export default Signup;
+    import Signup from './Signup';
+    export default Signup;
 </script>

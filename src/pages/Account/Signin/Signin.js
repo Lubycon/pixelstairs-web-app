@@ -5,9 +5,10 @@
     @created_at: 2017.08.29
 */
 import { mapActions } from 'vuex';
-import SigninForm from 'src/components/forms/Signin/Signin.form.vue';
-import APIService from 'src/services/API.service';
 import { LOGOS } from 'src/constants';
+import APIService from 'src/services/API.service';
+
+import SigninForm from 'src/components/forms/Signin/Signin.form.vue';
 
 export default {
     name: 'Signin',
@@ -20,10 +21,6 @@ export default {
         };
     },
     methods: {
-        ...mapActions({
-            setToken: 'setToken',
-            setUserByAPI: 'setUserByAPI'
-        }),
         postData (authData) {
             APIService.resource('members.signin').post(authData)
             .then(res => {
@@ -33,6 +30,10 @@ export default {
             }, err => {
                 console.log(err);
             });
-        }
+        },
+        ...mapActions({
+            setToken: 'setToken',
+            setUserByAPI: 'setUserByAPI'
+        })
     }
 };

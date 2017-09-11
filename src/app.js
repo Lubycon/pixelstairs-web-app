@@ -17,6 +17,9 @@ Vue.use(BootstrapVue);
 import VeeValidate from 'vee-validate';
 Vue.use(VeeValidate);
 
+import VueMoment from 'vue-moment';
+Vue.use(VueMoment);
+
 export function createApp () {
     sync(store, router);
 

@@ -15,9 +15,13 @@ import Footer from 'src/components/Footer/Footer.vue';
 
 /* PAGES */
 import Home from 'src/pages/Home/Home.vue';
+
 import Signin from 'src/pages/Account/Signin/Signin.vue';
 import Signup from 'src/pages/Account/Signup/Signup.vue';
 import Signdrop from 'src/pages/Account/Signdrop/Signdrop.vue';
+
+import AuthGrade from 'src/pages/Auth/AuthGrade/AuthGrade.vue';
+
 import User from 'src/pages/User/User.vue';
 import UserProfile from 'src/pages/User/Profile/UserProfile.vue';
 import UserSetting from 'src/pages/User/Setting/UserSetting.vue';
@@ -57,6 +61,14 @@ const router = new VueRouter({
         components: {
             header: Header,
             content: Signdrop,
+            footer: Footer
+        }
+    }, {
+        path: '/auth/grade',
+        name: 'auth-grade',
+        components: {
+            header: Header,
+            content: AuthGrade,
             footer: Footer
         }
     }, {
