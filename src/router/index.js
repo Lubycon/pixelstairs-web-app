@@ -28,6 +28,7 @@ import AuthPasswordLanding from 'src/pages/Auth/AuthPasswordLanding/AuthPassword
 import User from 'src/pages/User/User.vue';
 import UserProfile from 'src/pages/User/Profile/UserProfile.vue';
 import UserSetting from 'src/pages/User/Setting/UserSetting.vue';
+import UserPassword from 'src/pages/User/Setting/UserPassword/UserPassword.vue';
 
 import ArtworkDetail from 'src/pages/Artwork/ArtworkDetail/ArtworkDetail.vue';
 import ArtworkUpload from 'src/pages/Artwork/ArtworkUpload/ArtworkUpload.vue';
@@ -112,14 +113,18 @@ const router = new VueRouter({
             content: true
         },
         children: [{
-            path: 'setting',
-            name: 'user-setting',
-            component: UserSetting
-        }, {
             path: '',
             name: 'user-profile',
             component: UserProfile,
             props: true
+        }, {
+            path: 'setting',
+            name: 'user-setting',
+            component: UserSetting
+        }, {
+            path: 'setting/password',
+            name: 'user-setting-password',
+            component: UserPassword
         }]
     }, {
         path: '/artwork/detail/:artId',
