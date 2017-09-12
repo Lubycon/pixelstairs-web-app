@@ -16,7 +16,7 @@ export default {
     methods: {
         fetchResult () {
             APIService.resource('certs.signup.code').post({
-                code: to.params.code
+                code: this.route.params.code
             }).then(res => {
                 this.result = res.result;
             });

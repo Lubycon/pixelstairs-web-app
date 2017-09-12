@@ -22,6 +22,7 @@ import Signdrop from 'src/pages/Account/Signdrop/Signdrop.vue';
 
 import AuthGrade from 'src/pages/Auth/AuthGrade/AuthGrade.vue';
 import AuthGradeLanding from 'src/pages/Auth/AuthGradeLanding/AuthGradeLanding.vue';
+import AuthPassword from 'src/pages/Auth/AuthPassword/AuthPassword.vue';
 
 import User from 'src/pages/User/User.vue';
 import UserProfile from 'src/pages/User/Profile/UserProfile.vue';
@@ -82,6 +83,14 @@ const router = new VueRouter({
         },
         props: {
             content: true
+        }
+    }, {
+        path: '/auth/password',
+        name: 'auth-password',
+        components: {
+            header: Header,
+            content: AuthPassword,
+            footer: Footer
         }
     }, {
         path: '/user/:userId',
