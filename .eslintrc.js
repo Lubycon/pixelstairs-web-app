@@ -26,6 +26,7 @@ module.exports = {
         'indent': [ 'error', 4 ],
         'semi': [ 'error', 'always' ],
         'brace-style': [ 'error', 'stroustrup' ],
-        'no-undef': 'error'
+        'no-undef': 'error',
+        'no-trailing-spaces': [ 'error', { skipBlankLines: true } ]
     }
 };

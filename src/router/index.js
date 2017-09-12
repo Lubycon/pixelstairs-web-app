@@ -122,7 +122,7 @@ const router = new VueRouter({
             name: 'user-setting',
             component: UserSetting
         }, {
-            path: 'setting/password',
+            path: 'setting/password/:code',
             name: 'user-setting-password',
             component: UserPassword
         }]

@@ -1,6 +1,18 @@
 <template>
 <div class="container">
-    UserPassword
+    <h1>User Password Change</h1>
+    <b-form @submit.prevent="submit">
+        <b-form-group label="New Password">
+            <b-form-input
+                type="password"
+                placeholder="New Password"
+                v-model="password"
+            />
+        </b-form-group>
+        <b-button type="submit" variant="primary">
+            Submit
+        </b-button>
+    </b-form>
 </div>
 </template>
 
