@@ -4,35 +4,19 @@
     @author: Evan Moon
     @created_at: 2017.09.11
 */
-import APIService from 'src/services/API.service';
+import { AuthCodeMixin } from 'src/mixins/auth-code.mixin';
 
 export default {
     name: 'AuthGradeLanding',
-    data () {
-        return {
-            result: false
-        };
-    },
-    methods: {
-        fetchResult () {
-            APIService.resource('certs.signup.code').post({
-                code: this.route.params.code
-            }).then(res => {
-                this.result = res.result;
-            });
-        }
-    },
-    // created () {
-    //     this.fetchResult();
-    // },
-    beforeRouteEnter (to, from, next) {
-        // @TODO Promise가 계속 pending되어있음. 안넘어감
-        APIService.resource('certs.signup.code').post({
-            code: to.params.code
-        }).then(res => {
-            next((vm) => {
-                vm.result = res.data.result;
-            });
+    mixins: [ AuthCodeMixin ],
+    created () {
+        this.fetchResult('certs.signup.code', this.$route.params.code)
+        .then(res => {
+            console.log(res);
+        }, err => {
+            if (err) {
+                console.log(err);
+            }
         });
     }
 };

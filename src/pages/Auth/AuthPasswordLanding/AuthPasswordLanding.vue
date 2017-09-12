@@ -1,6 +1,7 @@
 <template>
 <div class="container">
     <h1>Password landing</h1>
+    <p>{{result}}</p>
 </div>
 </template>
 
