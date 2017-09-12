@@ -1,6 +1,6 @@
 /*
     @name: ArtworkDetail.js
-    @desc: 아트워크 디테일 페이지 컴포넌트
+    @desc: 아트워크 디테일 스태틱 페이지 컴포넌트
     @author: Evan Moon
     @created_at: 2017.09.02
 */

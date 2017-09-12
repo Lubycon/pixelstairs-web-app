@@ -45,7 +45,12 @@ export default {
         createToken () {
             return APIService.resource('members.pwd.token').post()
             .then(res => {
-                // this.route.push()
+                this.$router.push({
+                    name: 'user-setting-password',
+                    params: {
+                        code: res.result.token
+                    }
+                });
             }, err => {
                 if (err) {
                     this.rejectHandler('Token generating has been failed::DEBUG');

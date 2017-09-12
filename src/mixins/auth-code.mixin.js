@@ -16,7 +16,7 @@ export const AuthCodeMixin = {
         fetchResult (api, code) {
             return APIService.resource(api).post({ code })
             .then(res => {
-                this.result = res.result;
+                this.result = res.result.validity;
                 return res.result;
             });
         }

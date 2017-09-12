@@ -10,10 +10,23 @@ import { AuthCodeMixin } from 'src/mixins/auth-code.mixin';
 export default {
     name: 'AuthPasswordLanding',
     mixins: [ AuthCodeMixin ],
+    props: {
+        code: {
+            type: String,
+            required: true
+        }
+    },
     created () {
-        this.fetchResult('certs.password.code', this.$route.params.code)
+        this.fetchResult('certs.password.code', this.code)
         .then(res => {
-            console.log(res);
+            if (res.validity) {
+                this.$router.push({
+                    name: 'user-setting-password',
+                    params: {
+                        code: this.code
+                    }
+                });
+            }
         }, err => {
             if (err) {
                 console.log(err);

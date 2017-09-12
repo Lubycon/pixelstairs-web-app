@@ -110,6 +110,9 @@ const router = new VueRouter({
             header: Header,
             content: AuthPasswordLanding,
             footer: Footer
+        },
+        props: {
+            content: true
         }
     }, {
         path: '/user/:userId',
@@ -130,11 +133,18 @@ const router = new VueRouter({
             path: 'setting',
             name: 'user-setting',
             component: UserSetting
-        }, {
-            path: 'setting/password/:code',
-            name: 'user-setting-password',
-            component: UserPassword
         }]
+    }, {
+        path: '/user/setting/password/:code',
+        name: 'user-setting-password',
+        components: {
+            header: Header,
+            content: UserPassword,
+            footer: Footer
+        },
+        props: {
+            content: true
+        }
     }, {
         path: '/artwork/detail/:artId',
         name: 'artwork-detail',
