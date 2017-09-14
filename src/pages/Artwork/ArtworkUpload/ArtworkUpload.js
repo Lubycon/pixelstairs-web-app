@@ -60,7 +60,12 @@ export default {
                 if (err) {}
                 // Content data upload has been failed
             }).then(res => {
-                // All uploading has been succeed
+                this.$router.push({
+                    name: 'artwork-upload-success',
+                    params: {
+                        artId: res.result.id
+                    }
+                });
             }, err => {
                 if (err) {}
                 // File data upload has been failed

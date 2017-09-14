@@ -33,6 +33,7 @@ import UserPassword from 'src/pages/User/Setting/UserPassword/UserPassword.vue';
 
 import ArtworkDetail from 'src/pages/Artwork/ArtworkDetail/ArtworkDetail.vue';
 import ArtworkUpload from 'src/pages/Artwork/ArtworkUpload/ArtworkUpload.vue';
+import ArtworkUploadSuccess from 'src/pages/Artwork/ArtworkUploadSuccess/ArtworkUploadSuccess.vue';
 /* /PAGES */
 
 Vue.use(VueRouter);
@@ -40,6 +41,14 @@ Vue.use(VueRouter);
 const router = new VueRouter({
     mode: 'history',
     base: __dirname,
+    scrollBehavior (to, from, savedPosition) {
+        if (savedPosition) {
+            return savedPosition;
+        }
+        else {
+            return { x: 0, y: 0 };
+        }
+    },
     routes: [{
         path: '/',
         name: 'home',
@@ -163,6 +172,17 @@ const router = new VueRouter({
             header: Header,
             content: ArtworkUpload,
             footer: Footer
+        }
+    }, {
+        path: '/artwork/upload/success/:artId',
+        name: 'artwork-upload-success',
+        components: {
+            header: Header,
+            content: ArtworkUploadSuccess,
+            footer: Footer
+        },
+        props: {
+            content: true
         }
     }]
 });
