@@ -15,7 +15,9 @@ export default {
             meta: [{
                 property: 'og:title', content: this.artworkData ? this.artworkData.title : 'Loading...'
             }, {
-                property: 'og:image', content: this.artworkData ? this.artworkData.image.file : '/assets/imgs/ogImage.jpg'
+                property: 'og:image', content: this.artworkData ? this.artworkData.image.file + '640' : '/assets/imgs/ogImage.jpg'
+            }, {
+                property: 'og:url', content: this.artworkData ? `https://dev.pixelstairs.com/artwork/detail/${this.artworkData.id}` : 'https://dev.pixelstairs.com'
             }]
         };
     },
