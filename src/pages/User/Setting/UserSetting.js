@@ -68,8 +68,9 @@ export default {
             });
         }
     },
-
-    created () {
-        this.$set(this, 'newUsername', this.user.nickname);
+    watch: {
+        user (user) {
+            this.$set(this, 'newUsername', user.nickname);
+        }
     }
 };
