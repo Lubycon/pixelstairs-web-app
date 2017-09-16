@@ -16,7 +16,8 @@
   "license": "MIT",
   "homepage": "https://pixelstairs.com",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node server",
+    "start": "NODE_ENV=production forever start server.js",
+    "stop": "forever stopall",
     "serve:dev": "node server",
     "serve:local": "cross-env NODE_ENV=local node server",
     "serve:prod": "cross-env NODE_ENV=production node server",
