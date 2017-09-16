@@ -11,3 +11,57 @@
 <style lang="scss">
     @import './app.scss';
 </style>
+
+<script>
+export default {
+    name: 'App',
+    metaInfo: {
+        titleTemplate: (titleChunk) => {
+            return titleChunk ? `${titleChunk} - Pixelstairs` : 'Pixelstairs :: Connect Your Creativity With the World';
+        },
+        meta: [{
+            charset: 'utf-8'
+        }, {
+            name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui'
+        }, {
+            name: 'fragment', content: '!'
+        }, {
+            'http-equiv': 'Content-Type', content: 'text/html', charset: 'utf-8'
+        }, {
+            'http-equiv': 'Pragma', content: 'no-cache'
+        }, {
+            name: 'generator', content: 'Lubycon'
+        }, {
+            name: 'author', content: 'Evan Moon'
+        }, {
+            name: 'subject', content: 'Lubycon'
+        }, {
+            name: 'description', content: 'Display your artwork in online exhibition and meet it in real life!'
+        }, {
+            name: 'developed', content: 'Evan Moon'
+        }, {
+            name: 'designed', content: 'Simon Noh, Christine Yoon'
+        }, {
+            name: 'robots', content: 'index'
+        }, {
+            name: 'copyrights', content: 'copyrights 2016 Lubycon'
+        }, {
+            name: 'keyword', content: 'art, artist, creator, design, font, vector, design, community, designer, illustration, wallpaper'
+        }, {
+            name: 'mobile-web-app-capable', content: 'yes'
+        }, {
+            name: 'theme-color', content: '#dddddd'
+        }, {
+            property: 'og:type', content: 'website'
+        }, {
+            property: 'og:title', content: 'Pixelstairs :: Connect Your Creativity With the World'
+        }, {
+            property: 'og:description', content: 'Display your artwork in online exhibition and meet it in real life!'
+        }, {
+            property: 'og:image', content: '/assets/imgs/ogImage.jpg'
+        }, {
+            property: 'og:url', content: 'https://www.pixelstairs.com'
+        }]
+    }
+};
+</script>

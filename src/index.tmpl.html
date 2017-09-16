@@ -1,36 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Pixelstairs :: Connect Your Creativity With the World</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
-    <meta name="fragment" content="!">
-    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <meta name="generator" content="Lubycon">
-    <meta name="author" content="Evan Moon">
-    <meta name="subject" content="Lubycon" />
-    <meta name="description" content="Display your artwork in online exhibition and meet it in real life!" />
-    <meta name="developed" content="Lubycon" />
-    <meta name="designed" content="Lubycon" />
-    <meta name="robots" content="index" />
-    <meta name="copyright" content="copyrights 2016 LUBYCON" />
-    <meta name="keywords" content="art, artist, creator, design, font, vector, design, community, designer, illustration, wallpaper" />
-
-    <meta name="mobile-web-app-capable" content="yes">
-    <meta name="theme-color" content="#dddddd" />
-
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content="Pixel Stairs" />
-    <meta property="og:description" content="Pixelstairs :: Connect Your Creativity With the World!" />
-    <meta property="og:image" content="/assets/imgs/ogImage.jpg" />
-    <meta property="og:url" content="https://www.pixelstairs.com" />
-
     <% for (var chunk of webpack.chunks) {
         for (var file of chunk.files) {
             if (file.match(/\.(js|css)$/)) { %>
-
-    <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>"><% }}} %>
+    <link rel="<%= chunk.initial?'preload':'prefetch' %>" href="<%= htmlWebpackPlugin.files.publicPath + file %>" as="<%= file.match(/\.css$/)?'style':'script' %>">
+    <%     }
+        }
+    } %>
     <!-- GOOGLE ANALYTICS START : prod -->
     <script>
     if (location.origin.indexOf('pixelstairs.com') > -1 && location.origin.indexOf('dev') < 0) {

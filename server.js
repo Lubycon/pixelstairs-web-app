@@ -60,11 +60,9 @@ app.get('*', (req, res) => {
     if (!renderer) {
         return res.end('waiting for compilation... refresh in a moment.');
     }
-
-    const s = Date.now();
-
     res.setHeader("Content-Type", "text/html");
 
+    const s = Date.now();
     const errorHandler = err => {
         if (err && err.code === 404) {
             res.status(404).end('404 | Page Not Found');
@@ -76,7 +74,26 @@ app.get('*', (req, res) => {
         }
     };
 
-    renderer.renderToStream({ url: req.url })
+    /*
+     * Render Start
+     */
+    const context = { url: req.url };
+
+    renderer.renderToStream(context)
+    .once('data', () => {
+        const {
+            title, link, style, script, noscript, meta
+        } = context.meta.inject();
+        context.head =`
+            ${title.text()}
+            ${meta.text()}
+            ${link.text()}
+            ${style.text()}
+            ${script.text()}
+            ${noscript.text()}
+        `;
+        console.log(meta.text());
+    })
     .on('error', errorHandler)
     .on('end', () => console.log(`whole request: ${Date.now() - s}ms`))
     .pipe(res);

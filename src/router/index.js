@@ -7,6 +7,7 @@
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import VueMeta from 'vue-meta';
 
 /* Global Components */
 import Header from 'src/components/Header/Header.vue';
@@ -37,6 +38,10 @@ import ArtworkUploadSuccess from 'src/pages/Artwork/ArtworkUploadSuccess/Artwork
 /* /PAGES */
 
 Vue.use(VueRouter);
+Vue.use(VueMeta, {
+    attribute: 'data-vue-meta',
+    ssrAttribute: 'data-vue-meta-server-rendered'
+});
 
 const router = new VueRouter({
     mode: 'history',
