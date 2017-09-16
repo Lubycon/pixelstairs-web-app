@@ -13,7 +13,9 @@ export default {
         return {
             title: this.artworkData ? this.artworkData.title : 'Loading...',
             meta: [{
-                property: 'og:title', content: this.artworkData ? this.artworkData.title : 'Loading...'
+                name: 'description', content: this.artworkData ? this.artworkData.desc : 'Loading...'
+            }, {
+                property: 'og:title', content: this.artworkData ? this.artworkData.title + ' - Pixelstairs' : 'Loading...'
             }, {
                 property: 'og:image', content: this.artworkData ? this.artworkData.image.file + '640' : '/assets/imgs/ogImage.jpg'
             }, {
