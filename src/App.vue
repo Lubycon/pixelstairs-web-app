@@ -19,6 +19,9 @@ export default {
         titleTemplate: (titleChunk) => {
             return titleChunk ? `${titleChunk} - Pixelstairs` : 'Pixelstairs :: Connect Your Creativity With the World';
         },
+        noscript: [
+            { innerHTML: 'This website requires JavaScript.' }
+        ],
         meta: [{
             charset: 'utf-8'
         }, {
@@ -61,6 +64,27 @@ export default {
             property: 'og:image', content: '/assets/imgs/ogImage.jpg'
         }, {
             property: 'og:url', content: 'https://www.pixelstairs.com'
+        }],
+        script: [{
+            innerHTML: `{
+                "@context": "http://schema.org",
+                "@type": "Organization",
+                "name": "Pixelstairs",
+                "url": "https://pixelstairs.com",
+                "sameAs": [
+                    "https://www.pixelstairs.com"
+                ],
+                "brand": "Lubycon",
+                "description": "Connect your creativity with the World!",
+                "logo": "https://s3.ap-northeast-2.amazonaws.com/pixelstairs/assets/logo/vp_b.png",
+                "contactPoint": {
+                    "@type": "ContactPoint",
+                    "telephone": "+8210-4755-6185",
+                    "email": "lubycon@gmail.com",
+                    "contactType": "Customer service"
+                }
+            }`,
+            type: 'application/ld+json'
         }]
     }
 };

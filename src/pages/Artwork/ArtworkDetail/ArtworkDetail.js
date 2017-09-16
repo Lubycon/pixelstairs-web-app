@@ -9,6 +9,16 @@ import ImageService from 'src/services/Image.service';
 
 export default {
     name: 'ArtworkDetail',
+    metaInfo () {
+        return {
+            title: this.artworkData ? this.artworkData.title : 'Loading...',
+            meta: [{
+                property: 'og:title', content: this.artworkData ? this.artworkData.title : 'Loading...'
+            }, {
+                property: 'og:image', content: this.artworkData ? this.artworkData.image.file : '/assets/imgs/ogImage.jpg'
+            }]
+        };
+    },
     props: {
         artId: {
             type: String,
