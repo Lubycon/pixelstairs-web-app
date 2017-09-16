@@ -16,6 +16,7 @@ import Footer from 'src/components/Footer/Footer.vue';
 
 /* PAGES */
 import Home from 'src/pages/Home/Home.vue';
+import ErrorView from 'src/pages/ErrorView/ErrorView.vue';
 
 import Signin from 'src/pages/Account/Signin/Signin.vue';
 import Signup from 'src/pages/Account/Signup/Signup.vue';
@@ -61,6 +62,17 @@ const router = new VueRouter({
             header: Header,
             content: Home,
             footer: Footer
+        }
+    }, {
+        path: '/error/:code',
+        name: 'error-view',
+        components: {
+            header: Header,
+            content: ErrorView,
+            footer: Footer
+        },
+        props: {
+            content: true
         }
     }, {
         path: '/signin',

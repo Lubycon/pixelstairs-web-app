@@ -58,17 +58,21 @@ app.use('/service-worker.js', serve('./dist/service-worker.js'));
 
 app.get('*', (req, res) => {
     if (!renderer) {
-        return res.end('waiting for compilation... refresh in a moment.');
+        return res.end('<pre>waiting for compilation... refresh in a moment.</pre>');
     }
     res.setHeader("Content-Type", "text/html");
 
     const s = Date.now();
     const errorHandler = err => {
+        if (err && err.status) {
+            err.code = err.status;
+        }
+
         if (err && err.code === 404) {
-            res.status(404).end('404 | Page Not Found');
+            res.status(404).redirect('/error/404');
         } else {
             // Render Error Page or Redirect
-            res.status(500).end('500 | Internal Server Error');
+            res.status(500).redirect('/error/500');
             console.error(`error during render : ${req.url}`);
             console.error(err);
         }
@@ -92,7 +96,6 @@ app.get('*', (req, res) => {
             ${script.text()}
             ${noscript.text()}
         `;
-        console.log(meta.text());
     })
     .on('error', errorHandler)
     .on('end', () => console.log(`whole request: ${Date.now() - s}ms`))

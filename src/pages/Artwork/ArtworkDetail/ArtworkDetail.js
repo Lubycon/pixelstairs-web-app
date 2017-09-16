@@ -11,7 +11,7 @@ export default {
     name: 'ArtworkDetail',
     metaInfo () {
         return {
-            title: this.artworkData ? this.artworkData.title : 'Loading...',
+            title: this.artworkData ? this.artworkData.title + ' - Pixelstairs' : 'Loading...',
             meta: [{
                 name: 'description', content: this.artworkData ? this.artworkData.desc : 'Loading...'
             }, {
