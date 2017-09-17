@@ -13,7 +13,7 @@
         <div v-else>
             <router-link :to="{ name: 'signin' }">
                 <button class="btn btn-round">
-                    Login
+                    <i class="pxs-user"></i> Login
                 </button>
             </router-link>
         </div>
@@ -40,8 +40,9 @@
     .header--user-menu {
         text-align: right;
 
-        *[data-type="unauthorized"] {}
-        *[data-type="authorized"] {}
+        i {
+            color: $white;
+        }
     }
 }
 </style>
