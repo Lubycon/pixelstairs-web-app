@@ -45,14 +45,6 @@ export default {
         addToArtworkList (artworks) {
             this.$set(this, 'artworks', [...this.artworks, ...artworks]);
         },
-        getContents (val) {
-            return APIService.resource('contents.list').get({
-                pageIndex: this.pageIndex
-            }).then(res => {
-                this.totalCount = res.result.totalCount;
-                this.addToArtworkList(res.result.contents);
-            });
-        },
         ...mapActions({
             clearArtworks: 'clearArtworkList'
         })

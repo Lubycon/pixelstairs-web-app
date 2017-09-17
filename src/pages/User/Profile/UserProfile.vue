@@ -12,7 +12,7 @@
     </div>
     <ul class="row">
         <!-- SSR FOR SEO -->
-        <li class="col-4" v-for="artwork in firstUserContents.contents">
+        <li class="col-12 col-lg-4" v-for="artwork in firstUserContents.contents">
             <artwork-card
                 :art-id="artwork.id"
                 :title="artwork.title"
@@ -22,7 +22,7 @@
             />
         </li>
         <!-- /SSR FOR SEO -->
-        <!-- <li class="col-4" v-for="artwork in artworks">
+        <li class="col-4" v-for="artwork in artworks">
             <artwork-card
                 :art-id="artwork.id"
                 :title="artwork.title"
@@ -30,7 +30,7 @@
                 :author-name="artwork.user.nickname"
                 :author-profile="artwork.user.profileImg"
             />
-        </li> -->
+        </li>
     </ul>
 </div>
 </template>

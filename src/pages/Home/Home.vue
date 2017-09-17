@@ -13,7 +13,7 @@
                 />
             </li>
             <!-- /SSR FOR SEO -->
-            <li class="col-4" v-for="artwork in artworks">
+            <li class="col-12 col-lg-4" v-for="artwork in artworks">
                 <artwork-card
                     :art-id="artwork.id"
                     :title="artwork.title"

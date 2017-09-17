@@ -5,7 +5,7 @@
     @created_at: 2017.09.09
 */
 import { mapGetters, mapActions } from 'vuex';
-// import APIService from 'src/services/API.service';
+import APIService from 'src/services/API.service';
 import { DEFAULT_USER_PROFILE } from 'src/constants';
 import ArtworkCard from 'src/components/cards/ArtworkCard/ArtworkCard.vue';
 
@@ -25,7 +25,10 @@ export default {
     },
     data () {
         return {
-            defaultProfile: DEFAULT_USER_PROFILE
+            defaultProfile: DEFAULT_USER_PROFILE,
+            pageIndex: 2,
+            totalCount: 0,
+            artworks: []
         };
     },
     computed: {
@@ -34,7 +37,20 @@ export default {
             firstUserContents: 'getUserContents'
         })
     },
+    watch: {
+        pageIndex (val) {
+            return APIService.resource('contents.list').get({
+                pageIndex: this.pageIndex
+            }).then(res => {
+                this.totalCount = res.result.totalCount;
+                this.addToArtworkList(res.result.contents);
+            });
+        }
+    },
     methods: {
+        addToArtworkList (artworks) {
+            this.$set(this, 'artworks', [...this.artworks, ...artworks]);
+        },
         ...mapActions({
             clearUserData: 'clearUserDetailView'
         })
