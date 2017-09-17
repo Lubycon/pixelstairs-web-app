@@ -1,10 +1,14 @@
-/*
-    @name: Footer.ts
-    @desc: 글로벌 푸터 컴포넌트
-    @author: Evan Moon
-    @created_at: 2017.08.26
-*/
+<template>
+<div>
+    {{msg}}
+</div>
+</template>
 
+<style lang="scss" scoped>
+
+</style>
+
+<script>
 export default {
     name: 'GlobalFooter',
     data () {
@@ -13,3 +17,4 @@ export default {
         };
     }
 };
+</script>

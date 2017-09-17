@@ -40,10 +40,30 @@
 </template>
 
 <style lang="scss" scoped>
-    @import './Signup.form';
+
 </style>
 
 <script>
-    import SignupForm from './Signup.form';
-    export default SignupForm;
+export default {
+    name: 'Signup-form',
+    data () {
+        return {
+            email: null,
+            password: null,
+            name: null,
+            newsletter: true
+        };
+    },
+    methods: {
+        callbackSubmit () {
+            this.$emit('submit', {
+                email: this.email,
+                password: this.password,
+                nickname: this.name,
+                newsletterAccepted: this.newsletter,
+                termsOfServiceAccepted: true
+            });
+        }
+    }
+};
 </script>

@@ -24,10 +24,25 @@
 </template>
 
 <style lang="scss">
-    @import './Signin.form';
+
 </style>
 
 <script>
-    import SigninForm from './Signin.form';
-    export default SigninForm;
+export default {
+    name: 'Signin-form',
+    data () {
+        return {
+            email: null,
+            password: null
+        };
+    },
+    methods: {
+        callbackSubmit () {
+            this.$emit('submit', {
+                email: this.email,
+                password: this.password
+            });
+        }
+    }
+};
 </script>

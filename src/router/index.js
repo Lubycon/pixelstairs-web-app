@@ -10,8 +10,8 @@ import VueRouter from 'vue-router';
 import VueMeta from 'vue-meta';
 
 /* Global Components */
-import Header from 'src/components/Header/Header.vue';
-import Footer from 'src/components/Footer/Footer.vue';
+import Header from 'src/components/Header.vue';
+import Footer from 'src/components/Footer.vue';
 /* /Global Components */
 
 /* PAGES */

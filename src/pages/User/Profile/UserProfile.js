@@ -7,7 +7,7 @@
 import { mapGetters, mapActions } from 'vuex';
 import APIService from 'src/services/API.service';
 import { DEFAULT_USER_PROFILE } from 'src/constants';
-import ArtworkCard from 'src/components/cards/ArtworkCard/ArtworkCard.vue';
+import ArtworkCard from 'src/components/cards/ArtworkCard.vue';
 
 export default {
     name: 'UserProfile',
