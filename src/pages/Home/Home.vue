@@ -1,5 +1,6 @@
 <template>
 <div class="container-fluid">
+    <home-jumbo></home-jumbo>
     <div class="container">
         <ul class="row">
             <!-- SSR FOR SEO -->

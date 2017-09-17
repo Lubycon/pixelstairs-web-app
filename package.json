@@ -20,23 +20,18 @@
     "start:dev": "NODE_ENV=development forever start server.js",
     "start:local": "NODE_ENV=local forever start server.js",
     "stop": "forever stopall",
-
     "serve:local": "cross-env NODE_ENV=local node server",
     "serve:dev": "cross-env NODE_ENV=development node server",
     "serve:prod": "cross-env NODE_ENV=production node server",
-
     "build:client:prod": "cross-env NODE_ENV=production webpack --config ./build/webpack.client.config.js --progress --hide-modules",
     "build:client:dev": "cross-env NODE_ENV=development webpack --config ./build/webpack.client.config.js --progress --hide-modules",
     "build:client:local": "cross-env NODE_ENV=local webpack --config ./build/webpack.client.config.js --progress --hide-modules",
-
     "build:server:prod": "cross-env NODE_ENV=production webpack --config ./build/webpack.server.config.js --progress --hide-modules",
     "build:server:dev": "cross-env NODE_ENV=development webpack --config ./build/webpack.server.config.js --progress --hide-modules",
     "build:server:local": "cross-env NODE_ENV=local webpack --config ./build/webpack.server.config.js --progress --hide-modules",
-
     "build": "rimraf dist && npm run build:client:prod && npm run build:server:prod",
     "build:dev": "rimraf dist && npm run build:client:dev && npm run build:server:dev",
     "build:local": "rimraf dist && npm run build:client:local && npm run build:server:local",
-
     "unit-test": "karma start ./test/unit/karma.conf.js"
   },
   "dependencies": {
@@ -54,8 +49,10 @@
     "serve-favicon": "^2.3.0",
     "vee-validate": "^2.0.0-rc.14",
     "vue": "^2.4.2",
+    "vue-awesome-swiper": "^2.6.4",
     "vue-meta": "^1.2.0",
     "vue-moment": "^2.0.2",
+    "vue-no-ssr": "^0.2.0",
     "vue-router": "^2.7.0",
     "vue-server-renderer": "^2.3.4",
     "vuex": "^2.3.0",

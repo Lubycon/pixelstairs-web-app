@@ -72,7 +72,7 @@ app.get('*', (req, res) => {
             res.status(404).redirect('/error/404');
         } else {
             // Render Error Page or Redirect
-            res.status(500).redirect('/error/500');
+            res.status(500).end('<h3>500 Error</h3>');
             console.error(`error during render : ${req.url}`);
             console.error(err);
         }

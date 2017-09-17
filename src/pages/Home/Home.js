@@ -6,16 +6,18 @@
 */
 import { mapGetters, mapActions } from 'vuex';
 import APIService from 'src/services/API.service';
+import HomeJumbo from 'src/components/jumbotrons/HomeJumbo.vue';
 import ArtworkCard from 'src/components/cards/ArtworkCard.vue';
 
 export default {
     name: 'Home',
     components: {
-        ArtworkCard
+        HomeJumbo, ArtworkCard
     },
     asyncData ({ store }) {
         return store.dispatch('setArtworkList', {
-            pageIndex: 0
+            pageIndex: 1,
+            sort: 'latest:desc'
         });
     },
     data () {
@@ -34,7 +36,8 @@ export default {
     watch: {
         pageIndex (val) {
             return APIService.resource('contents.list').get({
-                pageIndex: this.pageIndex
+                pageIndex: this.pageIndex,
+                sort: 'latest:desc'
             }).then(res => {
                 this.totalCount = res.result.totalCount;
                 this.addToArtworkList(res.result.contents);

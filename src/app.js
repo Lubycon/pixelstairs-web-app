@@ -20,6 +20,11 @@ Vue.use(VeeValidate);
 import VueMoment from 'vue-moment';
 Vue.use(VueMoment);
 
+if (process.browser) {
+    const VueAwesomeSwiper = require('vue-awesome-swiper/ssr');
+    Vue.use(VueAwesomeSwiper);
+}
+
 export function createApp () {
     sync(store, router);
 
