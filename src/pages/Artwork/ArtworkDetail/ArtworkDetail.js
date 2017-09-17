@@ -4,7 +4,7 @@
     @author: Evan Moon
     @created_at: 2017.09.02
 */
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import ImageService from 'src/services/Image.service';
 
 export default {
@@ -45,5 +45,13 @@ export default {
         ...mapGetters({
             artworkData: 'getArtworkDetailView'
         })
+    },
+    methods: {
+        ...mapActions({
+            clearArtwork: 'clearArtworkDetailView'
+        })
+    },
+    destroyed () {
+        this.clearArtwork();
     }
 };

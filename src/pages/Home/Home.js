@@ -4,7 +4,7 @@
     @author: Evan Moon
     @created_at: 2017.08.26
 */
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import APIService from 'src/services/API.service';
 import ArtworkCard from 'src/components/cards/ArtworkCard/ArtworkCard.vue';
 
@@ -52,6 +52,12 @@ export default {
                 this.totalCount = res.result.totalCount;
                 this.addToArtworkList(res.result.contents);
             });
-        }
+        },
+        ...mapActions({
+            clearArtworks: 'clearArtworkList'
+        })
+    },
+    destroyed () {
+        this.clearArtworks();
     }
 };

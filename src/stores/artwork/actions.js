@@ -15,13 +15,23 @@ export function setArtworkDetailView (store, id) {
     });
 }
 
+export function clearArtworkDetailView (store) {
+    store.commit('CLEAR_ARTWORK_DETAIL_VIEW');
+}
+
 export function setArtworkList (store, opt) {
     return APIService.resource('contents.list').get(opt).then(res => {
         store.commit('SET_ARTWORK_LIST', res.result);
     });
 }
 
+export function clearArtworkList (store) {
+    store.commit('CLEAR_ARTWORK_LIST');
+}
+
 export default {
     setArtworkDetailView,
-    setArtworkList
+    clearArtworkDetailView,
+    setArtworkList,
+    clearArtworkList
 };
