@@ -22,7 +22,7 @@ export default {
     },
     methods: {
         postData (authData) {
-            APIService.resource('members.signup').post(authData)
+            APIService.resource('users.signup').post(authData)
             .then(res => {
                 this.setToken(res.result.token);
                 this.setUserByAPI();

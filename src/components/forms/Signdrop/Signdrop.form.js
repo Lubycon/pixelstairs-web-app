@@ -18,7 +18,7 @@ export default {
     },
     methods: {
         fetchOptions () {
-            return APIService.resource('members.signdropSurvey')
+            return APIService.resource('users.signdropSurvey')
             .get().then(res => {
                 this.$set(this, 'options', res.result);
             });

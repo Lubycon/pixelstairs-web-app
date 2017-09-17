@@ -43,7 +43,7 @@ export default {
             return APIService.resource('certs.password.check').post(data);
         },
         createToken () {
-            return APIService.resource('members.pwd.token').post()
+            return APIService.resource('users.pwd.token').post()
             .then(res => {
                 this.$router.push({
                     name: 'user-setting-password',

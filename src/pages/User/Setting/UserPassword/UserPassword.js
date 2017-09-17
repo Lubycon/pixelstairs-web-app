@@ -21,7 +21,7 @@ export default {
                 code: this.$route.params.code
             };
             
-            return APIService.resource('members.pwd.reset')
+            return APIService.resource('users.pwd.reset')
             .put(data).then(res => {
                 console.log(res);
             });

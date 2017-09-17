@@ -18,10 +18,6 @@ export function setToken (store, token) {
 export function setUserByAPI (store) {
     return APIService.resource('users.me').get()
     .then(res => {
-        delete res.result.newsletterAccepted;
-        delete res.result.gender;
-        delete res.result.birthday;
-
         let user = res.result;
         store.commit('SET_USER', user);
     });

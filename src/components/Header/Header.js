@@ -26,18 +26,3 @@ export default {
         })
     }
 };
-
-// @Component({
-//     name: 'GlobalHeader',
-//     components: {
-//         UserMenu
-//     }
-// })
-// class Header extends Vue {
-//     @State('auth') AuthState
-//     @Getter('isAuthorized') isAuthorized
-//
-//     public logoSrc: string = LOGOS.text;
-// }
-//
-// export default Header;

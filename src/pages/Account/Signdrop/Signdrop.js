@@ -14,7 +14,7 @@ export default {
     },
     methods: {
         postData (data) {
-            return APIService.resource('members.signdrop').delete(data)
+            return APIService.resource('users.signdrop').delete(data)
             .then(res => {
                 console.log(res);
             });
