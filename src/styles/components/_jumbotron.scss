@@ -1,0 +1,10 @@
+.swiper-container {
+    max-height: 400px;
+
+    .swiper-pagination-bullet-active {
+        background-color: $white;
+    }
+    .swiper-button-prev, .swiper-button-next {
+        fill: $white;
+    }
+}

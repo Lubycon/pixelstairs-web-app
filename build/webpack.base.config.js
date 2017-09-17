@@ -1,5 +1,5 @@
 const path = require('path');
-// const projectRoot = path.resolve(__dirname, '../');
+const projectRoot = path.resolve(__dirname, '../');
 const vueConfig = require('./vue-loader.config');
 
 module.exports = {
@@ -50,9 +50,26 @@ module.exports = {
                 exclude: /node_modules/
             },
             {
-                test: /\.(png|jpg|gif|svg)$/,
-                loader: 'file-loader',
+                test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+                loader: 'url-loader',
                 options: {
+                    limit: 10000,
+                    name: '[name].[ext]?[hash]'
+                }
+            },
+            {
+                test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
+                    name: '[name].[ext]?[hash]'
+                }
+            },
+            {
+                test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+                loader: 'url-loader',
+                options: {
+                    limit: 10000,
                     name: '[name].[ext]?[hash]'
                 }
             }

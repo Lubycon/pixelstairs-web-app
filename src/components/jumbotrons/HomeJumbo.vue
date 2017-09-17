@@ -6,6 +6,9 @@
                 <img :src="content.image.file" :alt="`featured-content-${content.id}`">
             </div>
         </div>
+        <div class="swiper-pagination" slot="pagination"></div>
+        <div class="swiper-button-prev" slot="button-prev"></div>
+        <div class="swiper-button-next" slot="button-next"></div>
     </div>
 </div>
 </template>
@@ -24,10 +27,13 @@ export default {
         return {
             contents: [],
             swiperOption: {
-                autoplay: 3000,
+                autoplay: 4000,
+                speed: 1500,
                 initialSlide: 1,
                 loop: true,
-                pagination: '.swiper-pagination'
+                pagination: '.swiper-pagination',
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev'
             }
         };
     },
@@ -36,11 +42,8 @@ export default {
             return APIService.resource('contents.list').get({
                 pageIndex: 1,
                 pageSize: 3,
-                sort: 'featured:desc'
+                sort: 'latest:desc'
             });
-        },
-        reInit () {
-            this.$refs.slick.reSlick();
         }
     },
     mounted () {

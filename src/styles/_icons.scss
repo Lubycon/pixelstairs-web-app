@@ -1,0 +1,148 @@
+@font-face {
+    font-family: 'pxs-icons';
+    src:
+        url('../src/assets/icon/pxs-icons.ttf?5tykfu') format('truetype'),
+        url('../src/assets/icon/pxs-icons.woff?5tykfu') format('woff'),
+        url('../src/assets/icon/pxs-icons.svg?5tykfu#pxs-icons') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+i {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'pxs-icons' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.pxs-arrow-left:before {
+    content: "\e901";
+}
+.pxs-arrow-o-down:before {
+    content: "\e902";
+}
+.pxs-arrow-o-left:before {
+    content: "\e903";
+}
+.pxs-arrow-o-right:before {
+    content: "\e904";
+}
+.pxs-arrow-o-up:before {
+    content: "\e905";
+}
+.pxs-arrow-right:before {
+    content: "\e906";
+}
+.pxs-arrow-up:before {
+    content: "\e907";
+}
+.pxs-cencel:before {
+    content: "\e908";
+}
+.pxs-cencel-o:before {
+    content: "\e909";
+}
+.pxs-check:before {
+    content: "\e90a";
+}
+.pxs-check-o:before {
+    content: "\e90b";
+}
+.pxs-download:before {
+    content: "\e90c";
+}
+.pxs-email:before {
+    content: "\e90d";
+}
+.pxs-error:before {
+    content: "\e90e";
+}
+.pxs-eye:before {
+    content: "\e90f";
+}
+.pxs-eye-none:before {
+    content: "\e910";
+}
+.pxs-heart:before {
+    content: "\e911";
+}
+.pxs-heart-o:before {
+    content: "\e912";
+}
+.pxs-info:before {
+    content: "\e913";
+}
+.pxs-layout-full:before {
+    content: "\e914";
+}
+.pxs-layout-full-flex:before {
+    content: "\e915";
+}
+.pxs-layout-grid:before {
+    content: "\e916";
+}
+.pxs-layout-grid-flex:before {
+    content: "\e917";
+}
+.pxs-lock:before {
+    content: "\e918";
+}
+.pxs-minus:before {
+    content: "\e919";
+}
+.pxs-minus-o:before {
+    content: "\e91a";
+}
+.pxs-pen:before {
+    content: "\e91b";
+}
+.pxs-plus:before {
+    content: "\e91c";
+}
+.pxs-plus-o:before {
+    content: "\e91d";
+}
+.pxs-search:before {
+    content: "\e91e";
+}
+.pxs-star:before {
+    content: "\e91f";
+}
+.pxs-star-o:before {
+    content: "\e920";
+}
+.pxs-tag:before {
+    content: "\e921";
+}
+.pxs-tags:before {
+    content: "\e922";
+}
+.pxs-unlock:before {
+    content: "\e923";
+}
+.pxs-upload:before {
+    content: "\e924";
+}
+.pxs-user:before {
+    content: "\e925";
+}
+.pxs-user-minus:before {
+    content: "\e926";
+}
+.pxs-user-plus:before {
+    content: "\e927";
+}
+.pxs-zoom-in:before {
+    content: "\e928";
+}
+.pxs-zoom-out:before {
+    content: "\e929";
+}
