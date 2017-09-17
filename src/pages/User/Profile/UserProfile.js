@@ -6,9 +6,14 @@
 */
 import { mapGetters, mapActions } from 'vuex';
 // import APIService from 'src/services/API.service';
+import { DEFAULT_USER_PROFILE } from 'src/constants';
+import ArtworkCard from 'src/components/cards/ArtworkCard/ArtworkCard.vue';
 
 export default {
     name: 'UserProfile',
+    components: {
+        ArtworkCard
+    },
     props: {
         userId: {
             type: String,
@@ -18,10 +23,15 @@ export default {
     asyncData ({ store, route }) {
         return store.dispatch('setUserDetailView', route.params.userId);
     },
+    data () {
+        return {
+            defaultProfile: DEFAULT_USER_PROFILE
+        };
+    },
     computed: {
         ...mapGetters({
             user: 'getUserData',
-            userContents: 'getUserContents'
+            firstUserContents: 'getUserContents'
         })
     },
     methods: {

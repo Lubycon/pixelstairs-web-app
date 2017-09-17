@@ -2,13 +2,35 @@
 <div class="container">
     <div class="row">
         <div class="col-3">
-            <img v-if="!this.user.profileImg" :src="userProfileSrc">
-            <img v-else :src="this.user.profileImg">
+            <img v-if="!user.profileImg" :src="defaultProfile">
+            <img v-else :src="user.profileImg.file + '320'">
         </div>
-        <div class="col-9"></div>
+        <div class="col-9">
+            <h1>{{ user.nickname }}</h1>
+            <h4>{{ user.email }}</h4>
+        </div>
     </div>
     <ul class="row">
-
+        <!-- SSR FOR SEO -->
+        <li class="col-4" v-for="artwork in firstUserContents.contents">
+            <artwork-card
+                :art-id="artwork.id"
+                :title="artwork.title"
+                :image="artwork.image"
+                :author-name="artwork.user.nickname"
+                :author-profile="artwork.user.profileImg"
+            />
+        </li>
+        <!-- /SSR FOR SEO -->
+        <!-- <li class="col-4" v-for="artwork in artworks">
+            <artwork-card
+                :art-id="artwork.id"
+                :title="artwork.title"
+                :image="artwork.image"
+                :author-name="artwork.user.nickname"
+                :author-profile="artwork.user.profileImg"
+            />
+        </li> -->
     </ul>
 </div>
 </template>
