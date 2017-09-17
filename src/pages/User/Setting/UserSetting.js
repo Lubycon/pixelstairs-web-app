@@ -57,7 +57,7 @@ export default {
                 data.profileImg.file = this.newProfileSrc;
             }
 
-            APIService.resource('members.detail', { id: data.id }).put(data)
+            APIService.resource('users.info', { id: data.id }).put(data)
             .then(res => {
                 delete res.result.newsletterAccepted;
                 delete res.result.gender;

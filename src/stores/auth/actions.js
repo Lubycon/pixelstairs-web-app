@@ -16,7 +16,7 @@ export function setToken (store, token) {
 }
 
 export function setUserByAPI (store) {
-    return APIService.resource('members.simple').get()
+    return APIService.resource('users.me').get()
     .then(res => {
         delete res.result.newsletterAccepted;
         delete res.result.gender;
