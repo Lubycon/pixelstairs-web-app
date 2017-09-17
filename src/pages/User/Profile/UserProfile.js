@@ -4,29 +4,32 @@
     @author: Evan Moon
     @created_at: 2017.09.09
 */
-import { mapGetters } from 'vuex';
-import APIService from 'src/services/API.service';
+import { mapGetters, mapActions } from 'vuex';
+// import APIService from 'src/services/API.service';
 
 export default {
     name: 'UserProfile',
+    props: {
+        userId: {
+            type: String,
+            required: true
+        }
+    },
+    asyncData ({ store, route }) {
+        return store.dispatch('setUserDetailView', route.params.userId);
+    },
     computed: {
         ...mapGetters({
-            user: 'getUser'
+            userData: 'getUserData',
+            userContents: 'getUserContents'
         })
     },
-    watch: {
-        user (user) {
-            this.fetchUsersContents(user.id);
-        }
-    },
     methods: {
-        fetchUsersContents (userId) {
-            return APIService.resource('contents.list')
-            .get({
-                filter: `userId:${userId}`
-            }).then(res => {
-                console.log(res);
-            });
-        }
+        ...mapActions({
+            clearUserData: 'clearUserDetailView'
+        })
+    },
+    destroyed () {
+        this.clearUserData();
     }
 };

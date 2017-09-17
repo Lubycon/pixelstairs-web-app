@@ -11,15 +11,15 @@ import Vuex from 'vuex';
 /* STORES START */
 import { AuthStoreModule } from './auth/';
 import { ArtworkStoreModule } from './artwork/';
+import { UserStoreModule } from './user';
 /* STORES END */
 
 Vue.use(Vuex);
 
-// const isClient = typeof window !== 'undefined';
-
 export default new Vuex.Store({
     modules: {
         auth: AuthStoreModule,
-        artwork: ArtworkStoreModule
+        artwork: ArtworkStoreModule,
+        user: UserStoreModule
     }
 });

@@ -1,6 +1,11 @@
 <template>
 <div class="container">
-    User Profile
+    <div class="row">
+
+    </div>
+    <ul class="row">
+
+    </ul>
 </div>
 </template>
 
