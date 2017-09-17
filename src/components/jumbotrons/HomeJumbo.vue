@@ -3,18 +3,28 @@
     <div v-swiper:mySwiper="swiperOption">
         <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="content in contents">
-                <img :src="content.image.file" :alt="`featured-content-${content.id}`">
+                <div
+                    class="swiper-thumbnail"
+                    :style="{ 'background-image': `url(${content.image.file})` }"
+                ></div>
             </div>
         </div>
+
         <div class="swiper-pagination" slot="pagination"></div>
-        <div class="swiper-button-prev" slot="button-prev"></div>
-        <div class="swiper-button-next" slot="button-next"></div>
+        <div slot="button-prev">
+            <button class="swiper-button-prev"><i class="pxs-arrow-left"></i></button>
+        </div>
+        <div slot="button-next">
+            <button class="swiper-button-next"><i class="pxs-arrow-right"></i></button>
+        </div>
+
+        <div class="swiper-overlay"></div>
     </div>
 </div>
 </template>
 
 <style lang="scss" scoped>
-
+    
 </style>
 
 <script>
@@ -28,12 +38,12 @@ export default {
             contents: [],
             swiperOption: {
                 autoplay: 4000,
-                speed: 1500,
+                speed: 1000,
                 initialSlide: 1,
                 loop: true,
                 pagination: '.swiper-pagination',
-                nextButton: '.swiper-button-next',
-                prevButton: '.swiper-button-prev'
+                prevButton: '.swiper-button-prev',
+                nextButton: '.swiper-button-next'
             }
         };
     },
