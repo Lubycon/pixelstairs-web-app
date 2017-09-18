@@ -11,9 +11,9 @@
         </div>
     </home-jumbo>
     <div class="container">
-        <ul class="row">
+        <ul class="row cards-wrapper">
             <!-- SSR FOR SEO -->
-            <li class="col-4" v-for="artwork in firstPageArtworks.contents">
+            <li class="col-12 col-lg-3" v-for="artwork in firstPageArtworks.contents">
                 <artwork-card
                     :art-id="artwork.id"
                     :title="artwork.title"

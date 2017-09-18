@@ -3,13 +3,32 @@
     <router-link :to="{ name: 'artwork-detail', params: { artId } }">
         <div
             class="card-img-top artwork-card--image"
-            :style="{ 'background-color': thumbnail }"
+            :style="{ 'background-image': thumbnail }"
         >
-            <img :src="image.file" :alt="`artwork-${image.id}`">
+            <img :src="image.file" :title="title" :alt="title">
         </div>
         <div class="card-body">
-            <h2 class="card-title">{{ title }}</h2>
-            <p><small>{{ authorName }}</small></p>
+            <h2 data-name="title">{{ title }}</h2>
+            <div data-name="author">
+                <span data-name="author-profile">
+                    <div :style="{ 'background-image': `url(${computedAuthorProfile})` }"></div>
+                </span>
+                <span data-name="author-info">
+                    <h4>{{ authorName }}</h4>
+                </span>
+            </div>
+            <div data-name="counts">
+                <ul>
+                    <li data-name="like-count">
+                        <i class="pxs-heart"></i>
+                        <span>300</span>
+                    </li>
+                    <li data-name="view-count">
+                        <i class="pxs-eye"></i>
+                        <span>300</span>
+                    </li>
+                </ul>
+            </div>
         </div>
     </router-link>
 </div>
@@ -18,25 +37,92 @@
 <style lang="scss" scoped>
 @import 'src/styles/utils/__module__';
 
+$vertical-margin: 1.1rem;
+$horizontal-margin: 1rem;
+$icon-margin: 5px;
+$profile-size: 25px;
+
+.artwork-card {
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
+    transition: transform 0.1s ease-in, box-shadow 0.1s ease-in;
+    &:hover {
+        transform: scale(1.02);
+        box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.1);
+    }
+}
+
 .artwork-card--image {
     position: relative;
-    height: 300px;
+    height: 250px;
     overflow: hidden;
     img {
-        width: 100%;
         @include floatToCenter;
+        width: 100%;
     }
 }
 
 .card-body {
-    .card-title {
-        font-size: 20px;
-        @include ellipsis;
+    padding: $vertical-margin $horizontal-margin;
+}
+
+h2[data-name="title"] {
+    @include ellipsis;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: $vertical-margin;
+}
+
+div[data-name="author"] {
+    margin-bottom: $vertical-margin;
+    span[data-name="author-profile"] {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: $icon-margin;
+        div {
+            @include circleFrame($profile-size);
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+    span[data-name="author-info"] {
+        display: inline-block;
+        vertical-align: middle;
+        h4 {
+            display: inline-block;
+            font-size: 12px;
+            margin-bottom: 0;
+        }
+    }
+}
+
+div[data-name="counts"] {
+    ul li {
+        display: inline-block;
+        margin-right: $horizontal-margin / 2;
+        *:last-child {
+            margin-right: 0;
+        }
+        i {
+            vertical-align: middle;
+            margin-right: $icon-margin;
+            font-size: 14px;
+        }
+        span {
+            vertical-align: middle;
+        }
+
+        &[data-name="like-count"] i {
+            color: $dark-red;
+        }
     }
 }
 </style>
 
 <script>
+import ImageService from 'src/services/Image.service';
+
 export default {
     name: 'Artwork-card',
     props: {
@@ -52,19 +138,19 @@ export default {
             type: String,
             required: true
         },
-        authorProfile: {
-
-        },
-        image: {
-
-        }
+        authorProfile: {},
+        image: {}
     },
     data () {
         return {
             thumbnail: null
         };
     },
-
+    computed: {
+        computedAuthorProfile () {
+            return ImageService.getUserProfile(this.authorProfile);
+        }
+    },
     created () {
         let thumbnail;
 
