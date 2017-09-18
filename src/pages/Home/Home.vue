@@ -7,7 +7,9 @@
                 <p>The Pixelstairs is dedicated to providing better opportunities</p>
                 <p>for their works and another inspired interaction with every artist in the world</p>
             </div>
-            <button class="btn">Upload my works</button>
+            <router-link :to="{ name: 'artwork-upload' }">
+                <button class="btn">Upload my works</button>
+            </router-link>
         </div>
     </home-jumbo>
     <div class="container">
