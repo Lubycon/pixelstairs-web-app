@@ -13,7 +13,7 @@
         <div v-else>
             <router-link :to="{ name: 'signin' }">
                 <button class="btn btn-round">
-                    <i class="pxs-user"></i> Login
+                    Login
                 </button>
             </router-link>
         </div>

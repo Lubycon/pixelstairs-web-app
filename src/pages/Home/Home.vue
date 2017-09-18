@@ -1,6 +1,15 @@
 <template>
 <div class="container-fluid">
-    <home-jumbo></home-jumbo>
+    <home-jumbo>
+        <div slot="swiper-overlay-text" class="swiper-overlay-text">
+            <h1>Connect your creativity with the World!</h1>
+            <div>
+                <p>The Pixelstairs is dedicated to providing better opportunities</p>
+                <p>for their works and another inspired interaction with every artist in the world</p>
+            </div>
+            <button class="btn">Upload my works</button>
+        </div>
+    </home-jumbo>
     <div class="container">
         <ul class="row">
             <!-- SSR FOR SEO -->

@@ -19,12 +19,29 @@
         </div>
 
         <div class="swiper-overlay"></div>
+
+        <slot name="swiper-overlay-text"></slot>
     </div>
 </div>
 </template>
 
 <style lang="scss" scoped>
-    
+@import 'src/styles/utils/__module__';
+.swiper-overlay-text {
+    $margin: 10px;
+    * {
+        color: $white;
+    }
+    h1 {
+        margin-bottom: $margin * 2;
+    }
+    p {
+        margin-bottom: $margin / 2;
+    }
+    button {
+        margin-top: $margin * 3;
+    }
+}
 </style>
 
 <script>

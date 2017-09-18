@@ -1,12 +1,13 @@
 .swiper-container {
-    $swiper-height: 400px;
-    $mobile-swiper-height: 300px;
-
     position: relative;
     height: $swiper-height;
 
     .swiper-thumbnail {
         height: $swiper-height;
+        background: {
+            size: cover;
+            position: 50% 50%;
+        }
     }
 
     .swiper-pagination-bullet-active {
@@ -16,8 +17,16 @@
         background-image: none;
         background-color: transparent;
         border: none;
+        width: auto;
+        height: auto;
+        transform: translateY(-50%);
+        margin: 0;
+        padding: 10px 0;
+        z-index: 2;
         i {
             color: $white;
+            font-size: 20px;
+            vertical-align: middle;
         }
     }
     .swiper-overlay {
@@ -28,5 +37,10 @@
         height: 100%;
         z-index: 1;
         background: rgba(0,0,0,0.4);
+    }
+    .swiper-overlay-text {
+        z-index: 2;
+        text-align: center;
+        @include floatToCenter;
     }
 }
