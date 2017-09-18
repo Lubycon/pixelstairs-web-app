@@ -21,11 +21,11 @@
                 <ul>
                     <li data-name="like-count">
                         <i class="pxs-heart"></i>
-                        <span>300</span>
+                        <span>{{ likeCount }}</span>
                     </li>
                     <li data-name="view-count">
                         <i class="pxs-eye"></i>
-                        <span>300</span>
+                        <span>{{ viewCount }}</span>
                     </li>
                 </ul>
             </div>
@@ -137,6 +137,14 @@ export default {
         authorName: {
             type: String,
             required: true
+        },
+        viewCount: {
+            type: Number,
+            default: 0
+        },
+        likeCount: {
+            type: Number,
+            default: 0
         },
         authorProfile: {},
         image: {}

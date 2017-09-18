@@ -8,7 +8,7 @@
                 <p>for their works and another inspired interaction with every artist in the world</p>
             </div>
             <router-link :to="{ name: 'artwork-upload' }">
-                <button class="btn">Upload my works</button>
+                <button class="btn btn-primary btn-round">Upload my works</button>
             </router-link>
         </div>
     </home-jumbo>
@@ -22,6 +22,8 @@
                     :image="artwork.image"
                     :author-name="artwork.user.nickname"
                     :author-profile="artwork.user.profileImg"
+                    :view-count="artwork.counts.view"
+                    :like-count="artwork.counts.like"
                 />
             </li>
             <!-- /SSR FOR SEO -->
@@ -32,6 +34,8 @@
                     :image="artwork.image"
                     :author-name="artwork.user.nickname"
                     :author-profile="artwork.user.profileImg"
+                    :view-count="artwork.counts.view"
+                    :like-count="artwork.counts.like"
                 />
             </li>
         </ul>

@@ -1,5 +1,5 @@
 <template>
-<div class="row navbar fixed-top">
+<nav class="row navbar fixed-top">
     <div class="col"></div>
     <div class="col header--global-logo">
         <router-link to="/">
@@ -18,7 +18,7 @@
             </router-link>
         </div>
     </div>
-</div>
+</nav>
 </template>
 
 <style lang="scss" scoped>
