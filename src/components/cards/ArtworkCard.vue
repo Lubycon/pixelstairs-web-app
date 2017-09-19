@@ -37,8 +37,8 @@
 <style lang="scss" scoped>
 @import 'src/styles/utils/__module__';
 
-$vertical-margin: 1.1rem;
-$horizontal-margin: 1rem;
+$vertical-margin: 18px;
+$horizontal-margin: 16px;
 $icon-margin: 5px;
 $profile-size: 25px;
 
@@ -75,7 +75,9 @@ h2[data-name="title"] {
 }
 
 div[data-name="author"] {
+    padding-bottom: $vertical-margin;
     margin-bottom: $vertical-margin;
+    border-bottom: 1px solid $grey-100;
     span[data-name="author-profile"] {
         display: inline-block;
         vertical-align: middle;

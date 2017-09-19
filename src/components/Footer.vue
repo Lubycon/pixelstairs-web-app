@@ -13,7 +13,9 @@ $footer-margin: 20px;
 $menu-margin: $footer-margin / 2;
 
 #app-footer {
-    margin: {
+    border-top: 1px solid $grey-400;
+    margin: 0;
+    padding: {
         top: $footer-margin;
         right: $footer-margin;
         left: $footer-margin;

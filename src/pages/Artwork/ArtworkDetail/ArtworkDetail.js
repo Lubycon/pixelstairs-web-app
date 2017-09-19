@@ -5,8 +5,10 @@
     @created_at: 2017.09.02
 */
 import { mapGetters, mapActions } from 'vuex';
+import APIService from 'src/services/API.service';
 import ImageService from 'src/services/Image.service';
 import TagInput from 'src/components/Tag.vue';
+import LikeButton from 'src/components/buttons/LikeButton.vue';
 
 export default {
     name: 'ArtworkDetail',
@@ -25,7 +27,7 @@ export default {
         };
     },
     components: {
-        TagInput
+        TagInput, LikeButton
     },
     props: {
         artId: {
@@ -51,7 +53,29 @@ export default {
         })
     },
     methods: {
+        postLike (likeValue) {
+            const id = this.artworkData.id;
+            if (!id) {
+                return false;
+            }
+            this.setArtworkLike(likeValue);
+
+            let req = APIService.resource('contents.like', { id });
+            if (likeValue) {
+                req = req.post;
+            }
+            else {
+                req = req.delete;
+            }
+
+            req().then(res => {}, err => {
+                if (err && err.status === 403) {
+                    console.error('Need Signin!');
+                }
+            });
+        },
         ...mapActions({
+            setArtworkLike: 'setArtworkLike',
             clearArtwork: 'clearArtworkDetailView'
         })
     },

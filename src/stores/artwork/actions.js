@@ -29,9 +29,14 @@ export function clearArtworkList (store) {
     store.commit('CLEAR_ARTWORK_LIST');
 }
 
+export function setArtworkLike (store, bool) {
+    store.commit('SET_ARTWORK_LIKE', bool);
+}
+
 export default {
     setArtworkDetailView,
     clearArtworkDetailView,
     setArtworkList,
-    clearArtworkList
+    clearArtworkList,
+    setArtworkLike
 };

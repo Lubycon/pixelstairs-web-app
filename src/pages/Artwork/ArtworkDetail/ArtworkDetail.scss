@@ -20,6 +20,10 @@ section {
     &:first-child {
         margin-top: $row-margin;
     }
+
+    @include mq('sm') {
+        max-width: 90%;
+    }
 }
 
 section[data-name="artwork"] {
@@ -46,9 +50,14 @@ section[data-name="artwork"] {
     }
 }
 section[data-name="counter"] {
+    $like-button-size: 70px;
+
+    text-align: center;
     ul {
-        margin: 0;
-        text-align: center;
+        margin-bottom: $row-margin;
+        @include mq('sm') {
+            margin-bottom: 0;
+        }
         li {
             display: inline-block;
             margin-right: $row-margin;
@@ -65,6 +74,18 @@ section[data-name="counter"] {
                 font-size: 20px;
                 font-weight: bold;
             }
+        }
+    }
+
+    .like-btn {
+        width: $like-button-size;
+        height: $like-button-size;
+        border-radius: 50%;
+        @include mq('sm') {
+            display: none;
+        }
+        i {
+            font-size: 20px;
         }
     }
 }
@@ -89,5 +110,12 @@ section[data-name="author"] {
                 font-weight: bold;
             }
         }
+    }
+}
+
+.like-btn.float-btn {
+    display: none;
+    @include mq('sm') {
+        display: block;
     }
 }

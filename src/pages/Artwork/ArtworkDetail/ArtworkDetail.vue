@@ -32,6 +32,13 @@
                     <span><strong>{{ artworkData.counts.like }}</strong> Likes</span>
                 </li>
             </ul>
+            <div class="col-12">
+                <like-button
+                    :like-value="artworkData.myLike"
+                    :art-id="artworkData.id"
+                    @submit="postLike"
+                />
+            </div>
         </div>
     </section>
 
@@ -54,6 +61,12 @@
         </div>
     </section>
 
+    <like-button
+        class="float-btn bottom right"
+        :like-value="artworkData.myLike"
+        :art-id="artworkData.id"
+        @submit="postLike"
+    />
 </div>
 </template>
 
