@@ -1,14 +1,21 @@
 <template>
-<div class="container">
-    <router-link :to="{ name: 'home' }">
-        <img :src="logo" alt="">
-    </router-link>
+<div class="container row">
+    <div class="col-12 col-md-6 col-lg-4 card card--center-form">
+        <div class="logo">
+            <router-link :to="{ name: 'home' }">
+                <img :src="logo" alt="pixelstairs-logo" title="pixelstairs-logo">
+                <p>Connect your creativity with the World!</p>
+            </router-link>
+        </div>
 
-    <signin-form @submit="postData"></signin-form>
+        <div class="card-body">
+            <signin-form @submit="postData"></signin-form>
+        </div>
+    </div>
 </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
     @import './Signin';
 </style>
 

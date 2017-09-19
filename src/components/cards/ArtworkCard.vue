@@ -43,9 +43,6 @@ $icon-margin: 5px;
 $profile-size: 25px;
 
 .artwork-card {
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.2);
     transition: transform 0.1s ease-in, box-shadow 0.1s ease-in;
     &:hover {
         transform: scale(1.02);

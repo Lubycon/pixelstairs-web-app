@@ -17,7 +17,7 @@ export default {
     },
     data () {
         return {
-            logo: LOGOS.text
+            logo: LOGOS.vp
         };
     },
     methods: {

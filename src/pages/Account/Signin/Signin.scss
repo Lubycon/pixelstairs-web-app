@@ -1,0 +1,19 @@
+@import 'src/styles/utils/__module__';
+
+.logo {
+    text-align: center;
+    img[title="pixelstairs-logo"] {
+        width: 250px;
+        margin-bottom: 10px;
+    }
+}
+
+.card--center-form {
+    background: transparent;
+    box-shadow: none;
+    input {
+        font-size: 14px;
+        padding: 0.75rem 1rem;
+        background: transparent;
+    }
+}
