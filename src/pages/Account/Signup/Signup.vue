@@ -1,10 +1,17 @@
 <template>
-<div class="container">
-    <router-link :to="{ name: 'home' }">
-        <img :src="logo" alt="">
-    </router-link>
+<div class="container row">
+    <div class="col-12 col-md-6 col-lg-4 card card--center-form">
+        <div class="logo">
+            <router-link :to="{ name: 'home' }">
+                <img :src="logo" alt="pixelstairs-logo" title="pixelstairs-logo">
+                <p>Welcome to Pixelstairs!</p>
+            </router-link>
+        </div>
 
-    <signup-form @submit="postData"></signup-form>
+        <div class="card-body">
+            <signup-form @submit="postData"></signup-form>
+        </div>
+    </div>
 </div>
 </template>
 

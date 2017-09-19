@@ -1,20 +1,24 @@
 <template>
 <div class="account-form">
-    <b-form @submit.prevent="callbackSubmit">
+    <b-form @submit.prevent="submit" novalidate>
         <b-form-group>
             <b-form-input
                 type="email"
+                name="email"
                 v-model.trim="email"
                 placeholder="Email"
-                required
+                v-validate="'required|email'"
+                :class="{ 'error': errors.has('email') }"
             />
         </b-form-group>
         <b-form-group>
             <b-form-input
                 type="password"
+                name="password"
                 v-model.trim="password"
                 placeholder="Password"
-                required
+                v-validate="'required'"
+                :class="{ 'error': errors.has('password') }"
             />
         </b-form-group>
         <b-button type="submit">
@@ -54,11 +58,17 @@ export default {
 
     },
     methods: {
-        callbackSubmit () {
-            this.$emit('submit', {
-                email: this.email,
-                password: this.password
-            });
+        submit () {
+            this.$validator.validateAll();
+            if (this.errors.any()) {
+                console.log(this.errors);
+            }
+            else {
+                this.$emit('submit', {
+                    email: this.email,
+                    password: this.password
+                });
+            }
         }
     }
 };

@@ -3,3 +3,23 @@ input {
         border-color: $red;
     }
 }
+
+.form-text {
+    &.is-invalid {
+        color: $red !important;
+    }
+    &.has-score {
+        &.perfect {
+            color: $blue !important;
+        }
+        &.high {
+            color: $green !important;
+        }
+        &.warning {
+            color: $yellow !important;
+        }
+        &.invalid {
+            display: none;
+        }
+    }
+}
