@@ -14,15 +14,15 @@ export default {
     name: 'ArtworkDetail',
     metaInfo () {
         return {
-            title: this.artworkData ? this.artworkData.title + ' - Pixelstairs' : 'Loading...',
+            title: this.artworkData ? this.artworkData.title : 'Loading...',
             meta: [{
-                name: 'description', content: this.artworkData ? this.artworkData.desc : 'Loading...'
+                vmid: 'description', name: 'description', content: this.artworkData ? this.artworkData.desc : 'Loading...'
             }, {
-                property: 'og:title', content: this.artworkData ? this.artworkData.title + ' - Pixelstairs' : 'Loading...'
+                vmid: 'og:title', property: 'og:title', content: this.artworkData ? this.artworkData.title + ' - Pixelstairs' : 'Loading...'
             }, {
-                property: 'og:image', content: this.artworkData ? this.artworkData.image.file + '640' : '/assets/imgs/ogImage.jpg'
+                vmid: 'og:image', property: 'og:image', content: this.artworkData ? this.artworkData.image.file + '640' : '/assets/imgs/ogImage.jpg'
             }, {
-                property: 'og:url', content: this.artworkData ? `https://dev.pixelstairs.com/artwork/detail/${this.artworkData.id}` : 'https://dev.pixelstairs.com'
+                vmid: 'og:url', property: 'og:url', content: this.artworkData ? `https://dev.pixelstairs.com/artwork/detail/${this.artworkData.id}` : 'https://dev.pixelstairs.com'
             }]
         };
     },

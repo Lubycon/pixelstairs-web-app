@@ -33,9 +33,9 @@ export default {
         }, {
             name: 'fragment', content: '!'
         }, {
-            name: 'title', content: 'Pixelstairs :: Connect Your Creativity With the World'
+            vmid: 'title', name: 'title', content: 'Pixelstairs :: Connect Your Creativity With the World'
         }, {
-            name: 'description', content: 'Display your artwork in online exhibition and meet it in real life!'
+            vmid: 'description', name: 'description', content: 'Display your artwork in online exhibition and meet it in real life!'
         }, {
             name: 'author', content: 'Evan Moon'
         }, {
@@ -59,13 +59,13 @@ export default {
         }, {
             property: 'og:type', content: 'website'
         }, {
-            property: 'og:title', content: 'Pixelstairs :: Connect Your Creativity With the World'
+            vmid: 'og:title', property: 'og:title', content: 'Pixelstairs :: Connect Your Creativity With the World'
         }, {
-            property: 'og:description', content: 'Display your artwork in online exhibition and meet it in real life!'
+            vmid: 'og:description', property: 'og:description', content: 'Display your artwork in online exhibition and meet it in real life!'
         }, {
-            property: 'og:image', content: 'https://s3.ap-northeast-2.amazonaws.com/pixelstairs/assets/logo/ogImage.jpg'
+            vmid: 'og:image', property: 'og:image', content: 'https://s3.ap-northeast-2.amazonaws.com/pixelstairs/assets/logo/ogImage.jpg'
         }, {
-            property: 'og:url', content: 'https://www.pixelstairs.com'
+            vmid: 'og:url', property: 'og:url', content: 'https://www.pixelstairs.com'
         }],
         script: [{
             innerHTML: `{
