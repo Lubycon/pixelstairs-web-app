@@ -27,7 +27,7 @@
 #app-header {
     margin: 0;
     height: $global-header-height;
-    border-bottom: 1px solid $grey-1;
+    border-bottom: 1px solid $grey-400;
     background: {
         color: $white;
     }

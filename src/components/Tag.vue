@@ -1,5 +1,5 @@
 <template>
-<div class="vue-tag-component">
+<div class="vue-tag-component" :class="{ 'readonly': readonly }">
     <ul class="form-control vue-tag-component--tags">
         <li class="vue-tag-component--tag" v-for="(tag, idx) in tags">
             <div class="vue-tag-component--tag-wrapper">
@@ -22,13 +22,31 @@
 <style lang="scss" scoped>
 @import 'src/styles/utils/__module__';
 
+.readonly {
+    .form-control {
+        padding: 0;
+        border: none;
+        background: transparent;
+    }
+
+    ul {
+        li {
+            padding: 6px 12px;
+            * {
+                cursor: default;
+            }
+        }
+    }
+}
+
 ul {
+    margin: 0;
     width: 100%;
     text-align: left;
     li {
         display: inline-block;
         padding: 6px 7px 6px 12px;
-        background-color: $grey-4;
+        background-color: $bluegrey-900;
         border-radius: 100px;
         margin: {
             top: 3px;
@@ -39,7 +57,7 @@ ul {
         vertical-align: middle;
 
         &:hover {
-            background-color: lighten($grey-4, 20);
+            background-color: lighten($grey-800, 20);
         }
         * {
             cursor: pointer;

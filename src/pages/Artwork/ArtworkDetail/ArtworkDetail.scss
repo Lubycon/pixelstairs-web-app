@@ -1,18 +1,38 @@
 @import 'src/styles/utils/__module__';
 
-section {
-    max-width: 50%;
-    margin: 0 auto;
-    margin-bottom: 30px;
-    padding-bottom: 30px;
-    border-bottom: 1px solid $grey-1;
+$row-margin: 30px;
 
-    &[data-section="artwork"] {
-        h1 {
-            text-align: center;
-            font-weight: 600;
-            margin: 20px 0;
+section {
+    max-width: 60%;
+    margin: 0 auto;
+    margin-bottom: $row-margin;
+    padding-bottom: $row-margin;
+    border-bottom: 1px solid $grey-400;
+    .row {
+        margin: {
+            left: 0;
+            right: 0;
+        };
+        .col-12 {
+            padding: 0;
         }
+    }
+    &:first-child {
+        margin-top: $row-margin;
+    }
+}
+
+section[data-name="artwork"] {
+    h1[data-name="title"] {
+        font-size: 24px;
+        font-weight: 600;
+        margin: $row-margin 0;
+        border-left: 3px solid $grey-900;
+        padding-left: 10px;
+    }
+    div[data-name="image"] {
+        box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
+        margin-bottom: $row-margin;
         img {
             background: {
                 repeat: no-repeat;
@@ -20,6 +40,54 @@ section {
             }
         }
     }
-    &[data-section="counter"] {}
-    &[data-section="author"] {}
+    p[data-name="description"] {
+        font-size: 16px;
+        margin-bottom: $row-margin;
+    }
+}
+section[data-name="counter"] {
+    ul {
+        margin: 0;
+        text-align: center;
+        li {
+            display: inline-block;
+            margin-right: $row-margin;
+            &:last-child {
+                margin-right: 0;
+            }
+            &[data-name="like"] i {
+                color: $red;
+            }
+            i {
+                margin-right: $row-margin / 4;
+            }
+            strong {
+                font-size: 20px;
+                font-weight: bold;
+            }
+        }
+    }
+}
+section[data-name="author"] {
+    $user-profile-size: 40px;
+
+    div[data-name="author-profile"] {
+        padding: 0;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        @include circleFrame($user-profile-size);
+    }
+    div[data-name="author-name"] {
+        h2 {
+            margin-bottom: 5px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        p {
+            margin: 0;
+            font-size: 14px;
+            strong[data-name="uploaded-date"] {
+                font-weight: bold;
+            }
+        }
+    }
 }

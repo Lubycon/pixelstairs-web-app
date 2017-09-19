@@ -27,7 +27,7 @@ ul {
         padding-right: $menu-margin;
         text-align: center;
         font-size: 14px;
-        border-right: 1px solid $grey-1;
+        border-right: 1px solid $grey-400;
         &:last-child {
             margin-right: 0;
         }

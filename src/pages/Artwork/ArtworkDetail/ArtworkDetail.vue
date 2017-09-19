@@ -1,54 +1,59 @@
 <template>
 <div class="container" v-if="artworkData">
-    <section data-section="artwork">
+
+    <section data-name="artwork">
         <div class="row">
-            <h1 class="col-12">{{ artworkData.title }}</h1>
+            <h1 class="col-12" data-name="title">{{ artworkData.title }}</h1>
         </div>
         <div class="row">
-            <div class="col-12">
+            <div class="col-12" data-name="image">
                 <img :src="artworkImage" :style="{ 'background-image': `url(${thumbnail}` }" :alt="`artwork-img-${artworkData.id}`">
             </div>
         </div>
         <div class="row">
             <div class="col-12">
-                <p v-html="artworkData.description"></p>
+                <p v-html="artworkData.description" data-name="description"></p>
             </div>
-            <div class="col-12">
-                <ul>
-                    <li v-for="tag in artworkData.hashTags">
-                        {{ tag }}
-                    </li>
-                </ul>
+            <div class="col-12" data-name="tags">
+                <tag-input :tags="artworkData.hashTags" :readonly="true"></tag-input>
             </div>
         </div>
     </section>
 
-    <section data-section="counter">
+    <section data-name="counter">
         <div class="row">
-            <ul>
-                <li>
-                    {{ artworkData.counts.view }} Views
+            <ul class="col-12">
+                <li data-name="view">
+                    <i class="pxs-eye"></i>
+                    <span><strong>{{ artworkData.counts.view }}</strong> Views</span>
                 </li>
-                <li>
-                    {{ artworkData.counts.like }} Likes
+                <li data-name="like">
+                    <i class="pxs-heart"></i>
+                    <span><strong>{{ artworkData.counts.like }}</strong> Likes</span>
                 </li>
             </ul>
         </div>
     </section>
 
-    <section data-section="author">
+    <section data-name="author">
         <div class="row">
-            <p class="row"><small>Artwork by</small></p>
-            <div class="row">
-                <div class="col">
-                    <img :src="userProfile" :alt="`user-${artworkData.user.id}-profile-image`">
+            <p class="col-12 row"><small>Artwork by</small></p>
+            <div class="col-12 row align-items-center">
+                <div class="col col-auto" data-name="author-profile">
+                    <img
+                        :src="userProfile"
+                        :alt="artworkData.user.nickname"
+                        :title="artworkData.user.nickname"
+                    >
                 </div>
-                <div class="col">
+                <div class="col" data-name="author-name">
                     <h2>{{ artworkData.user.nickname }}</h2>
+                    <p>Uploaded at <strong data-name="uploaded-date">{{ artworkData.createdAt | moment('MMM. DD. YYYY') }}</strong></p>
                 </div>
             </div>
         </div>
     </section>
+
 </div>
 </template>
 

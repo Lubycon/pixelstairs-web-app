@@ -114,7 +114,7 @@ div[data-name="counts"] {
         }
 
         &[data-name="like-count"] i {
-            color: $dark-red;
+            color: $red;
         }
     }
 }

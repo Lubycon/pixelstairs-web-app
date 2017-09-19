@@ -6,6 +6,7 @@
 */
 import { mapGetters, mapActions } from 'vuex';
 import ImageService from 'src/services/Image.service';
+import TagInput from 'src/components/Tag.vue';
 
 export default {
     name: 'ArtworkDetail',
@@ -22,6 +23,9 @@ export default {
                 property: 'og:url', content: this.artworkData ? `https://dev.pixelstairs.com/artwork/detail/${this.artworkData.id}` : 'https://dev.pixelstairs.com'
             }]
         };
+    },
+    components: {
+        TagInput
     },
     props: {
         artId: {

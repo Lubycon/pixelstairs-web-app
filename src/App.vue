@@ -29,7 +29,7 @@ export default {
         }, {
             'http-equiv': 'Pragma', content: 'no-cache'
         }, {
-            name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui'
+            name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui, shrink-to-fit=no'
         }, {
             name: 'fragment', content: '!'
         }, {

@@ -1,6 +1,6 @@
 .btn {
     font-weight: lighter;
-    background-color: $grey-4;
+    background-color: $bluegrey-900;
     color: $white;
     cursor: pointer;
 
@@ -9,8 +9,8 @@
     }
     &.btn-border {
         background: transparent;
-        border: 1px solid $grey-4;
-        color: $grey-4;
+        border: 1px solid $bluegrey-900;
+        color: $grey-800;
     }
 
     &.btn-primary {
