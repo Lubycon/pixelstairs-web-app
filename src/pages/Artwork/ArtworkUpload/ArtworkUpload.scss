@@ -44,12 +44,18 @@ section[data-section="forms"] {
         h1 {
             margin-bottom: $title-margin;
             font-weight: lighter;
+            @include mq('sm') {
+                font-size: 20px;
+            }
         }
         p {
             margin-bottom: 0;
             font-size: 14px;
             strong {
                 font-weight: bold;
+            }
+            @include mq('sm') {
+                font-size: 12px;
             }
         }
     }
@@ -58,5 +64,8 @@ section[data-section="forms"] {
 section[data-section="control"] {
     button.btn {
         padding: 10px 60px;
+        @include mq('sm') {
+            padding: 10px 30px;
+        }
     }
 }
