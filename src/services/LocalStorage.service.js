@@ -1,5 +1,5 @@
 /*
-    @name: LocalStorage.service.ts
+    @name: LocalStorage.service.js
     @desc: LocalStorage 인코딩, 디코딩 서비스
     @author: Evan Moon
     @created_at: 2017.09.02

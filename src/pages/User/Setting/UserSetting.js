@@ -1,5 +1,5 @@
 /*
-    @name: UserSetting.ts
+    @name: UserSetting.js
     @desc: 유저 데이터 세팅 페이지 컴포넌트
     @author: Evan Moon
     @created_at: 2017.09.09

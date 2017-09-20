@@ -52,10 +52,12 @@
 </style>
 
 <script>
+import { PasswordMixin } from 'src/mixins/password.mixin';
 import ValidateService from 'src/services/Validate.service';
 
 export default {
     name: 'Signup-form',
+    mixins: [ PasswordMixin ],
     data () {
         return {
             email: null,
@@ -66,16 +68,6 @@ export default {
                 name: ValidateService.getRegex('name')
             }
         };
-    },
-    computed: {
-        passwordLevel () {
-            const PASSWORD = this.password;
-            const MAX = ValidateService.getPasswordTotalScore();
-            let score = ValidateService.calcPasswordScore(PASSWORD, MAX);
-            let level = ValidateService.getPasswordLevel(score);
-
-            return level;
-        }
     },
     methods: {
         submit () {
@@ -93,14 +85,6 @@ export default {
                 });
             }
         }
-    },
-    created () {
-        this.$validator.extend('security', {
-            getMessage: field => `Your ${field} must be more complicated`,
-            validate: value => {
-                return this.passwordLevel !== 'invalid';
-            }
-        });
     }
 };
 </script>

@@ -1,5 +1,5 @@
 /*
-    @name: router/index.ts
+    @name: router/index.js
     @desc: 픽셀스테어스 라우팅 모듈
     @author: Evan Moon
     @created_at: 2017.08.26
