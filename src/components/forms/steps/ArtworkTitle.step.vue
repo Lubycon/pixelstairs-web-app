@@ -4,10 +4,9 @@
         <h1>What is the title of your artwork?</h1>
     </div>
     <b-form-input
-        :class="{ error: errors.has('title') }"
+        :class="{ 'error': hasError }"
         name="title"
         type="text"
-        v-validate="'required'"
         @input="update"
     ></b-form-input>
 </div>
@@ -26,9 +25,14 @@
 <script>
 export default {
     name: 'ArtworkTitleStep',
+    props: {
+        hasError: {
+            type: Boolean,
+            default: false
+        }
+    },
     methods: {
         update (value) {
-            console.log(value);
             this.$emit('input', value);
         }
     }

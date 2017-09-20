@@ -11,15 +11,19 @@ import store from './stores/store';
 import router from './router';
 import { sync } from 'vuex-router-sync';
 
+// Bootstrap
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 Vue.use(BootstrapVue);
 
+// Validator
 import VeeValidate from 'vee-validate';
 Vue.use(VeeValidate);
 
+// Moment
 import VueMoment from 'vue-moment';
 Vue.use(VueMoment);
 
+// Swiper - only for Client
 if (process.browser) {
     const VueAwesomeSwiper = require('vue-awesome-swiper/ssr');
     Vue.use(VueAwesomeSwiper);

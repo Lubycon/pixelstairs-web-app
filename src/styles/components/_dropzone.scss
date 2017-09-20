@@ -40,4 +40,10 @@
     .drop-here::before {
         content: 'Drop file here!' !important;
     }
+
+    &.error {
+        .custom-file-control {
+            border-color: $red;
+        }
+    }
 }

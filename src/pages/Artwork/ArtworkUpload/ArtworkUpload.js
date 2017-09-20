@@ -32,7 +32,8 @@ export default {
             artworkTags: [],
             artworkDesc: null,
 
-            pageIndex: 0
+            pageIndex: 0,
+            pageType: null
         };
     },
     methods: {
@@ -41,16 +42,51 @@ export default {
             this.previewImg = data.preview;
         },
         nextPage () {
-            this.$validator.validateAll();
-            if (this.errors.any()) {
-                return null;
+            if (this.pageType) {
+                this.validate().then(res => {
+                    if (res) this.pageIndex++;
+                });
             }
-            this.pageIndex++;
+            else {
+                this.pageIndex++;
+            }
         },
         prevPage () {
             this.pageIndex--;
         },
+        validate () {
+            /*
+             * Step form validate 방식 생각 해볼 것
+             * Vuex 스토어 사용도 괜찮을 듯
+             * 2017.09.20 - Evan 여기까지 짬
+             */
+            const CURRENT_PAGE = this.formList[this.pageIndex - 1];
+            const TYPE = CURRENT_PAGE ? CURRENT_PAGE.type : null;
+
+            if (!TYPE) {
+                return true;
+            }
+            let targetModel;
+            if (TYPE === 'file-upload') {
+                targetModel = this.artworkFile;
+            }
+            else if (TYPE === 'title') {
+                targetModel = this.artworkTitle;
+            }
+            else if (TYPE === 'description') {
+                targetModel = this.artworkDesc;
+            }
+            else if (TYPE === 'tags') {
+                targetModel = this.artworkTags;
+            }
+
+            return this.$validator.validate(this.pageType, targetModel).then();
+        },
         submit () {
+            this.validate().then(res => {
+                if (!res) return false;
+            });
+
             let contentId = null;
 
             this.postData()

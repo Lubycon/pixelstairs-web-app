@@ -26,6 +26,10 @@ export default {
         tags: {
             type: Array,
             required: true
+        },
+        hasError: {
+            type: Boolean,
+            default: false
         }
     }
 };

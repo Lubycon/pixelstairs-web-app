@@ -16,6 +16,7 @@
     <b-form-file
         v-show="!preview"
         class="file-upload--dropzone"
+        :class="{ 'error': hasError }"
         ref="fileinput"
         accept="image/jpeg, image/png, image/gif"
         v-model="file"
@@ -44,6 +45,12 @@ export default {
     name: 'ArtworkFileStep',
     components: {
         ImagePreview
+    },
+    props: {
+        hasError: {
+            type: Boolean,
+            default: false
+        }
     },
     data () {
         return {
