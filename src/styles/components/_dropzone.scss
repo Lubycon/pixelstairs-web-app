@@ -2,7 +2,7 @@
     $size: 500px !default;
     position: relative;
     width: 100%;
-    height: $size;
+    height: $size / 2;
 
     input[type="file"] {
         width: 100%;

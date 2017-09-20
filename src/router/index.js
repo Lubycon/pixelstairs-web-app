@@ -187,8 +187,7 @@ const router = new VueRouter({
         name: 'artwork-upload',
         components: {
             header: Header,
-            content: ArtworkUpload,
-            footer: Footer
+            content: ArtworkUpload
         }
     }, {
         path: '/artwork/upload/success/:artId',

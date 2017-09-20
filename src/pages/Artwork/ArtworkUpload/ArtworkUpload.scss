@@ -1,29 +1,62 @@
+@import 'src/styles/utils/__module__';
+
+.upload-form {
+    width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    @include mq('sm') {
+        width: 100%;
+    }
+    &::before {
+        display: inline-block;
+        content: '';
+        height: calc(100vh - #{$global-header-height * 2});
+        vertical-align: middle;
+    }
+    .card {
+        display: inline-block;
+        width: 100%;
+        vertical-align: middle;
+        background-color: transparent;
+        box-shadow: none;
+        margin-top: $global-header-height;
+    }
+}
+
 section {
-    &[data-section="intro"] {
-        text-align: center;
-        margin: 40px 0;
+    margin: 0 auto;
+    text-align: center;
+}
+
+section[data-section="forms"] {
+    $title-margin: 20px;
+    margin-bottom: $global-header-height;
+
+    div[data-page="intro"] {
         h1 {
-            font-size: 24px;
-            font-weight: bolder;
-            margin: 20px 0;
+            font-weight: bold;
+            margin-bottom: $title-margin;
+        }
+    }
+
+    div[data-type="form-desc"] {
+        margin-bottom: $global-header-height;
+        h1 {
+            margin-bottom: $title-margin;
+            font-weight: lighter;
         }
         p {
+            margin-bottom: 0;
             font-size: 14px;
+            strong {
+                font-weight: bold;
+            }
         }
     }
+}
 
-    &[data-section="pages"] {
-        max-width: 800px;
-        margin: 0 auto;
-
-        .file-upload--dropzone {
-            height: 200px;
-        }
-    }
-
-    &[data-section="control"] {
-        max-width: 800px;
-        margin: 0 auto;
-        text-align: center;
+section[data-section="control"] {
+    button.btn {
+        padding: 10px 60px;
     }
 }

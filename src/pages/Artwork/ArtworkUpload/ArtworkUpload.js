@@ -8,17 +8,24 @@
 import APIService from 'src/services/API.service';
 
 import { ARTWORK_UPLOAD_FORM } from 'src/constants/form.constant';
-import TagInput from 'src/components/Tag.vue';
+
+import ArtworkFileStep from 'src/components/forms/steps/ArtworkFile.step.vue';
+import ArtworkTitleStep from 'src/components/forms/steps/ArtworkTitle.step.vue';
+import ArtworkDescStep from 'src/components/forms/steps/ArtworkDesc.step.vue';
+import ArtworkTagsStep from 'src/components/forms/steps/ArtworkTags.step.vue';
 
 export default {
     name: 'ArtworkUpload',
     components: {
-        TagInput
+        ArtworkFileStep,
+        ArtworkTitleStep,
+        ArtworkDescStep,
+        ArtworkTagsStep
     },
     data () {
         return {
             formList: ARTWORK_UPLOAD_FORM,
-            previewImgSrc: null,
+            previewImg: null,
 
             artworkFile: null,
             artworkTitle: null,
@@ -29,15 +36,9 @@ export default {
         };
     },
     methods: {
-        onChangedFile () {
-            let reader = new FileReader();
-            reader.onload = e => {
-                this.previewImgSrc = e.target.result;
-            };
-            reader.readAsDataURL(this.artworkFile);
-        },
-        resetFile () {
-            this.$refs.fileinput.reset();
+        onChange (data) {
+            this.artworkFile = data.file;
+            this.previewImg = data.preview;
         },
         nextPage () {
             this.$validator.validateAll();
