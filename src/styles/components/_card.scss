@@ -6,6 +6,13 @@
 
 .card.card--center-form {
     @include floatToCenter;
+    background: transparent;
+    box-shadow: none;
+    input {
+        font-size: 14px;
+        padding: 0.75rem 1rem;
+        background: transparent;
+    }
     h1 {
         text-align: center;
         font-size: 30px;
@@ -14,5 +21,10 @@
     }
     .btn {
         width: 100%;
+    }
+    .btn[type="submit"] {
+        margin: 20px 0;
+        width: 100%;
+        background-color: $bluegrey-800;
     }
 }

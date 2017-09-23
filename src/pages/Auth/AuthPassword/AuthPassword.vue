@@ -10,7 +10,7 @@
                     v-model="password"
                 />
             </b-form-group>
-            <b-button type="submit" variant="primary">
+            <b-button type="submit">
                 Next
             </b-button>
         </b-form>

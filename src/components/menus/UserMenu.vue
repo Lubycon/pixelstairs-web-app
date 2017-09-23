@@ -4,8 +4,8 @@
 <template>
 <b-dropdown class="user-menu--basic dropdown" right>
     <div slot="button-content">
-        <img v-if="!hasProfileSrc" :src="userProfileSrc">
-        <img v-else :src="userProfileSrc">
+        <img v-if="!hasProfileSrc" :src="myProfileSrc">
+        <img v-else :src="myProfileSrc">
         <h3>{{ me.nickname }}</h3>
     </div>
 
@@ -62,7 +62,7 @@ export default {
     computed: {
         ...mapGetters({
             me: 'getAuthUser',
-            userProfileSrc: 'getAuthUserProfileSrc',
+            myProfileSrc: 'getAuthUserProfileSrc',
             hasProfileSrc: 'hasProfileSrc'
         })
     },

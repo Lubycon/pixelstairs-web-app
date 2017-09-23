@@ -22,7 +22,7 @@ export default {
     computed: {
         ...mapGetters({
             me: 'getAuthUser',
-            userProfileSrc: 'getUserProfileSrc',
+            myProfileSrc: 'getAuthUserProfileSrc',
             hasProfileSrc: 'hasProfileSrc'
         })
     },

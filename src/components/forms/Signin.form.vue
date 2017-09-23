@@ -34,11 +34,6 @@
 <style lang="scss">
 @import 'src/styles/utils/__module__';
 
-.btn[type="submit"] {
-    margin: 20px 0;
-    width: 100%;
-    background-color: $bluegrey-800;
-}
 .signup-btn {
     float: right;
     color: $bluegrey-800;

@@ -10,7 +10,7 @@
                     v-model="password"
                 />
             </b-form-group>
-            <b-button type="submit" variant="primary">
+            <b-button type="submit">
                 Change
             </b-button>
             <b-button type="button" class="btn-border" :to="{ name: 'home' }">

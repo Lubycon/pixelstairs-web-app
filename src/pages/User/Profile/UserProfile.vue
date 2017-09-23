@@ -9,6 +9,11 @@
             <h1>{{ user.nickname }}</h1>
             <h4>{{ user.email }}</h4>
         </div>
+        <div class="col-12" v-if="isMyProfile" data-name="user-control">
+            <b-button class="btn-border" :to="{ name: 'user-setting', params: { userId: me.id } }">
+                Setting
+            </b-button>
+        </div>
     </div>
     <ul class="row" data-name="artworks">
         <!-- SSR FOR SEO -->
