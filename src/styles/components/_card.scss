@@ -6,4 +6,13 @@
 
 .card.card--center-form {
     @include floatToCenter;
+    h1 {
+        text-align: center;
+        font-size: 30px;
+        font-weight: lighter;
+        margin-bottom: 40px;
+    }
+    .btn {
+        width: 100%;
+    }
 }
