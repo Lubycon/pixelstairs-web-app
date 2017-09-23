@@ -1,32 +1,61 @@
 @import 'src/styles/utils/__module__';
 
+$section-margin: 20px;
+
+.container {
+    margin-top: $global-header-height;
+}
+
+section.row {
+    max-width: 600px;
+    margin: $section-margin auto;
+    h1 {
+        width: 100%;
+        text-align: center;
+        font-weight: lighter;
+    }
+}
+
 section[data-section="profile-img"] {
     .setting--profile-img {
-        position: relative;
-        overflow: hidden;
-        cursor: pointer;
-        border-radius: 50%;
+        $profile-img-size: 200px;
 
-        &:hover {
-            .overlay {
-                opacity: 1;
+        position: relative;
+        width: $profile-img-size;
+        height: $profile-img-size;
+        margin: $section-margin auto;
+
+        img {
+            overflow: hidden;
+            border-radius: 50%;
+        }
+
+        .setting--change-btn {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: $profile-img-size / 4;
+            height: $profile-img-size / 4;
+            background-color: $white;
+            border-radius: 50%;
+            border: none;
+            box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            i {
+                color: $grey-900;
+                vertical-align: middle;
             }
         }
-    }
-
-    .overlay {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background-color: rgba(0,0,0,0.5);
-        opacity: 0;
-        transition: opacity 0.2s ease-in-out;
     }
 
     // Actual file element
     .file-upload--profile {
         display: none;
+    }
+}
+
+section[data-section="control"] {
+    .btn {
+        width: 100%;
     }
 }

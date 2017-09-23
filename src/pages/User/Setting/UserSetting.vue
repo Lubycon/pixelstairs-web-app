@@ -1,19 +1,19 @@
 <template>
 <div class="container">
     <section class="row">
-        <h1>Account Setting</h1>
+        <h1>Manage your Account</h1>
     </section>
 
     <section class="row" data-section="profile-img">
-        <div class="setting--profile-img" @click="uploadTrigger">
+        <div class="setting--profile-img" >
             <!-- Profile Image DOM -->
-            <img v-if="!newProfileSrc && hasProfileSrc" :src="myProfileSrc">
-            <img v-else-if="!newProfileSrc && !hasProfileSrc" :src="myProfileSrc">
-            <img v-else="newProfileSrc" :src="newProfileSrc">
+            <img v-if="!croppedNewProfileRaw && hasProfileSrc" :src="myProfileSrc">
+            <img v-else-if="!croppedNewProfileRaw && !hasProfileSrc" :src="myProfileSrc">
+            <img v-else="croppedNewProfileRaw" :src="croppedNewProfileRaw">
             <!-- /Profile Image DOM -->
-            <div class="setting--profile-img overlay">
-                Change
-            </div>
+            <button class="setting--change-btn icon-btn" @click="uploadTrigger">
+                <i class="pxs-pen"></i>
+            </button>
         </div>
         <b-form-file
             class="file-upload--profile"
@@ -26,7 +26,7 @@
     </section>
 
     <section class="row" data-section="info">
-        <b-form-group label="Email">
+        <b-form-group label="Email" class="col-12">
             <b-form-input
                 name="Email"
                 type="email"
@@ -35,7 +35,7 @@
                 readonly
             ></b-form-input>
         </b-form-group>
-        <b-form-group label="Name">
+        <b-form-group label="Name" class="col-12">
             <b-form-input
                 name="name"
                 type="text"
@@ -45,8 +45,14 @@
     </section>
 
     <section class="row" data-section="control">
-        <b-button @click="postData">Save</b-button>
+        <div class="col-12">
+            <b-button @click="postData">Save</b-button>
+        </div>
     </section>
+
+    <!-- MODAL -->
+    <image-crop-modal ref="cropModal" :image="newProfileRaw" @cropped="setThumbnail" />
+    <!-- /MODAL -->
 </div>
 </template>
 

@@ -7,15 +7,19 @@
 
 import $ from 'jquery';
 import { mapGetters, mapActions } from 'vuex';
-
+import ImageCropModal from 'src/components/modals/ImageCropModal.vue';
 import APIService from 'src/services/API.service';
 
 export default {
     name: 'UserSetting',
+    components: {
+        ImageCropModal
+    },
     data () {
         return {
             newProfile: null,
-            newProfileSrc: null,
+            newProfileRaw: null,
+            croppedNewProfileRaw: null,
             newUsername: null
         };
     },
@@ -27,9 +31,12 @@ export default {
         })
     },
     methods: {
-        ...mapActions({
-            setUser: 'setUser'
-        }),
+        showModal () {
+            this.$refs.cropModal.show();
+        },
+        hideModal () {
+            this.$refs.cropModal.hide();
+        },
         uploadTrigger () {
             let $fileEl = $(this.$refs.fileinput.$el).find('input[type="file"]');
             $fileEl.trigger('click');
@@ -37,13 +44,16 @@ export default {
         onChangedFile () {
             let reader = new FileReader();
             reader.onload = e => {
-                this.newProfileSrc = e.target.result;
+                this.$set(this, 'newProfileRaw', e.target.result);
+                this.showModal();
             };
             reader.readAsDataURL(this.newProfile);
         },
+        setThumbnail (data) {
+            this.$set(this, 'croppedNewProfileRaw', data);
+        },
         postData () {
-            // let data = { ...this.me };
-            let data = this.me;
+            let data = { ...this.me };
             data.nickname = this.newUsername;
             data.profileImg = {
                 id: null,
@@ -53,8 +63,8 @@ export default {
                 isPixelOwn: null
             };
 
-            if (this.newProfileSrc) {
-                data.profileImg.file = this.newProfileSrc;
+            if (this.newProfile) {
+                data.profileImg.file = this.croppedNewProfileRaw;
             }
 
             APIService.resource('users.info', { id: data.id }).put(data)
@@ -63,14 +73,17 @@ export default {
                 delete res.result.gender;
                 delete res.result.birthday;
 
-                let user = res.result;
-                this.setUser(user);
+                let me = res.result;
+                this.setUser(me);
             });
-        }
+        },
+        ...mapActions({
+            setUser: 'setUser'
+        })
     },
     watch: {
-        user (user) {
-            this.$set(this, 'newUsername', user.nickname);
+        me (me) {
+            this.$set(this, 'newUsername', me.nickname);
         }
     }
 };
