@@ -13,11 +13,11 @@ export function isAuthorized (state) {
     return state.isAuthorized;
 }
 
-export function getUser (state) {
+export function getAuthUser (state) {
     return state.isAuthorized && state.user;
 }
 
-export function getUserProfileSrc (state) {
+export function getAuthUserProfileSrc (state) {
     return state.userProfileSrc;
 }
 
@@ -27,8 +27,8 @@ export function hasProfileSrc (state) {
 
 export default {
     getToken,
-    getUser,
-    getUserProfileSrc,
+    getAuthUser,
+    getAuthUserProfileSrc,
     isAuthorized,
     hasProfileSrc
 };

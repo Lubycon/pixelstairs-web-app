@@ -32,7 +32,12 @@ export default {
         };
     },
     computed: {
+        isMyProfile () {
+            return this.isAuthorized && (this.user.id === this.me.id);
+        },
         ...mapGetters({
+            isAuthorized: 'isAuthorized',
+            me: 'getAuthUser',
             user: 'getUserData',
             firstUserContents: 'getUserContents'
         })

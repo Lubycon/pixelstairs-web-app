@@ -6,10 +6,10 @@
     <div slot="button-content">
         <img v-if="!hasProfileSrc" :src="userProfileSrc">
         <img v-else :src="userProfileSrc">
-        <h3>{{ user.nickname }}</h3>
+        <h3>{{ me.nickname }}</h3>
     </div>
 
-    <b-dropdown-item :to="{ name: 'user-setting', params: { userId: user.id } }">
+    <b-dropdown-item :to="{ name: 'user-setting', params: { userId: me.id } }">
         Settings
     </b-dropdown-item>
     <b-dropdown-item :to="{ name: 'auth-password' }">
@@ -61,8 +61,8 @@ export default {
     name: 'UserMenu',
     computed: {
         ...mapGetters({
-            user: 'getUser',
-            userProfileSrc: 'getUserProfileSrc',
+            me: 'getAuthUser',
+            userProfileSrc: 'getAuthUserProfileSrc',
             hasProfileSrc: 'hasProfileSrc'
         })
     },

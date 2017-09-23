@@ -16,13 +16,13 @@ export default {
     },
     computed: {
         ...mapGetters({
-            user: 'getUser'
+            me: 'getAuthUser'
         })
     },
     methods: {
         submit () {
             let data = {
-                email: this.user.email,
+                email: this.me.email,
                 password: this.password
             };
 

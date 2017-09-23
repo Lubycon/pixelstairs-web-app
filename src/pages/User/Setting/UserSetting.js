@@ -21,7 +21,7 @@ export default {
     },
     computed: {
         ...mapGetters({
-            user: 'getUser',
+            me: 'getAuthUser',
             userProfileSrc: 'getUserProfileSrc',
             hasProfileSrc: 'hasProfileSrc'
         })
@@ -42,8 +42,8 @@ export default {
             reader.readAsDataURL(this.newProfile);
         },
         postData () {
-            // let data = { ...this.user };
-            let data = this.user;
+            // let data = { ...this.me };
+            let data = this.me;
             data.nickname = this.newUsername;
             data.profileImg = {
                 id: null,

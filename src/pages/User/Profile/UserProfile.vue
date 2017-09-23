@@ -1,18 +1,18 @@
 <template>
 <div class="container">
-    <div class="row">
-        <div class="col-3">
+    <div class="row" data-name="user">
+        <div class="col-12" data-name="user-profile">
             <img v-if="!user.profileImg" :src="defaultProfile">
             <img v-else :src="user.profileImg.file + '320'">
         </div>
-        <div class="col-9">
+        <div class="col-12" data-name="user-info">
             <h1>{{ user.nickname }}</h1>
             <h4>{{ user.email }}</h4>
         </div>
     </div>
-    <ul class="row">
+    <ul class="row" data-name="artworks">
         <!-- SSR FOR SEO -->
-        <li class="col-12 col-lg-4" v-for="artwork in firstUserContents.contents">
+        <li class="col-12 col-md-6 col-lg-3" v-for="artwork in firstUserContents.contents">
             <artwork-card
                 :art-id="artwork.id"
                 :title="artwork.title"

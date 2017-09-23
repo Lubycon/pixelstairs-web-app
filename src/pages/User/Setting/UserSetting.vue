@@ -30,7 +30,7 @@
             <b-form-input
                 name="Email"
                 type="email"
-                :value="user.email"
+                :value="me.email"
                 disabled
                 readonly
             ></b-form-input>

@@ -1,0 +1,39 @@
+@import 'src/styles/utils/__module__';
+
+.container {
+    margin-top: $global-header-height;
+}
+
+div.row[data-name="user"] {
+    $section-margin: 20px;
+    margin-bottom: $global-header-height;
+    padding-bottom: $global-header-height;
+    border-bottom: 1px solid $grey-300;
+
+    div[data-name="user-profile"] {
+        $profile-size: 150px;
+        text-align: center;
+        margin-bottom: $section-margin;
+        img {
+            @include circleFrame($profile-size);
+        }
+    }
+    div[data-name="user-info"] {
+        * {
+            text-align: center;
+            margin-bottom: $section-margin / 4;
+        }
+        h1 {
+            font-weight: bold;
+            font-size: 24px;
+        }
+        h4 {
+            font-size: 18px;
+        }
+    }
+}
+ul.row[data-name="artworks"] {
+    li {
+        padding: 8px;
+    }
+}

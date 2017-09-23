@@ -15,7 +15,7 @@
     <div class="container">
         <ul class="row cards-wrapper">
             <!-- SSR FOR SEO -->
-            <li class="col-12 col-lg-3" v-for="artwork in firstPageArtworks.contents">
+            <li class="col-12 col-md-6 col-lg-3" v-for="artwork in firstPageArtworks.contents">
                 <artwork-card
                     :art-id="artwork.id"
                     :title="artwork.title"
