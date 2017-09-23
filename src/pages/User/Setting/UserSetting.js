@@ -85,5 +85,8 @@ export default {
         me (me) {
             this.$set(this, 'newUsername', me.nickname);
         }
+    },
+    mounted () {
+        this.$set(this, 'newUsername', this.me.nickname);
     }
 };
