@@ -104,7 +104,7 @@ app.get('*', (req, res) => {
 
 let port;
 if(isProd) {
-    port = 8000;
+    port = 3000;
 }
 else {
     port = process.env.PORT || 3000;

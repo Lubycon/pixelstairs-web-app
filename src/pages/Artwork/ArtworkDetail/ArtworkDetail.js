@@ -16,7 +16,7 @@ export default {
         return {
             title: this.artworkData ? this.artworkData.title : 'Loading...',
             meta: [{
-                vmid: 'description', name: 'description', content: this.artworkData ? this.artworkData.desc : 'Loading...'
+                vmid: 'title', property: 'title', content: this.artworkData ? this.artworkData.title : 'Loading...'
             }, {
                 vmid: 'og:title', property: 'og:title', content: this.artworkData ? this.artworkData.title + ' - Pixelstairs' : 'Loading...'
             }, {
@@ -70,7 +70,7 @@ export default {
 
             req().then(res => {}, err => {
                 if (err && err.status === 403) {
-                    console.error('Need Signin!');
+                    console.error('Need Signin! => Sign up modal');
                 }
             });
         },

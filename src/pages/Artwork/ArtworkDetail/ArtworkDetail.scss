@@ -37,11 +37,9 @@ section[data-name="artwork"] {
     div[data-name="image"] {
         box-shadow: 0 1px 10px rgba(0, 0, 0, 0.4);
         margin-bottom: $row-margin;
-        img {
-            background: {
-                repeat: no-repeat;
-                size: cover;
-            }
+        background: {
+            repeat: no-repeat;
+            size: cover;
         }
     }
     p[data-name="description"] {

@@ -6,8 +6,8 @@
             <h1 class="col-12" data-name="title">{{ artworkData.title }}</h1>
         </div>
         <div class="row">
-            <div class="col-12" data-name="image">
-                <img :src="artworkImage" :style="{ 'background-image': `url(${thumbnail}` }" :alt="`artwork-img-${artworkData.id}`">
+            <div class="col-12" data-name="image" :style="{ 'background-image': `url(${thumbnail}` }">
+                <img :src="artworkImage" :alt="`artwork-img-${artworkData.id}`">
             </div>
         </div>
         <div class="row">
