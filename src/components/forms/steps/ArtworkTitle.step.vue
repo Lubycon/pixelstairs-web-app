@@ -15,6 +15,8 @@
 </template>
 
 <style lang="scss" scoped>
+@import 'src/styles/utils/__module__';
+
 .form-control {
     background-color: transparent;
     padding: 12px 12px;

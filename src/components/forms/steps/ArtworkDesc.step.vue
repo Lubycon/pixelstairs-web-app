@@ -19,6 +19,9 @@
 textarea {
     resize: none;
     background-color: transparent;
+    &:focus {
+        background-color: transparent;
+    }
 }
 </style>
 

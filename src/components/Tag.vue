@@ -29,7 +29,6 @@
     ul.form-control {
         padding: 0;
         border: none;
-        background: transparent;
         li {
             padding: 6px 12px;
             * {
@@ -43,6 +42,7 @@ ul.form-control {
     margin: 0;
     width: 100%;
     text-align: left;
+    background-color: transparent;
     li {
         display: inline-block;
         padding: 6px 7px 6px 12px;
