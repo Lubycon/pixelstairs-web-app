@@ -14,29 +14,21 @@
                     <artwork-file-step
                         v-if="page.type === 'file-upload'"
                         :has-error="errors.has('file-upload')"
-                        data-vv-name="file-upload"
-                        v-validate="'required'"
-                        @change="onChange"
+                        @change="onChangeFile"
                     />
                     <artwork-title-step
                         v-else-if="page.type === 'title'"
-                        data-vv-name="title"
-                        v-validate="'required'"
                         v-model="artworkTitle"
                         :has-error="errors.has('title')"
                     />
                     <artwork-desc-step
                         v-else-if="page.type === 'description'"
-                        data-vv-name="description"
-                        v-validate="'required'"
                         v-model="artworkDesc"
                         :has-error="errors.has('description')"
                     />
                     <artwork-tags-step
                         v-else-if="page.type === 'tag'"
                         :tags="artworkTags"
-                        data-vv-name="tags"
-                        v-validate="'required'"
                         :has-error="errors.has('tags')"
                     />
                 </div>

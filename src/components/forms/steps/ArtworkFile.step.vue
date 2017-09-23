@@ -14,12 +14,14 @@
         @click="open"
     />
     <b-form-file
+        name="file"
         v-show="!preview"
         class="file-upload--dropzone"
-        :class="{ 'error': hasError }"
+        :class="{ 'has-error': this.errors.any() }"
         ref="fileinput"
         accept="image/jpeg, image/png, image/gif"
         v-model="file"
+        v-validate="'required'"
         @input="onChange"
     ></b-form-file>
     <div class="replace-btn" v-if="preview">
@@ -43,14 +45,9 @@ import ImagePreview from 'src/components/ImagePreview.vue';
 
 export default {
     name: 'ArtworkFileStep',
+    inject: [ '$validator' ],
     components: {
         ImagePreview
-    },
-    props: {
-        hasError: {
-            type: Boolean,
-            default: false
-        }
     },
     data () {
         return {

@@ -19,6 +19,7 @@ import TagInput from 'src/components/Tag.vue';
 
 export default {
     name: 'ArtworkTagsStep',
+    inject: [ '$validator' ],
     components: {
         TagInput
     },

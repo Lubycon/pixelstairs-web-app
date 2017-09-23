@@ -8,7 +8,7 @@
                 v-model.trim="email"
                 placeholder="Email"
                 v-validate="'required|email'"
-                :class="{ 'error': errors.has('email') }"
+                :class="{ 'has-error': errors.has('email') }"
             />
         </b-form-group>
         <b-form-group>
@@ -18,7 +18,7 @@
                 v-model.trim="password"
                 placeholder="Password"
                 v-validate="'required'"
-                :class="{ 'error': errors.has('password') }"
+                :class="{ 'has-error': errors.has('password') }"
             />
         </b-form-group>
         <b-button type="submit">

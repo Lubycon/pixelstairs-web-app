@@ -4,9 +4,12 @@
         <h1>Describe about your artwork!</h1>
     </div>
     <b-form-textarea
-        :class="{ 'error': hasError }"
+        name="description"
+        :class="{ 'has-error': this.errors.any() }"
         :rows="3"
         :max-rows="6"
+        v-validate="'required'"
+        v-model="desc"
         @input="update"
     ></b-form-textarea>
 </div>
@@ -21,11 +24,11 @@ textarea {
 <script>
 export default {
     name: 'ArtworkDescStep',
-    props: {
-        hasError: {
-            type: Boolean,
-            default: false
-        }
+    inject: [ '$validator' ],
+    data () {
+        return {
+            desc: null
+        };
     },
     methods: {
         update (value) {

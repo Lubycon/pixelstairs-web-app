@@ -8,7 +8,7 @@
                 v-model.trim="email"
                 placeholder="ex) evan1125@pixelstairs.com"
                 v-validate="'required|email'"
-                :class="{ 'error': errors.has('email') }"
+                :class="{ 'has-error': errors.has('email') }"
             />
             <b-form-text v-if="errors.has('email')" class="is-invalid">{{ errors.first('email') }}</b-form-text>
         </b-form-group>
@@ -18,7 +18,7 @@
                 name="password"
                 v-model.trim="password"
                 v-validate="'required|security'"
-                :class="{ 'error': errors.has('password') }"
+                :class="{ 'has-error': errors.has('password') }"
             />
             <b-form-text v-if="errors.has('password')" class="is-invalid">{{ errors.first('password') }}</b-form-text>
             <b-form-text class="has-score" :class="passwordLevel">
@@ -31,7 +31,7 @@
                 name="name"
                 v-model.trim="name"
                 v-validate="{ rules: { regex: regex.name, required: true } }"
-                :class="{ 'error': errors.has('name') }"
+                :class="{ 'has-error': errors.has('name') }"
             />
             <b-form-text v-if="errors.has('name')" class="is-invalid">{{ errors.first('name') }}</b-form-text>
         </b-form-group>

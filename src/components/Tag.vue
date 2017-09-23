@@ -1,6 +1,6 @@
 <template>
 <div class="vue-tag-component" :class="{ 'readonly': readonly }">
-    <ul class="form-control vue-tag-component--tags">
+    <ul class="form-control vue-tag-component--tags" :class="{ 'has-error': this.errors.any() }">
         <li class="vue-tag-component--tag" v-for="(tag, idx) in tags">
             <div class="vue-tag-component--tag-wrapper">
                 <span>{{tag}}</span>
@@ -10,6 +10,7 @@
         <input
             type="text"
             v-if="!readonly"
+            v-validate="'required'"
             v-model.trim="currentTag"
             @keydown.enter="addTag"
             @keydown.space="addTag"
@@ -104,7 +105,8 @@ export default {
     },
     methods: {
         addTag () {
-            if (!this.currentTag) {
+            this.$validator.validateAll();
+            if (this.errors.any()) {
                 return;
             }
             this.tags.push(this.currentTag);

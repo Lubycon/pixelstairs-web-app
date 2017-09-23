@@ -1,5 +1,5 @@
-input, textarea {
-    &.error {
+.form-control {
+    &.has-error {
         border-color: $red;
     }
 }
