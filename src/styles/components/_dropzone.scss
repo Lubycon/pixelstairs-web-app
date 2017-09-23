@@ -41,7 +41,7 @@
         content: 'Drop file here!' !important;
     }
 
-    &.error {
+    &.has-error {
         .custom-file-control {
             border-color: $red;
         }

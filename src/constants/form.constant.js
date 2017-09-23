@@ -6,7 +6,7 @@
 */
 
 export const ARTWORK_UPLOAD_FORM = [{
-    type: 'file-upload'
+    type: 'file'
 }, {
     type: 'title'
 }, {

@@ -12,24 +12,24 @@
                 </div>
                 <div data-page="steps" v-for="(page, idx) in formList" v-show="idx+1 === pageIndex">
                     <artwork-file-step
-                        v-if="page.type === 'file-upload'"
-                        :has-error="errors.has('file-upload')"
+                        v-if="page.type === 'file'"
+                        :name="page.type"
                         @change="onChangeFile"
                     />
                     <artwork-title-step
                         v-else-if="page.type === 'title'"
+                        :name="page.type"
                         v-model="artworkTitle"
-                        :has-error="errors.has('title')"
                     />
                     <artwork-desc-step
                         v-else-if="page.type === 'description'"
+                        :name="page.type"
                         v-model="artworkDesc"
-                        :has-error="errors.has('description')"
                     />
                     <artwork-tags-step
                         v-else-if="page.type === 'tag'"
+                        :name="page.type"
                         :tags="artworkTags"
-                        :has-error="errors.has('tags')"
                     />
                 </div>
             </section>

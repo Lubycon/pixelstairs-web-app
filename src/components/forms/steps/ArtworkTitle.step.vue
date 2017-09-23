@@ -4,8 +4,8 @@
         <h1>What is the title of your artwork?</h1>
     </div>
     <b-form-input
-        name="title"
-        :class="{ 'has-error': this.errors.any() }"
+        :name="name"
+        :class="{ 'has-error': this.errors.has(name) }"
         type="text"
         v-model="title"
         v-validate="'required'"
@@ -28,6 +28,12 @@
 export default {
     name: 'ArtworkTitleStep',
     inject: [ '$validator' ],
+    props: {
+        name: {
+            type: String,
+            default: 'title'
+        }
+    },
     data () {
         return {
             title: null

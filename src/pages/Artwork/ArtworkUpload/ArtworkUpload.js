@@ -4,7 +4,6 @@
     @author: Evan Moon
     @created_at: 2017.09.05
 */
-// import { ValidateParentMixin } from 'src/mixins/validate-parent.mixin';
 
 import APIService from 'src/services/API.service';
 
@@ -43,13 +42,31 @@ export default {
             this.previewImg = data.preview;
         },
         nextPage () {
-            // this.$validator.validateAll();
-            this.pageIndex++;
+            const CURRENT_FORM = this.formList[this.pageIndex - 1];
+            if (CURRENT_FORM) {
+                this.$validator.validateAll();
+                if (!this.errors.has(CURRENT_FORM.type)) {
+                    this.pageIndex++;
+                    this.errors.clear();
+                }
+            }
+            else {
+                this.pageIndex++;
+            }
         },
         prevPage () {
             this.pageIndex--;
         },
+        validate () {
+            this.$validator.validateAll();
+            this.$validator.validate('tag', this.artworkTags);
+        },
         submit () {
+            this.validate();
+            if (this.errors.any()) {
+                return false;
+            }
+
             let contentId = null;
 
             this.postData()

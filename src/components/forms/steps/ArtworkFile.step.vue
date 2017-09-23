@@ -14,10 +14,10 @@
         @click="open"
     />
     <b-form-file
-        name="file"
+        :name="name"
         v-show="!preview"
         class="file-upload--dropzone"
-        :class="{ 'has-error': this.errors.any() }"
+        :class="{ 'has-error': this.errors.has(name) }"
         ref="fileinput"
         accept="image/jpeg, image/png, image/gif"
         v-model="file"
@@ -48,6 +48,12 @@ export default {
     inject: [ '$validator' ],
     components: {
         ImagePreview
+    },
+    props: {
+        name: {
+            type: String,
+            default: 'file'
+        }
     },
     data () {
         return {

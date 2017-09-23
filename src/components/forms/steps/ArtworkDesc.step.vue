@@ -4,8 +4,8 @@
         <h1>Describe about your artwork!</h1>
     </div>
     <b-form-textarea
-        name="description"
-        :class="{ 'has-error': this.errors.any() }"
+        :name="name"
+        :class="{ 'has-error': this.errors.has(name) }"
         :rows="3"
         :max-rows="6"
         v-validate="'required'"
@@ -18,6 +18,7 @@
 <style lang="scss" scoped>
 textarea {
     resize: none;
+    background-color: transparent;
 }
 </style>
 
@@ -25,6 +26,12 @@ textarea {
 export default {
     name: 'ArtworkDescStep',
     inject: [ '$validator' ],
+    props: {
+        name: {
+            type: String,
+            default: 'description'
+        }
+    },
     data () {
         return {
             desc: null
