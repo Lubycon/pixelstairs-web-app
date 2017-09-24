@@ -4,18 +4,37 @@
 <template>
 <b-dropdown class="user-menu--basic dropdown" right>
     <div slot="button-content">
-        <img v-if="!hasProfileSrc" :src="myProfileSrc">
-        <img v-else :src="myProfileSrc">
-        <h3>{{ me.nickname }}</h3>
+        <img data-name="user-profile-image" v-if="!hasProfileSrc" :src="myProfileSrc">
+        <img data-name="user-profile-image" v-else :src="myProfileSrc">
     </div>
 
-    <b-dropdown-item :to="{ name: 'user-setting', params: { userId: me.id } }">
-        Settings
+    <b-dropdown-item>
+        <div data-name="user">
+            <div data-name="user-profile">
+                <img data-name="user-profile-image" v-if="!hasProfileSrc" :src="myProfileSrc">
+                <img data-name="user-profile-image" v-else :src="myProfileSrc">
+            </div>
+            <div data-name="user-info">
+                <h3 data-name="user-name">{{ me.nickname }}</h3>
+                <h4 data-name="user-email">{{ me.email }}</h4>
+                <b-button
+                    size="sm"
+                    :to="{ name: 'user-setting', params: { userId: me.id } }"
+                >
+                    My Account
+                </b-button>
+            </div>
+        </div>
+        <div data-name="control">
+            <b-button
+                size="sm"
+                class="btn-border signout-btn"
+                @click="signout"
+            >
+                Sign out
+            </b-button>
+        </div>
     </b-dropdown-item>
-    <b-dropdown-item :to="{ name: 'auth-password' }">
-        Change password
-    </b-dropdown-item>
-    <b-dropdown-item @click="signout">Sign out</b-dropdown-item>
 </b-dropdown>
 </template>
 
@@ -23,33 +42,77 @@
 @import 'src/styles/utils/__module__';
 
 .user-menu--basic.dropdown {
-    &.show {
-        .btn-secondary.dropdown-toggle {
-            background-color: transparent;
-        }
-    }
     .dropdown-toggle {
+        $profile-image-size: 40px;
+
         border: none;
         background-color: transparent;
+        padding: 0;
+        margin: 0;
         &:focus {
             box-shadow: none;
+        }
+        &:hover {
+            img {
+                box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+            }
         }
         &::after {
             display: none;
         }
-        img {
-            @include circleFrame(30px);
-            margin-right: 10px;
-        }
-        h3 {
-            display: inline-block;
-            font-size: 14px;
+
+        img[data-name="user-profile-image"] {
+            @include circleFrame($profile-image-size);
         }
     }
 
-    .dropdown-menu.show {
+    .dropdown-menu {
+        $menu-padding: 20px;
+        $profile-image-size: 70px;
+
+        width: 350px;
         left: auto;
         right: 0;
+        padding: $menu-padding $menu-padding;
+        box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+        a.dropdown-item {
+            box-shadow: none;
+            background-color: $white;
+            padding: 0;
+            cursor: default;
+        }
+        div[data-name="user-profile"] {
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: $menu-padding;
+            img[data-name="user-profile-image"] {
+                @include circleFrame($profile-image-size);
+            }
+        }
+        div[data-name="user-info"] {
+            display: inline-block;
+            vertical-align: middle;
+            h3[data-name="user-name"] {
+                font-size: 18px;
+                font-weight: bold;
+                margin-bottom: $menu-padding / 3;
+            }
+            h4[data-name="user-email"] {
+                font-size: 14px;
+                color: $grey-500;
+                margin-bottom: $menu-padding;
+            }
+        }
+
+        div[data-name="control"] {
+            margin-top: $menu-padding;
+            padding-top: $menu-padding;
+            border-top: 1px solid $grey-300;
+            text-align: right;
+            .signout-btn {
+                font-size: 14px;
+            }
+        }
     }
 }
 </style>
