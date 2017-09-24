@@ -1,21 +1,24 @@
 <template>
 <div class="account-form">
-    <ul>
-        <li v-for="(opt,idx) in options">
-            <h3>{{ opt.question.en }}</h3>
+    <b-form @submit.prevent="submit" autocomplete="off" novalidate>
+        <b-form-group
+            :key="opt.question_id"
+            :label="opt.question.en"
+            v-for="(opt,idx) in options"
+        >
             <b-form-select
                 :options="opt.answer"
                 value-field="id"
                 text-field="en"
                 v-model="signdropData.answerIds[idx]"
             />
-        </li>
-    </ul>
-    <button class="btn" @click="submit">Sign drop</button>
+        </b-form-group>
+        <b-button type="submit" class="btn">Sign drop</b-button>
+    </b-form>
 </div>
 </template>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
 </style>
 

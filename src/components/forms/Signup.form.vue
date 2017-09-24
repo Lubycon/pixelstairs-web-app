@@ -30,7 +30,7 @@
                 type="text"
                 name="name"
                 v-model.trim="name"
-                v-validate="{ rules: { regex: regex.name, required: true } }"
+                v-validate="{ rules: { required: true, regex: regex.name } }"
                 :class="{ 'has-error': errors.has('name') }"
             />
             <b-form-text v-if="errors.has('name')" class="is-invalid">{{ errors.first('name') }}</b-form-text>

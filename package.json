@@ -59,6 +59,7 @@
     "vuex-router-sync": "^4.1.2"
   },
   "devDependencies": {
+    "autoprefixer": "^7.1.4",
     "babel-core": "^6.25.2",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^6.4.1",
@@ -87,6 +88,7 @@
     "mocha": "^3.0.2",
     "node-sass": "^4.5.3",
     "phantomjs-prebuilt": "^2.1.10",
+    "postcss-loader": "^2.0.5",
     "rimraf": "^2.6.0",
     "sass-loader": "^6.0.6",
     "sinon": "^2.1.0",
