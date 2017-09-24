@@ -13,11 +13,18 @@
         padding: 0.75rem 1rem;
         background: transparent;
     }
-    h1 {
-        text-align: center;
-        font-size: 30px;
-        font-weight: lighter;
+    div[data-section="form-desc"] {
         margin-bottom: 40px;
+        h1 {
+            text-align: center;
+            font-size: 30px;
+            font-weight: lighter;
+        }
+        p {
+            margin-top: 10px;
+            text-align: center;
+            font-size: 14px;
+        }
     }
     .btn {
         width: 100%;

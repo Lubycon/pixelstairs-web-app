@@ -1,7 +1,9 @@
 <template>
 <div class="container row">
     <div class="col-12 col-md-6 col-lg-4 card card--center-form">
-        <h1>Please enter your password</h1>
+        <div data-section="form-desc">
+            <h1>Please enter your password</h1>
+        </div>
         <b-form @submit.prevent="submit">
             <b-form-group>
                 <b-form-input

@@ -1,10 +1,11 @@
 <template>
 <div>
     <b-form @submit.prevent="submit">
-        <b-form-group label="E-mail">
+        <b-form-group>
             <b-form-input
                 type="email"
                 v-model="email"
+                placeholder="ex) john0102@pixelstairs.com"
             />
         </b-form-group>
         <b-button type="submit">Submit</b-button>

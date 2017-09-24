@@ -19,13 +19,19 @@
                 <h4 data-name="user-email">{{ me.email }}</h4>
                 <b-button
                     size="sm"
-                    :to="{ name: 'user-setting', params: { userId: me.id } }"
+                    :to="{ name: 'user-profile', params: { userId: me.id } }"
                 >
-                    My Account
+                    Profile
                 </b-button>
             </div>
         </div>
-        <div data-name="control">
+        <div data-name="control" class="row justify-content-between">
+            <b-button
+                size="sm"
+                :to="{ name: 'user-setting', params: { userId: me.id } }"
+            >
+                Setting
+            </b-button>
             <b-button
                 size="sm"
                 class="btn-border signout-btn"
@@ -80,6 +86,9 @@
             background-color: $white;
             padding: 0;
             cursor: default;
+        }
+        .row {
+            margin: 0;
         }
         div[data-name="user-profile"] {
             display: inline-block;
