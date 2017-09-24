@@ -33,14 +33,27 @@
                 :value="me.email"
                 disabled
                 readonly
-            ></b-form-input>
+            />
+        </b-form-group>
+        <b-form-group label="Password" class="col-12">
+            <b-input-group>
+                <b-form-input
+                    type="password"
+                    value="xxxxxxxxx"
+                    disabled
+                    readonly
+                />
+                <b-input-group-button slot="right">
+                    <b-button :to="{ name: 'auth-password' }">Change</b-button>
+                </b-input-group-button>
+            </b-input-group>
         </b-form-group>
         <b-form-group label="Name" class="col-12">
             <b-form-input
                 name="name"
                 type="text"
                 v-model="newUsername"
-            ></b-form-input>
+            />
         </b-form-group>
     </section>
 
