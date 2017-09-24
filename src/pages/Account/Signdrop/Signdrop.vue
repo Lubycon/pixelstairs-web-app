@@ -2,8 +2,8 @@
 <div class="container row">
     <div class="col-12 col-md-6 col-lg-4 card card--center-form">
         <div data-section="form-desc">
-            <h1>Why!!!!!</h1>
-            <p>Your opinion</p>
+            <h1>Could I ask you some last questions?</h1>
+            <p>Your comments can make <strong>Pixelstairs</strong> a better service!</p>
         </div>
         <signdrop-form @submit="postData"></signdrop-form>
     </div>
