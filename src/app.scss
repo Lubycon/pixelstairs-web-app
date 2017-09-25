@@ -7,3 +7,12 @@
 /* App modules */
 @import './styles/__module__';
 /* /App modules */
+
+/* Page Transition */
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .3s
+}
+.fade-enter, .fade-leave-to {
+    opacity: 0
+}
+/* /Page Transition */
