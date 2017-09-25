@@ -63,11 +63,7 @@ class APIService {
         }).then(res => {
             defer.resolve(res.data);
         }, err => {
-            defer.reject({
-                status: err.response.status,
-                statusText: err.response.statusText,
-                data: err.response.data
-            });
+            defer.reject(this.onError(err));
         });
 
         return defer.promise;
@@ -82,11 +78,7 @@ class APIService {
             console.log('=======API_SERVICE:GET RESPONSE!=======');
             defer.resolve(res.data);
         }, err => {
-            defer.reject({
-                status: err.response.status,
-                statusText: err.response.statusText,
-                data: err.response.data
-            });
+            defer.reject(this.onError(err));
         });
 
         return defer.promise;
@@ -100,11 +92,7 @@ class APIService {
         .then(res => {
             defer.resolve(res.data);
         }, err => {
-            defer.reject({
-                status: err.response.status,
-                statusText: err.response.statusText,
-                data: err.response.data
-            });
+            defer.reject(this.onError(err));
         });
 
         return defer.promise;
@@ -118,11 +106,7 @@ class APIService {
         .then(res => {
             defer.resolve(res.data);
         }, err => {
-            defer.reject({
-                status: err.response.status,
-                statusText: err.response.statusText,
-                data: err.response.data
-            });
+            defer.reject(this.onError(err));
         });
 
         return defer.promise;
@@ -184,6 +168,24 @@ class APIService {
         });
 
         return tmp;
+    }
+
+    onError (err) {
+        let error;
+        if (err instanceof Error) {
+            error = {
+                status: 9999,
+                statusText: err.message
+            };
+        }
+        else {
+            error = {
+                status: err.response.status,
+                statusText: err.response.statusText,
+                data: err.response.data
+            };
+        }
+        return error;
     }
 }
 
