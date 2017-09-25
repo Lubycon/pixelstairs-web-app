@@ -28,6 +28,10 @@
     }
     .btn {
         width: 100%;
+        margin-bottom: 10px;
+        &:last-child {
+            margin-bottom: 0;
+        }
     }
     .btn[type="submit"] {
         margin: 20px 0;

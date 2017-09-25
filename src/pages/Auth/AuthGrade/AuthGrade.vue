@@ -1,36 +1,31 @@
 <template>
-<div class="auth-form container">
-    <section class="row" data-section="message">
-        <h2 class="col-12">
-            Now, it's the last step for more activities
-        </h2>
-        <p class="col-12">
-            You need to authenticate your email address for further activity.<br>
-            Please check your email!
-        </p>
-    </section>
-    <section class="row" data-section="time">
-        <p v-if="!isExpired" class="col-12">
-            {{ computedLeftTime.minutes() }} min {{ computedLeftTime.seconds() }} sec left
-        </p>
-        <p v-else="isExpired">
-            Expired
-        </p>
-    </section>
-    <section class="row" data-section="control">
-        <div class="col-6" @click="sendEmailAgain">
-            <button class="btn">Send email again</button>
+<div class="container row">
+    <div class="col-12 col-md-6 col-lg-4 card card--center-form">
+        <div data-section="form-desc">
+            <h1>Now, it's the last step for more activities</h1>
+            <p>
+                You need to authenticate your email address for further activity.<br>
+                Please check your email!
+            </p>
         </div>
-        <div class="col-6">
-            <router-link :to="{ name: 'home' }">
-                <button class="btn">Later</button>
-            </router-link>
+        <div data-section="time">
+            <p v-if="!isExpired">
+                <strong>{{ computedLeftTime.minutes() }}</strong> min
+                <strong>{{ computedLeftTime.seconds() }}</strong> sec left
+            </p>
+            <p v-else="isExpired" class="expired-time">
+                Expired
+            </p>
         </div>
-    </section>
+        <div data-section="control">
+            <b-button class="btn" @click="sendEmailAgain">Send email again</b-button>
+            <b-button class="btn btn-border" :to="{ name: 'home' }">Later</b-button>
+        </div>
+    </div>
 </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
     @import './AuthGrade';
 </style>
 
