@@ -71,10 +71,10 @@ app.get('*', (req, res) => {
         if (err && err.code === 404) {
             res.status(404).redirect('/error/404');
         } else {
-            // Render Error Page or Redirect
-            res.status(500).end('<h3>500 Error</h3>');
-            console.error(`error during render : ${req.url}`);
-            console.error(err);
+            // !!Fatal Error!! Render Error Page or Redirect
+            const errorTemplate = fs.readFileSync(resolve('./src/error.tmpl.html'), 'utf-8');
+            res.end(errorTemplate);
+            console.error(`[ERR] error during render : ${req.url}\n${err}`);
         }
     };
 

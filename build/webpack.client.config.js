@@ -24,7 +24,12 @@ const config = merge(base, {
         }),
         // generate output HTML
         new HTMLPlugin({
-            template: 'src/index.tmpl.html'
+            template: 'src/index.tmpl.html',
+            minify: {
+                minifyJS: true,
+                minifyCSS: true,
+                removeComments: false
+            }
         }),
         new ExtractTextPlugin("bundle.css")
     ]
