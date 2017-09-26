@@ -30,18 +30,16 @@ export default {
         })
     },
     created () {
-        // this.fetchResult('certs.signup.code', this.$route.params.code)
-        // .then(res => {
-            // this.$set(this, 'isLoaded', true);
-            // this.$set(this, 'validity', res.validity);
-        // }, err => {
-        //     this.$set(this, 'isLoaded', true);
-        //     if (err) {
-        //         this.$set(this, 'errCode', err.status);
-        //         this.$set(this, 'errMsg', err.statusText);
-        //     }
-        // });
-        this.$set(this, 'isLoaded', true);
-        this.$set(this, 'validity', true);
+        this.fetchResult('certs.signup.code', this.$route.params.code)
+        .then(res => {
+            this.$set(this, 'isLoaded', true);
+            this.$set(this, 'validity', res.validity);
+        }, err => {
+            this.$set(this, 'isLoaded', true);
+            if (err) {
+                this.$set(this, 'errCode', err.status);
+                this.$set(this, 'errMsg', err.statusText);
+            }
+        });
     }
 };

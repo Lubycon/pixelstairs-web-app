@@ -34,6 +34,9 @@ div.row[data-name="user"] {
     }
     div[data-name="user-control"] {
         text-align: center;
+        .btn.btn-activate {
+            margin-left: 15px;
+        }
     }
 }
 ul.row[data-name="artworks"] {

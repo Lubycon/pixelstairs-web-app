@@ -10,7 +10,9 @@ export function SET_USER_DATA (state, user) {
 }
 
 export function SET_USER_CONTENTS_LIST (state, contents) {
-    state.userContents = contents;
+    if (contents) {
+        state.userContents = contents;
+    }
 }
 
 export function CLEAR_USER_DATA (state) {

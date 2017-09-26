@@ -15,14 +15,19 @@
                 <img data-name="user-profile-image" v-else :src="myProfileSrc">
             </div>
             <div data-name="user-info">
-                <h3 data-name="user-name">{{ me.nickname }}</h3>
+                <div data-name="user-name">
+                    <h3>{{ me.nickname }}</h3>
+                    <b-badge v-if="me.status === 'inactive'" pill class="inactive">{{ me.status }}</b-badge>
+                </div>
                 <h4 data-name="user-email">{{ me.email }}</h4>
-                <b-button
-                    size="sm"
-                    :to="{ name: 'user-profile', params: { userId: me.id } }"
-                >
-                    Profile
-                </b-button>
+                <div data-name="user-control">
+                    <b-button
+                        size="sm"
+                        :to="{ name: 'user-profile', params: { userId: me.id } }"
+                    >
+                        Profile
+                    </b-button>
+                </div>
             </div>
         </div>
         <div data-name="control" class="row justify-content-between">
@@ -101,10 +106,19 @@
         div[data-name="user-info"] {
             display: inline-block;
             vertical-align: middle;
-            h3[data-name="user-name"] {
-                font-size: 18px;
-                font-weight: bold;
+            div[data-name="user-name"] {
                 margin-bottom: $menu-padding / 3;
+                h3 {
+                    display: inline-block;
+                    font-size: 18px;
+                    font-weight: bold;
+                    vertical-align: middle;
+                    margin-bottom: 0;
+                }
+                span {
+                    margin-left: 10px;
+                    vertical-align: middle;
+                }
             }
             h4[data-name="user-email"] {
                 font-size: 14px;

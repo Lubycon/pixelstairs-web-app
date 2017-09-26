@@ -13,6 +13,7 @@
             <b-button class="btn-border" :to="{ name: 'user-setting', params: { userId: me.id } }">
                 Setting
             </b-button>
+            <b-button v-if="me.status === 'inactive'" class="btn btn-activate" :to="{ name: 'auth-grade' }">Activate</b-button>
         </div>
     </div>
     <ul class="row" data-name="artworks">

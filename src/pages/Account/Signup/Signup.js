@@ -26,7 +26,7 @@ export default {
             .then(res => {
                 this.setToken(res.result.token);
                 this.setUserByAPI();
-                this.router.push({ name: 'auth-grade' });
+                this.$router.push({ name: 'auth-grade' });
             }, err => {
                 console.log(err);
             });

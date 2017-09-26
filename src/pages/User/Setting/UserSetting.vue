@@ -27,7 +27,20 @@
 
     <section class="row" data-section="info">
         <b-form-group label="Email" class="col-12">
+            <b-input-group v-if="me.status === 'inactive'">
+                <b-form-input
+                    name="Email"
+                    type="email"
+                    :value="me.email"
+                    disabled
+                    readonly
+                />
+                <b-input-group-button slot="right">
+                    <b-button :to="{ name: 'auth-grade' }">Activate</b-button>
+                </b-input-group-button>
+            </b-input-group>
             <b-form-input
+                v-else
                 name="Email"
                 type="email"
                 :value="me.email"
