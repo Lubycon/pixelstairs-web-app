@@ -36,6 +36,8 @@ import UserPassword from 'src/pages/User/Setting/UserPassword/UserPassword.vue';
 import ArtworkDetail from 'src/pages/Artwork/ArtworkDetail/ArtworkDetail.vue';
 import ArtworkUpload from 'src/pages/Artwork/ArtworkUpload/ArtworkUpload.vue';
 import ArtworkUploadSuccess from 'src/pages/Artwork/ArtworkUploadSuccess/ArtworkUploadSuccess.vue';
+
+import Aboutus from 'src/pages/Aboutus/Aboutus.vue';
 /* /PAGES */
 
 Vue.use(VueRouter);
@@ -199,6 +201,14 @@ const router = new VueRouter({
         },
         props: {
             content: true
+        }
+    }, {
+        path: '/aboutus',
+        name: 'aboutus',
+        components: {
+            header: Header,
+            content: Aboutus,
+            footer: Footer
         }
     }]
 });

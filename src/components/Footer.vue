@@ -1,7 +1,11 @@
 <template>
 <nav class="row navbar">
     <ul>
-        <li v-for="menu in navMenus">{{ menu.name }}</li>
+        <li v-for="menu in navMenus">
+            <router-link :to="{ name: menu.link }">
+                {{ menu.name }}
+            </router-link>
+        </li>
     </ul>
 </nav>
 </template>
@@ -19,6 +23,14 @@ $menu-margin: $footer-margin / 2;
         top: $footer-margin;
         right: $footer-margin;
         left: $footer-margin;
+    }
+    ul li {
+        a {
+            color: $bluegrey-700;
+            &.router-link-exact-active {
+                font-weight: bold;
+            }
+        }
     }
 }
 
@@ -43,13 +55,17 @@ export default {
     data () {
         return {
             navMenus: [{
-                name: 'About us'
+                name: 'About us',
+                link: 'aboutus'
             }, {
-                name: 'Contact us'
+                name: 'Contact us',
+                link: 'contactus'
             }, {
-                name: 'Privacy policy'
+                name: 'Privacy policy',
+                link: 'privacy-policy'
             }, {
-                name: 'Terms of service'
+                name: 'Terms of service',
+                link: 'terms-of-service'
             }]
         };
     }
