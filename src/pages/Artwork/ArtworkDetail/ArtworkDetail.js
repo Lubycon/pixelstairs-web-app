@@ -79,6 +79,11 @@ export default {
             clearArtwork: 'clearArtworkDetailView'
         })
     },
+    mounted () {
+        if (!this.artworkData) {
+            this.$router.push({ name: 'error-view', params: { code: '404' } });
+        }
+    },
     destroyed () {
         this.clearArtwork();
     }

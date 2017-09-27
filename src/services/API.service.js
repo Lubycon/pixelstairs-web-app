@@ -13,7 +13,6 @@ import { API_BASE_URL } from 'src/constants/env.constant';
 import { API_LIST } from '../constants/api.constant';
 
 const VERSION_KEY = `${CUSTOM_HEADER_PREFIX}version`;
-const DEVICE_KEY = `${CUSTOM_HEADER_PREFIX}device`;
 const AUTH_KEY = `${CUSTOM_HEADER_PREFIX}token`;
 
 class APIService {
@@ -22,8 +21,7 @@ class APIService {
             baseURL: API_BASE_URL,
             headers: {
                 common: {
-                    [VERSION_KEY]: '1.2.0',
-                    [DEVICE_KEY]: 'bs=dvc=os='
+                    [VERSION_KEY]: '1.2.0'
                 }
             }
         });

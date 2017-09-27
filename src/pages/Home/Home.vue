@@ -17,7 +17,7 @@
             <!-- SSR FOR SEO -->
             <li class="col-12 col-md-6 col-lg-3" v-for="artwork in firstPageArtworks.contents">
                 <artwork-card
-                    :art-id="artwork.id"
+                    :art-id="'k4nlk'"
                     :title="artwork.title"
                     :image="artwork.image"
                     :author-name="artwork.user.nickname"
