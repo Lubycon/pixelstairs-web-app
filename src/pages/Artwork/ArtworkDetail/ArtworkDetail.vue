@@ -42,7 +42,7 @@
         </div>
     </section>
 
-    <section data-name="author">
+    <section data-name="author" v-if="artworkData.user.status !== 'drop'">
         <div class="row">
             <p class="col-12 row"><small>Artwork by</small></p>
             <div class="col-12 row align-items-center">
