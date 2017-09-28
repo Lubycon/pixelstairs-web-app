@@ -38,6 +38,10 @@ import ArtworkUpload from 'src/pages/Artwork/ArtworkUpload/ArtworkUpload.vue';
 import ArtworkUploadSuccess from 'src/pages/Artwork/ArtworkUploadSuccess/ArtworkUploadSuccess.vue';
 
 import Aboutus from 'src/pages/Aboutus/Aboutus.vue';
+
+import Docs from 'src/pages/Docs/Docs.vue';
+import PrivacyPolicy from 'src/pages/Docs/PrivacyPolicy/PrivacyPolicy.vue';
+import TermsOfService from 'src/pages/Docs/TermsOfService/TermsOfService.vue';
 /* /PAGES */
 
 Vue.use(VueRouter);
@@ -210,6 +214,23 @@ const router = new VueRouter({
             content: Aboutus,
             footer: Footer
         }
+    }, {
+        path: '/docs',
+        name: 'docs',
+        components: {
+            header: Header,
+            content: Docs,
+            footer: Footer
+        },
+        children: [{
+            path: 'privacypolicy',
+            name: 'privacy-policy',
+            component: PrivacyPolicy
+        }, {
+            path: 'termsofservice',
+            name: 'terms-of-service',
+            component: TermsOfService
+        }]
     }]
 });
 

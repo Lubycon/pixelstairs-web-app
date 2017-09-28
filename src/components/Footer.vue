@@ -58,9 +58,6 @@ export default {
                 name: 'About us',
                 link: 'aboutus'
             }, {
-                name: 'Contact us',
-                link: 'contactus'
-            }, {
                 name: 'Privacy policy',
                 link: 'privacy-policy'
             }, {
