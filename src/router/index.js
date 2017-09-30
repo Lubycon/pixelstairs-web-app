@@ -8,6 +8,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import VueMeta from 'vue-meta';
+// import PermissionService from 'src/services/Permission.service';
 
 /* Global Components */
 import Header from 'src/components/Header.vue';
@@ -235,3 +236,8 @@ const router = new VueRouter({
 });
 
 export default router;
+
+router.beforeEach((to, from, next) => {
+    console.log(to, from, to.meta);
+    next();
+});
