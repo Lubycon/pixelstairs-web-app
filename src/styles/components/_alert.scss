@@ -1,0 +1,35 @@
+$modal-padding: 20px;
+
+.swal2-container {
+    .swal2-modal.pxs-swal {
+        padding: $modal-padding + 4 $modal-padding;
+        padding-bottom: 0;
+        overflow: hidden;
+        height: auto;
+        min-height: auto !important;
+    }
+    h2.swal2-title {
+        font-size: 20px;
+        margin-bottom: $modal-padding + 4;
+        @include mq('sm') {
+            font-size: 16px;
+        }
+    }
+    .swal2-buttonswrapper {
+        margin: {
+            top: $modal-padding + 6;
+            right: $modal-padding * -1;
+            left: $modal-padding * -1;
+        }
+        button.swal2-confirm {
+            display: inline-block;
+            margin: 0;
+            width: 100%;
+            height: 44px;
+            background-color: $bluegrey-800;
+            border-radius: 0;
+            border: none;
+            box-shadow: none;
+        }
+    }
+}

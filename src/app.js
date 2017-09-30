@@ -31,6 +31,15 @@ if (process.browser) {
     // SweetAlert2
     const VueSweetalert2 = require('vue-sweetalert2');
     Vue.use(VueSweetalert2.default);
+    Vue.swal.setDefaults({
+        buttonsStyling: false,
+        customClass: 'pxs-swal',
+        padding: 'auto',
+        width: 'auto',
+        reverseButtons: true,
+        confirmButtonClass: 'btn btn-primary',
+        cancelButtonClass: 'btn'
+    });
 }
 
 export function createApp () {
