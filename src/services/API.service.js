@@ -4,7 +4,6 @@
     @author: Evan Moon
     @created_at: 2017.08.27
 */
-
 import axios from 'axios';
 import Q from 'q';
 
@@ -170,13 +169,14 @@ class APIService {
 
     onError (err) {
         let error;
+
         if (err instanceof Error) {
             error = {
                 status: 9999,
                 statusText: err.message
             };
         }
-        else {
+        if (err.response) {
             error = {
                 status: err.response.status,
                 statusText: err.response.statusText,

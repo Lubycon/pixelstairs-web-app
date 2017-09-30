@@ -20,6 +20,18 @@ export function setUserByAPI (store) {
     .then(res => {
         let user = res.result;
         store.commit('SET_USER', user);
+    }, err => {
+        if (err) {
+            // @TODO
+            // TOKEN EXPIRED 처리 로직
+            // Refresh Token 관련 로직은 여기에 들어간다
+            // 2017.09.30 - Evan
+            if (err.status === 401 && err.data.status.code === '0062') {
+                destroyToken(store).then(res => {
+                    location.reload();
+                });
+            }
+        }
     });
 }
 
