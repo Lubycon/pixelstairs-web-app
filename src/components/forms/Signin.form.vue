@@ -56,7 +56,7 @@ export default {
         submit () {
             this.$validator.validateAll();
             if (this.errors.any()) {
-                console.log(this.errors);
+                this.$swal(this.errors.items[0].msg);
             }
             else {
                 this.$emit('submit', {

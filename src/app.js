@@ -23,10 +23,14 @@ Vue.use(VeeValidate);
 import VueMoment from 'vue-moment';
 Vue.use(VueMoment);
 
-// Swiper - only for Client
+// only for Client
 if (process.browser) {
     const VueAwesomeSwiper = require('vue-awesome-swiper/ssr');
     Vue.use(VueAwesomeSwiper);
+
+    // SweetAlert2
+    const VueSweetalert2 = require('vue-sweetalert2');
+    Vue.use(VueSweetalert2.default);
 }
 
 export function createApp () {

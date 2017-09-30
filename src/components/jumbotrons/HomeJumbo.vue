@@ -1,5 +1,5 @@
 <template>
-<div>
+<div v-cloak>
     <div v-swiper:mySwiper="swiperOption">
         <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="content in contents">
