@@ -165,9 +165,6 @@ export default {
         signout () {
             this.destroyToken();
         }
-    },
-    created () {
-        console.log(this.me);
     }
 };
 </script>

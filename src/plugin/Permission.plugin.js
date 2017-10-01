@@ -14,10 +14,29 @@ class Permission {
     }
 
     check (permission) {
+        const state = this.getAuthState();
+        const IS_AUTHORIZED = state.isAuthorized;
+        const USER_STATUS = state.user ? state.user.status : null;
+
         if (typeof permission === 'undefined') {
             permission = 'any';
         }
-        return true;
+
+        if (permission === 'any') {
+            return true;
+        }
+
+        const PERMISSIONS = (permission.indexOf('|') !== -1) ? permission.split('|') : [permission];
+        let result = PERMISSIONS.map(pms => {
+            const condition = this.permissions.find(v => v.name === pms);
+
+            const authCheck = condition.authorized === IS_AUTHORIZED;
+            const statusCheck = condition.status === null || condition.status === USER_STATUS;
+
+            return authCheck && statusCheck;
+        });
+
+        return result.some(v => v);
     }
 
     set router (router) {
@@ -39,6 +58,15 @@ class Permission {
 
     get router () {
         return this.router;
+    }
+
+    getAuthState () {
+        if (process.browser) {
+            return window.__INITIAL_STATE__.auth;
+        }
+        else {
+            return this.store.state.auth;
+        }
     }
 }
 

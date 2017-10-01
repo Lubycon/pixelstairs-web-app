@@ -44,6 +44,8 @@ export function DESTROY_TOKEN (state) {
     APIService.destroyToken();
     CookieService.clear('auth');
     CookieService.clear('user');
+
+    location.reload('/');
 }
 
 export default {
