@@ -7,14 +7,31 @@
 
 /* Main application bootstrapper */
 import { createApp } from './app';
+import CookieService from 'src/services/Cookie.service';
 
 export default context => {
     return new Promise((resolve, reject) => {
         const { app, router, store } = createApp();
         const meta = app.$meta();
 
-        router.push(context.url);
+        // SET AUTH DATA
+        const AUTH_KEY = CookieService._encodeKey('auth');
+        const ENCODED_TOKEN = context.cookie[AUTH_KEY];
+        if (ENCODED_TOKEN) {
+            const TOKEN = CookieService._decode(ENCODED_TOKEN);
+            store.dispatch('setToken', TOKEN).then(res => {
+                store.dispatch('setUserByAPI').then(res => {
+                    router.push(context.url);
+                });
+            });
+        }
+        else {
+            router.push(context.url);
+        }
+        // /SET AUTH DATA
+
         context.meta = meta;
+
         router.onReady(() => {
             const matchedComponents = router.getMatchedComponents();
             if (!matchedComponents.length) {

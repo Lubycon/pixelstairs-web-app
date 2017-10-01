@@ -2,11 +2,13 @@ const fs = require('fs');
 const path = require('path');
 const express = require('express');
 const favicon = require('serve-favicon');
+const cookieParser = require('cookie-parser');
 const resolve = file => path.resolve(__dirname, file);
 
 const isProd = process.env.NODE_ENV === 'production';
 
 const app = express();
+app.use(cookieParser());
 
 let renderer;
 if (isProd) {
@@ -81,7 +83,7 @@ app.get('*', (req, res) => {
     /*
      * Render Start
      */
-    const context = { url: req.url };
+    const context = { url: req.url, cookie: req.cookies };
 
     renderer.renderToStream(context)
     .once('data', () => {

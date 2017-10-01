@@ -6,12 +6,12 @@
 */
 
 import APIService from 'src/services/API.service';
-import LocalStorageService from 'src/services/LocalStorage.service';
+import CookieService from 'src/services/Cookie.service';
 
 export function SET_TOKEN (state, token) {
     state.token = token;
     APIService.authToken = token;
-    LocalStorageService.save({
+    CookieService.save({
         key: 'auth',
         value: token
     });
@@ -20,7 +20,7 @@ export function SET_TOKEN (state, token) {
 export function SET_USER (state, user) {
     state.user = user;
     state.isAuthorized = true;
-    LocalStorageService.save({
+    CookieService.save({
         key: 'user',
         value: user
     });
@@ -42,8 +42,8 @@ export function DESTROY_TOKEN (state) {
     };
     state.isAuthorized = false;
     APIService.destroyToken();
-    LocalStorageService.clear('auth');
-    LocalStorageService.clear('user');
+    CookieService.clear('auth');
+    CookieService.clear('user');
 }
 
 export default {
