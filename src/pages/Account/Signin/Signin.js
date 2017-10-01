@@ -25,11 +25,31 @@ export default {
             APIService.resource('users.signin').post(authData)
             .then(res => {
                 this.setToken(res.result.token);
-                this.setUserByAPI();
-                this.$router.push({ name: 'home' });
+                this.setUserByAPI()
+                .then(res => {
+                    this.authResolve();
+                });
             }, err => {
-                console.log(err);
+                if (err) {
+                    this.authReject(err);
+                }
+                else {
+                    this.authReject(null);
+                }
             });
+        },
+        authResolve () {
+            if (this.$route.query.redirect) {
+                this.$router.push({
+                    path: this.$route.query.redirect
+                });
+            }
+            else {
+                this.$router.push({ name: 'home' });
+            }
+        },
+        authReject (err) {
+            console.log(err);
         },
         ...mapActions({
             setToken: 'setToken',

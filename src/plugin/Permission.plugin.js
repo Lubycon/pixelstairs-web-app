@@ -27,30 +27,54 @@ class Permission {
         }
 
         const PERMISSIONS = (permission.indexOf('|') !== -1) ? permission.split('|') : [permission];
-        let result = PERMISSIONS.map(pms => {
+        let output = PERMISSIONS.map(pms => {
             const condition = this.permissions.find(v => v.name === pms);
 
             const authCheck = condition.authorized === IS_AUTHORIZED;
             const statusCheck = condition.status === null || condition.status === USER_STATUS;
 
-            return authCheck && statusCheck;
+            return {
+                result: authCheck && statusCheck,
+                authCheck,
+                statusCheck
+            };
         });
 
-        return result.some(v => v);
+        return {
+            result: output.some(v => v.result),
+            authCheck: output.every(v => v.authCheck),
+            statusCheck: output.every(v => v.statusCheck)
+        };
     }
 
     set router (router) {
         router.beforeResolve((to, from, next) => {
-            const redirect = to.meta.redirect || '/';
+            let redirect = to.meta.redirect || '/';
+
             if (typeof to.meta.permission === 'undefined') {
                 return next(redirect);
             }
             else {
-                if (this.check(to.meta.permission)) {
-                    next();
+                const CHECK = this.check(to.meta.permission);
+                if (typeof CHECK !== 'object') {
+                    return next();
+                }
+
+                if (CHECK.result) {
+                    return next();
                 }
                 else {
-                    return next(redirect);
+                    if (!CHECK.authCheck) {
+                        return next({
+                            name: 'signin',
+                            query: {
+                                redirect: to.fullPath
+                            }
+                        });
+                    }
+                    else {
+                        return next(redirect);
+                    }
                 }
             }
         });
