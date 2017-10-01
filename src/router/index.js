@@ -69,6 +69,9 @@ const router = new VueRouter({
             header: Header,
             content: Home,
             footer: Footer
+        },
+        meta: {
+            permission: 'any'
         }
     }, {
         path: '/error/:code',
@@ -80,18 +83,27 @@ const router = new VueRouter({
         },
         props: {
             content: true
+        },
+        meta: {
+            permission: 'any'
         }
     }, {
         path: '/signin',
         name: 'signin',
         components: {
             content: Signin
+        },
+        meta: {
+            permission: 'notUser'
         }
     }, {
         path: '/signup',
         name: 'signup',
         components: {
             content: Signup
+        },
+        meta: {
+            permission: 'notUser'
         }
     }, {
         path: '/signdrop',
@@ -100,6 +112,9 @@ const router = new VueRouter({
             header: Header,
             content: Signdrop,
             footer: Footer
+        },
+        meta: {
+            permission: 'user:inactive|user:active'
         }
     }, {
         path: '/find-password',
@@ -108,6 +123,9 @@ const router = new VueRouter({
             header: Header,
             content: FindPassword,
             footer: Footer
+        },
+        meta: {
+            permission: 'user:inactive|user:active'
         }
     }, {
         path: '/auth/grade',
@@ -116,6 +134,9 @@ const router = new VueRouter({
             header: Header,
             content: AuthGrade,
             footer: Footer
+        },
+        meta: {
+            permission: 'user:inactive'
         }
     }, {
         path: '/auth/grade/landing/:code',
@@ -127,6 +148,9 @@ const router = new VueRouter({
         },
         props: {
             content: true
+        },
+        meta: {
+            permission: 'any'
         }
     }, {
         path: '/auth/password',
@@ -135,6 +159,9 @@ const router = new VueRouter({
             header: Header,
             content: AuthPassword,
             footer: Footer
+        },
+        meta: {
+            permission: 'user:inactive|user:active'
         }
     }, {
         path: '/auth/password/landing/:code',
@@ -146,6 +173,9 @@ const router = new VueRouter({
         },
         props: {
             content: true
+        },
+        meta: {
+            permission: 'any'
         }
     }, {
         path: '/user/:userId',
@@ -157,15 +187,25 @@ const router = new VueRouter({
         props: {
             content: true
         },
+        meta: {
+            permission: 'user:inactive|user:active'
+        },
         children: [{
             path: '',
             name: 'user-profile',
             component: UserProfile,
-            props: true
+            props: true,
+            meta: {
+                permission: 'user:inactive|user:active'
+            }
         }, {
             path: 'setting',
             name: 'user-setting',
-            component: UserSetting
+            component: UserSetting,
+            props: true,
+            meta: {
+                permission: 'user:inactive|user:active'
+            }
         }]
     }, {
         path: '/user/setting/password/:code',
@@ -177,6 +217,9 @@ const router = new VueRouter({
         },
         props: {
             content: true
+        },
+        meta: {
+            permission: 'user:inactive|user:active'
         }
     }, {
         path: '/artwork/detail/:artId',
@@ -188,6 +231,9 @@ const router = new VueRouter({
         },
         props: {
             content: true
+        },
+        meta: {
+            permission: 'any'
         }
     }, {
         path: '/artwork/upload',
@@ -195,6 +241,9 @@ const router = new VueRouter({
         components: {
             header: Header,
             content: ArtworkUpload
+        },
+        meta: {
+            permission: 'user:inactive|user:active'
         }
     }, {
         path: '/artwork/upload/success/:artId',
@@ -206,6 +255,9 @@ const router = new VueRouter({
         },
         props: {
             content: true
+        },
+        meta: {
+            permission: 'user:inactive|user:active'
         }
     }, {
         path: '/aboutus',
@@ -214,6 +266,9 @@ const router = new VueRouter({
             header: Header,
             content: Aboutus,
             footer: Footer
+        },
+        meta: {
+            permission: 'any'
         }
     }, {
         path: '/docs',
@@ -223,21 +278,25 @@ const router = new VueRouter({
             content: Docs,
             footer: Footer
         },
+        meta: {
+            permission: 'any'
+        },
         children: [{
             path: 'privacypolicy',
             name: 'privacy-policy',
-            component: PrivacyPolicy
+            component: PrivacyPolicy,
+            meta: {
+                permission: 'any'
+            }
         }, {
             path: 'termsofservice',
             name: 'terms-of-service',
-            component: TermsOfService
+            component: TermsOfService,
+            meta: {
+                permission: 'any'
+            }
         }]
     }]
 });
 
 export default router;
-
-router.beforeEach((to, from, next) => {
-    console.log(to, from, to.meta);
-    next();
-});

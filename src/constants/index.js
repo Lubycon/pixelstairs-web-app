@@ -18,3 +18,17 @@ export const ABOUT_US_ICONS = {
 export const DEFAULT_USER_PROFILE = `${S3_BASE_URL}/user/default_profile_image.png`;
 
 export const CUSTOM_HEADER_PREFIX = 'X-pixel-';
+
+export const PERMISSIONS = [{
+    name: 'user:active',
+    status: 'active',
+    authorized: true
+}, {
+    name: 'user:inactive',
+    status: 'inactive',
+    authorized: true
+}, {
+    name: 'notUser',
+    status: null,
+    authorized: false
+}];

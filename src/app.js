@@ -11,6 +11,8 @@ import store from './stores/store';
 import router from './router';
 import { sync } from 'vuex-router-sync';
 
+import { PERMISSIONS } from 'src/constants';
+
 // Bootstrap
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 Vue.use(BootstrapVue);
@@ -22,6 +24,13 @@ Vue.use(VeeValidate);
 // Moment
 import VueMoment from 'vue-moment';
 Vue.use(VueMoment);
+
+import Permission from 'src/plugin/Permission.plugin';
+Vue.use(Permission, {
+    router,
+    store,
+    permissions: PERMISSIONS
+});
 
 // only for Client
 if (process.browser) {
