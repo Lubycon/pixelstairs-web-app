@@ -8,44 +8,46 @@
         <img data-name="user-profile-image" v-else :src="myProfileSrc">
     </div>
 
-    <b-dropdown-item>
-        <div data-name="user">
-            <div data-name="user-profile">
-                <img data-name="user-profile-image" v-if="!hasProfileSrc" :src="myProfileSrc">
-                <img data-name="user-profile-image" v-else :src="myProfileSrc">
-            </div>
-            <div data-name="user-info">
-                <div data-name="user-name">
-                    <h3>{{ me.nickname }}</h3>
-                    <b-badge v-if="me.status === 'inactive'" pill class="inactive">{{ me.status }}</b-badge>
+    <no-ssr>
+        <b-dropdown-item>
+            <div data-name="user">
+                <div data-name="user-profile">
+                    <img data-name="user-profile-image" v-if="!hasProfileSrc" :src="myProfileSrc">
+                    <img data-name="user-profile-image" v-else :src="myProfileSrc">
                 </div>
-                <h4 data-name="user-email">{{ me.email }}</h4>
-                <div data-name="user-control">
-                    <b-button
-                        size="sm"
-                        :to="{ name: 'user-profile', params: { userId: me.id } }"
-                    >
-                        Profile
-                    </b-button>
+                <div data-name="user-info">
+                    <div data-name="user-name">
+                        <h3>{{ me.nickname }}</h3>
+                        <b-badge v-if="me.status === 'inactive'" pill class="inactive">{{ me.status }}</b-badge>
+                    </div>
+                    <h4 data-name="user-email">{{ me.email }}</h4>
+                    <div data-name="user-control">
+                        <b-button
+                            size="sm"
+                            :to="{ name: 'user-profile', params: { userId: me.id } }"
+                        >
+                            Profile
+                        </b-button>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div data-name="control" class="row justify-content-between">
-            <b-button
-                size="sm"
-                :to="{ name: 'user-setting', params: { userId: me.id } }"
-            >
-                Setting
-            </b-button>
-            <b-button
-                size="sm"
-                class="btn-border signout-btn"
-                @click="signout"
-            >
-                Sign out
-            </b-button>
-        </div>
-    </b-dropdown-item>
+            <div data-name="control" class="row justify-content-between">
+                <b-button
+                    size="sm"
+                    :to="{ name: 'user-setting', params: { userId: me.id } }"
+                >
+                    Setting
+                </b-button>
+                <b-button
+                    size="sm"
+                    class="btn-border signout-btn"
+                    @click="signout"
+                >
+                    Sign out
+                </b-button>
+            </div>
+        </b-dropdown-item>
+    </no-ssr>
 </b-dropdown>
 </template>
 
@@ -141,10 +143,14 @@
 </style>
 
 <script>
+import NoSSR from 'vue-no-ssr';
 import { mapGetters, mapActions } from 'vuex';
 
 export default {
     name: 'UserMenu',
+    components: {
+        'no-ssr': NoSSR
+    },
     computed: {
         ...mapGetters({
             me: 'getAuthUser',
@@ -159,6 +165,9 @@ export default {
         signout () {
             this.destroyToken();
         }
+    },
+    created () {
+        console.log(this.me);
     }
 };
 </script>
