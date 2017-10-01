@@ -110,6 +110,8 @@ else {
     port = process.env.PORT || 3000;
 }
 
-app.listen(port, () => {
-    console.log(`server started at http://localhost:${port}`);
+let host = 'local.pixelstairs.com';
+
+app.listen(port, host, () => {
+    console.log(`server started at ${host}:${port}`);
 });
