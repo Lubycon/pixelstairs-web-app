@@ -31,11 +31,13 @@ class Permission {
             const condition = this.permissions.find(v => v.name === pms);
 
             const authCheck = condition.authorized === IS_AUTHORIZED;
+            const needSignin = condition.authorized && condition.authorized !== IS_AUTHORIZED;
             const statusCheck = condition.status === null || condition.status === USER_STATUS;
 
             return {
                 result: authCheck && statusCheck,
                 authCheck,
+                needSignin,
                 statusCheck
             };
         });
@@ -43,6 +45,7 @@ class Permission {
         return {
             result: output.some(v => v.result),
             authCheck: output.every(v => v.authCheck),
+            needSignin: output.every(v => v.needSignin),
             statusCheck: output.every(v => v.statusCheck)
         };
     }
@@ -64,7 +67,8 @@ class Permission {
                     return next();
                 }
                 else {
-                    if (!CHECK.authCheck) {
+                    console.log(CHECK);
+                    if (!CHECK.authCheck && CHECK.needSignin) {
                         return next({
                             name: 'signin',
                             query: {

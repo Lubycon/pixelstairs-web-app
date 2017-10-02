@@ -11,6 +11,12 @@
         <div class="card-body">
             <signin-form @submit="postData"></signin-form>
         </div>
+        <router-link
+            class="btn-link"
+            :to="{ name: 'find-password' }"
+        >
+            Find password
+        </router-link>
     </div>
 </div>
 </template>

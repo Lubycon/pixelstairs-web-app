@@ -125,7 +125,7 @@ const router = new VueRouter({
             footer: Footer
         },
         meta: {
-            permission: 'user:inactive|user:active'
+            permission: 'notUser'
         }
     }, {
         path: '/auth/grade',
