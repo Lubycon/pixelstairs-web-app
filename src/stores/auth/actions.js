@@ -16,24 +16,23 @@ export function setToken (store, { accessToken, refreshToken }) {
 }
 
 export function setUserByAPI (store) {
-    return APIService.resource('users.me').get()
+    let defer = Q.defer();
+    APIService.resource('users.me').get()
     .then(res => {
         let user = res.result;
         store.commit('SET_USER', user);
+        defer.resolve();
     }, err => {
-        if (err) {
-            // @TODO
-            // TOKEN EXPIRED 처리 로직
-            // Refresh Token 관련 로직은 여기에 들어간다
-            // 2017.09.30 - Evan
-            if (err.status === 419) {
-                console.log(err.status);
-                // destroyToken(store).then(res => {
-                //     location.reload();
-                // });
-            }
+        if (err && err.status === 419) {
+            // @ERR TOKEN EXPIRED!
+            // Access token will be reset using Refresh token
+            reissuance(store).then(res => {
+                defer.resolve();
+            });
         }
     });
+
+    return defer.promise;
 }
 
 export function setUser (store, user) {
@@ -47,6 +46,33 @@ export function destroyToken (store) {
     let defer = Q.defer();
     store.commit('DESTROY_TOKEN');
     defer.resolve();
+    return defer.promise;
+}
+
+function reissuance (store) {
+    let defer = Q.defer();
+    APIService.resource('users.refreshToken').get().then(res => {
+        setToken(store, {
+            accessToken: res.result,
+            refreshToken: APIService.refreshToken
+        }).then(res => {
+            setUserByAPI(store).then(res => {
+                defer.resolve();
+            });
+        });
+    }, err => {
+        if (err) {
+            destroyToken(store).then(res => {
+                defer.resolve();
+            });
+        }
+        else {
+            destroyToken(store).then(res => {
+                defer.resolve();
+            });
+        }
+    });
+
     return defer.promise;
 }
 

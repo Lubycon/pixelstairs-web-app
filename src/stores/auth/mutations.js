@@ -38,7 +38,8 @@ export function SET_USER (state, user) {
 }
 
 export function DESTROY_TOKEN (state) {
-    state.token = null;
+    state.accessToken = null;
+    state.refreshToken = null;
     state.user = {
         id: null,
         email: null,
@@ -49,9 +50,11 @@ export function DESTROY_TOKEN (state) {
     state.isAuthorized = false;
     APIService.destroyToken();
     CookieService.clear('auth');
+    CookieService.clear('refresh');
     CookieService.clear('user');
-
-    location.reload('/');
+    if (process.browser && location) {
+        location.reload('/');
+    }
 }
 
 export default {
