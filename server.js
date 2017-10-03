@@ -76,7 +76,8 @@ app.get('*', (req, res) => {
             // !!Fatal Error!! Render Error Page or Redirect
             const errorTemplate = fs.readFileSync(resolve('./src/error.tmpl.html'), 'utf-8');
             res.end(errorTemplate);
-            console.error(`[ERR] error during render : ${req.url}\n${err}`);
+            console.error(`[ERR] error during render : ${req.url}`);
+            console.log(err);
         }
     };
 

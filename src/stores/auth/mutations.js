@@ -8,12 +8,18 @@
 import APIService from 'src/services/API.service';
 import CookieService from 'src/services/Cookie.service';
 
-export function SET_TOKEN (state, token) {
-    state.token = token;
-    APIService.authToken = token;
+export function SET_TOKEN (state, { accessToken, refreshToken }) {
+    state.accessToken = accessToken;
+    state.refreshToken = refreshToken;
+    APIService.authToken = accessToken;
+    APIService.refreshToken = refreshToken;
     CookieService.save({
         key: 'auth',
-        value: token
+        value: accessToken
+    });
+    CookieService.save({
+        key: 'refresh',
+        value: refreshToken
     });
 }
 

@@ -8,9 +8,9 @@
 import Q from 'q';
 import APIService from 'src/services/API.service';
 
-export function setToken (store, token) {
+export function setToken (store, { accessToken, refreshToken }) {
     let defer = Q.defer();
-    store.commit('SET_TOKEN', token);
+    store.commit('SET_TOKEN', { accessToken, refreshToken });
     defer.resolve();
     return defer.promise;
 }
@@ -26,10 +26,11 @@ export function setUserByAPI (store) {
             // TOKEN EXPIRED 처리 로직
             // Refresh Token 관련 로직은 여기에 들어간다
             // 2017.09.30 - Evan
-            if (err.status === 401 && err.data.status.code === '0062') {
-                destroyToken(store).then(res => {
-                    location.reload();
-                });
+            if (err.status === 419) {
+                console.log(err.status);
+                // destroyToken(store).then(res => {
+                //     location.reload();
+                // });
             }
         }
     });

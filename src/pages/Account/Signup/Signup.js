@@ -24,7 +24,10 @@ export default {
         postData (authData) {
             APIService.resource('users.signup').post(authData)
             .then(res => {
-                this.setToken(res.result.token);
+                this.setToken({
+                    accessToken: res.result.access_token,
+                    refreshToken: res.result.refresh_token
+                });
                 this.setUserByAPI();
                 this.$router.push({ name: 'auth-grade' });
             }, err => {
