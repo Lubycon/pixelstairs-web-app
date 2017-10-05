@@ -25,7 +25,7 @@
 </style>
 
 <script>
-import ModalChildMixin from 'src/mixins/modal-child.mixin';
+import { ModalChildMixin } from 'src/mixins/modal-child.mixin';
 import NoSSR from 'vue-no-ssr';
 const VueCropper = process.browser ? require('vue-cropper') : null;
 

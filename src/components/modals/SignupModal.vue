@@ -37,7 +37,7 @@ div[data-name="form-signin"] {
 </style>
 
 <script>
-import ModalChildMixin from 'src/mixins/modal-child.mixin';
+import { ModalChildMixin } from 'src/mixins/modal-child.mixin';
 import SignupForm from 'src/components/forms/Signup.form.vue';
 
 export default {

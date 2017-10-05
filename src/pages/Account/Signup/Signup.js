@@ -28,7 +28,12 @@ export default {
                 this.setUserByAPI();
                 this.$router.push({ name: 'auth-grade' });
             }, err => {
-                console.log(err);
+                if (err) {
+                    this.$swal(`[Error - ${err.status}_${err.data.status.code}] ${err.data.status.msg}`);
+                }
+                else {
+                    this.$swal(`[Error - ${err.status}] Unknown Error`);
+                }
             });
         },
         ...mapActions({

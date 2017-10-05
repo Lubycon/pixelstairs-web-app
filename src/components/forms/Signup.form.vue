@@ -7,7 +7,7 @@
                 name="email"
                 v-model.trim="email"
                 placeholder="ex) evan1125@pixelstairs.com"
-                v-validate="'required|email'"
+                v-validate="'required|email|existEmail'"
                 :class="{ 'has-error': errors.has('email') }"
             />
             <b-form-text v-if="errors.has('email')" class="is-invalid">{{ errors.first('email') }}</b-form-text>
@@ -30,7 +30,7 @@
                 type="text"
                 name="name"
                 v-model.trim="name"
-                v-validate="{ rules: { required: true, regex: regex.name } }"
+                v-validate="{ rules: { required: true, regex: regex.name, existName: true } }"
                 :class="{ 'has-error': errors.has('name') }"
             />
             <b-form-text v-if="errors.has('name')" class="is-invalid">{{ errors.first('name') }}</b-form-text>
@@ -65,12 +65,13 @@ small {
 </style>
 
 <script>
+import { isExistUserMixin } from 'src/mixins/is-exist-user.mixin';
 import { PasswordMixin } from 'src/mixins/password.mixin';
 import ValidateService from 'src/services/Validate.service';
 
 export default {
     name: 'Signup-form',
-    mixins: [ PasswordMixin ],
+    mixins: [ isExistUserMixin, PasswordMixin ],
     data () {
         return {
             email: null,

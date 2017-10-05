@@ -5,7 +5,7 @@
     @created_at: 2017.10.05
 */
 
-export default {
+export const ModalChildMixin = {
     methods: {
         show () {
             this.$refs.modal.show();
