@@ -8,11 +8,12 @@ import { mapGetters, mapActions } from 'vuex';
 import APIService from 'src/services/API.service';
 import HomeJumbo from 'src/components/jumbotrons/HomeJumbo.vue';
 import ArtworkCard from 'src/components/cards/ArtworkCard.vue';
+import SignupModal from 'src/components/modals/SignupModal.vue';
 
 export default {
     name: 'Home',
     components: {
-        HomeJumbo, ArtworkCard
+        HomeJumbo, ArtworkCard, SignupModal
     },
     asyncData ({ store }) {
         return store.dispatch('setArtworkList', {
@@ -30,6 +31,7 @@ export default {
     },
     computed: {
         ...mapGetters({
+            isAuthorized: 'isAuthorized',
             firstPageArtworks: 'getArtworkList'
         })
     },
@@ -47,6 +49,17 @@ export default {
     methods: {
         addToArtworkList (artworks) {
             this.$set(this, 'artworks', [...this.artworks, ...artworks]);
+        },
+        gotoUpload () {
+            if (this.isAuthorized) {
+                this.$router.push({ name: 'artwork-upload' });
+            }
+            else {
+                this.$refs.signupModal.show();
+            }
+        },
+        hideModal () {
+            this.$refs.signupModal.hide();
         },
         ...mapActions({
             clearArtworks: 'clearArtworkList'
