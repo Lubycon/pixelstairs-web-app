@@ -1,5 +1,5 @@
 <template>
-<b-modal class="signin-modal" ref="modal" hide-footer="true">
+<b-modal class="signin-modal" ref="modal" :hide-footer="true">
     <div data-name="form-title">
         <h2>Is this your first time here?</h2>
         <p>Simply proceed to sign up and continue uploading your work!</p>
