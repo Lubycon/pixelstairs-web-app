@@ -35,7 +35,12 @@
             />
             <b-form-text v-if="errors.has('name')" class="is-invalid">{{ errors.first('name') }}</b-form-text>
         </b-form-group>
-        <small>If you press the button below, it is assumed that you have agreed to our Terms of service and Privacy policy.</small>
+        <small>
+            If you press the button below, it is assumed that you have agreed to our
+            <router-link :to="{ name: 'terms-of-service' }" target="_blank">Terms of service</router-link>
+            and
+            <router-link :to="{ name: 'privacy-policy' }" target="_blank">Privacy policy</router-link>.
+        </small>
         <b-button type="submit">Join us!</b-button>
     </b-form>
 </div>
@@ -43,6 +48,14 @@
 
 <style lang="scss" scoped>
 @import 'src/styles/utils/__module__';
+
+small {
+    a {
+        color: $grey-900;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+}
 
 .btn[type="submit"] {
     margin: 20px 0;
