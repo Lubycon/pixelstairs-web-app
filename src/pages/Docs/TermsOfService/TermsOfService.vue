@@ -2,7 +2,7 @@
 <div>
     <section data-name="title">
         <h1>Terms of Service</h1>
-        <p>If you require any more information or have any questions about our Terms of Service, please feel free to contact us by email at <a href="mailto:lubycon@gmail.com">lubycon@gmail.com</a></p>
+        <p>If you require any more information or have any questions about our Terms of Service, please feel free to contact us by email at <a href="mailto:contact@pixelstairs.com">contact@pixelstairs.com</a></p>
     </section>
 
     <section>

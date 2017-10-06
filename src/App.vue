@@ -84,7 +84,7 @@ export default {
                 "contactPoint": {
                     "@type": "ContactPoint",
                     "telephone": "+8210-4755-6185",
-                    "email": "lubycon@gmail.com",
+                    "email": "contact@pixelstairs.com",
                     "contactType": "Customer service"
                 }
             }`,

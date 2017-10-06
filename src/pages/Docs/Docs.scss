@@ -40,6 +40,9 @@
             padding: $document-padding * 2 $document-padding;
             background-color: $white;
             box-shadow: $document-shadow;
+            @include mq('sm') {
+                padding: $document-padding $document-padding - 10px;
+            }
 
             * {
                 font-size: $content-size;
@@ -69,11 +72,25 @@
                     font-size: $heading-size;
                     font-weight: bold;
                     margin-bottom: $document-padding;
+                    @include mq('sm') {
+                        font-size: $heading-size / 1.5;
+                    }
+                }
+                p {
+                    @include mq('sm') {
+                        font-size: $content-size - 2px;
+                    }
                 }
             }
 
             section {
                 margin: $document-padding * 2 0;
+                * {
+                    font-size: $content-size;
+                    @include mq('sm') {
+                        font-size: $content-size - 2px;
+                    }
+                }
                 h3 {
                     font-size: $sub-heading-size;
                     font-weight: bold;
