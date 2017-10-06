@@ -121,6 +121,6 @@ if(isLocal) {
 }
 else {
     app.listen(port, () => {
-        console.log(`server started at ${host}:${port}`);
+        console.log(`server started at 127.0.0.1:${port}`);
     });
 }
