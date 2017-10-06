@@ -1,8 +1,11 @@
 // APP LAYOUT
 
-#app-header {}
+#app-header {
+    &+#app-body {
+        padding-top: $global-header-height;
+    }
+}
 #app-body {
-    padding-top: $global-header-height;
     padding-bottom: $global-header-height;
     min-height: 100vh;
     background-color: $grey-50;

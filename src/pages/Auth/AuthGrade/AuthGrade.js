@@ -38,7 +38,11 @@ export default {
         sendEmailAgain () {
             return APIService.resource('certs.signup.mail').post()
             .then(res => {
+                this.$swal(`The Activation mail has been sent`);
                 this.fetchLeftTime();
+            }, err => {
+                if (err) {}
+                this.$swal(`Mail error`);
             });
         },
         countDownStart () {

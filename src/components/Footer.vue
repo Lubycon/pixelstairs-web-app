@@ -30,6 +30,9 @@ $menu-margin: $footer-margin / 2;
             &.router-link-exact-active {
                 font-weight: bold;
             }
+            @include mq('sm') {
+                font-size: 12px;
+            }
         }
     }
 }

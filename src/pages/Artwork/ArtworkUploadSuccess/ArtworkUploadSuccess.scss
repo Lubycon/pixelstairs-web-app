@@ -1,0 +1,8 @@
+[data-section="control"] {
+    .col-12 {
+        margin-bottom: 10px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
