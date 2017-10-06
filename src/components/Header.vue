@@ -1,12 +1,12 @@
 <template>
 <nav class="row navbar fixed-top">
-    <div class="col"></div>
-    <div class="col header--global-logo">
+    <div class="col-4"></div>
+    <div class="col-4 header--global-logo">
         <router-link to="/">
             <img :src="logoSrc" alt="pixelstairs-text-logo">
         </router-link>
     </div>
-    <div class="col header--user-menu">
+    <div class="col-4 header--user-menu">
         <div v-if="isAuthorized">
             <user-menu></user-menu>
         </div>
@@ -31,15 +31,22 @@
     background: {
         color: $white;
     }
+    .col-4 {
+        @include mq('sm') {
+            padding: 0;
+        }
+    }
     .header--global-logo {
         text-align: center;
         img {
             width: 160px;
+            @include mq('sm') {
+                width: 100%;
+            }
         }
     }
     .header--user-menu {
         text-align: right;
-
         i {
             color: $white;
         }
