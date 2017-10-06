@@ -1,6 +1,9 @@
 @import 'src/styles/utils/__module__';
 
 $row-margin: 30px;
+@include mq('sm') {
+    $row-margin: 20px;
+}
 
 section {
     max-width: 60%;

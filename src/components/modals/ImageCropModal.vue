@@ -1,5 +1,5 @@
 <template>
-<b-modal title="Hello, modal" hide-footer ref="modal">
+<b-modal hide-footer ref="modal">
     <no-ssr placeholder="Loading">
         <vueCropper
             ref="cropper"
@@ -14,13 +14,17 @@
             :fixedNumber="[1,1]"
         />
     </no-ssr>
-    <b-button @click="crop">Crop</b-button>
+    <b-button class="crop-btn" @click="crop">Crop</b-button>
 </b-modal>
 </template>
 
 <style lang="scss" scoped>
 .vue-cropper {
     height: 500px;
+}
+button.crop-btn {
+    margin-top: 30px;
+    width: 100%;
 }
 </style>
 

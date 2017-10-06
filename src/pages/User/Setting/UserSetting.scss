@@ -13,6 +13,9 @@ section.row {
         width: 100%;
         text-align: center;
         font-weight: lighter;
+        @include mq('sm') {
+            font-size: 20px;
+        }
     }
 }
 
@@ -24,6 +27,11 @@ section[data-section="profile-img"] {
         width: $profile-img-size;
         height: $profile-img-size;
         margin: $section-margin auto;
+
+        @include mq('sm') {
+            width: $profile-img-size / 2;
+            height: $profile-img-size / 2;
+        }
 
         img {
             overflow: hidden;
@@ -41,6 +49,12 @@ section[data-section="profile-img"] {
             border: none;
             box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
             cursor: pointer;
+            @include mq('sm') {
+                bottom: -10px;
+                right: -10px;
+                width: $profile-img-size / 5;
+                height: $profile-img-size / 5;
+            }
             i {
                 color: $grey-900;
                 vertical-align: middle;

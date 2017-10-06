@@ -19,6 +19,9 @@
         background-color: $blue;
         border-color: $blue;
     }
+    @include mq('sm') {
+        font-size: 0.8rem;
+    }
 }
 
 .float-btn {

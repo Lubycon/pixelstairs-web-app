@@ -2,6 +2,9 @@
     &.has-error {
         border-color: $red;
     }
+    @include mq('sm') {
+        font-size: 14px;
+    }
 }
 
 .form-text {
