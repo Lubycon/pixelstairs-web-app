@@ -72,7 +72,10 @@
 
     <section class="row" data-section="control">
         <div class="col-12">
-            <b-button @click="postData">Save</b-button>
+            <b-button @click="postData">
+                <span v-show="!isBusy">Save</span>
+                <i v-show="isBusy" class="loading-ico pxs-spinner-1 spin"></i>
+            </b-button>
         </div>
     </section>
 
