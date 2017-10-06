@@ -17,18 +17,23 @@ export default {
     },
     data () {
         return {
-            logo: LOGOS.vp
+            logo: LOGOS.vp,
+            isBusy: false
         };
     },
     methods: {
         postData (authData) {
+            this.isBusy = true;
             APIService.resource('users.signup').post(authData)
             .then(res => {
                 this.setToken(res.result.token);
-                this.setUserByAPI();
-                this.$router.push({ name: 'auth-grade' });
+                this.setUserByAPI().then(res => {
+                    this.$router.push({ name: 'auth-grade' });
+                    this.isBusy = false;
+                });
             }, err => {
                 console.log(err);
+                this.isBusy = false;
             });
         },
         ...mapActions({

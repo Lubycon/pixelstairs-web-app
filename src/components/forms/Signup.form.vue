@@ -36,7 +36,10 @@
             <b-form-text v-if="errors.has('name')" class="is-invalid">{{ errors.first('name') }}</b-form-text>
         </b-form-group>
         <small>If you press the button below, it is assumed that you have agreed to our Terms of service and Privacy policy.</small>
-        <b-button type="submit">Join us!</b-button>
+        <b-button type="submit">
+            <span v-show="!isBusy">Join us!</span>
+            <i v-show="isBusy" class="loading-ico pxs-spinner-1 spin"></i>
+        </b-button>
     </b-form>
 </div>
 </template>
@@ -58,6 +61,12 @@ import ValidateService from 'src/services/Validate.service';
 export default {
     name: 'Signup-form',
     mixins: [ PasswordMixin ],
+    props: {
+        isBusy: {
+            type: Boolean,
+            default: false
+        }
+    },
     data () {
         return {
             email: null,
