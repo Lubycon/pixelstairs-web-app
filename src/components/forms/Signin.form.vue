@@ -22,7 +22,8 @@
             />
         </b-form-group>
         <b-button type="submit">
-            Sign in
+            <span v-show="!isBusy">Sign in</span>
+            <i v-show="isBusy" class="loading-ico pxs-spinner-1 spin"></i>
         </b-button>
     </b-form>
     <b-button class="btn-border signup-btn" :to="{ name: 'signup' }">
@@ -43,6 +44,12 @@
 <script>
 export default {
     name: 'Signin-form',
+    props: {
+        isBusy: {
+            type: Boolean,
+            default: false
+        }
+    },
     data () {
         return {
             email: null,

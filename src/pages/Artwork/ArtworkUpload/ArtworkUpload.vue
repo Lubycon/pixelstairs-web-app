@@ -57,7 +57,8 @@
                     class="btn btn-round col-4"
                     @click="submit"
                 >
-                    Submit
+                    <span v-show="!isBusy">Submit</span>
+                    <i v-show="isBusy" class="loading-ico pxs-spinner-1 spin"></i>
                 </button>
             </section>
         </div>

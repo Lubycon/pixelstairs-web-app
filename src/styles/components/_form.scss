@@ -7,6 +7,14 @@
     }
 }
 
+.b-form-group.form-group {
+    label {
+        span {
+            font-size: 12px;
+        }
+    }
+}
+
 .form-text {
     text-align: left;
     &.is-invalid {

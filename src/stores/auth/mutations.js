@@ -8,12 +8,18 @@
 import APIService from 'src/services/API.service';
 import CookieService from 'src/services/Cookie.service';
 
-export function SET_TOKEN (state, token) {
-    state.token = token;
-    APIService.authToken = token;
+export function SET_TOKEN (state, { accessToken, refreshToken }) {
+    state.accessToken = accessToken;
+    state.refreshToken = refreshToken;
+    APIService.authToken = accessToken;
+    APIService.refreshToken = refreshToken;
     CookieService.save({
         key: 'auth',
-        value: token
+        value: accessToken
+    });
+    CookieService.save({
+        key: 'refresh',
+        value: refreshToken
     });
 }
 
@@ -32,7 +38,8 @@ export function SET_USER (state, user) {
 }
 
 export function DESTROY_TOKEN (state) {
-    state.token = null;
+    state.accessToken = null;
+    state.refreshToken = null;
     state.user = {
         id: null,
         email: null,
@@ -43,9 +50,11 @@ export function DESTROY_TOKEN (state) {
     state.isAuthorized = false;
     APIService.destroyToken();
     CookieService.clear('auth');
+    CookieService.clear('refresh');
     CookieService.clear('user');
-
-    location.reload('/');
+    if (process.browser && location) {
+        location.reload('/');
+    }
 }
 
 export default {

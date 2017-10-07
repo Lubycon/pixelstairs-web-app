@@ -29,11 +29,13 @@ button.crop-btn {
 </style>
 
 <script>
+import { ModalChildMixin } from 'src/mixins/modal-child.mixin';
 import NoSSR from 'vue-no-ssr';
 const VueCropper = process.browser ? require('vue-cropper') : null;
 
 export default {
     name: 'ImageCropModal',
+    mixins: [ ModalChildMixin ],
     components: {
         'no-ssr': NoSSR,
         VueCropper
@@ -56,14 +58,6 @@ export default {
         };
     },
     methods: {
-        show () {
-            this.$refs.modal.show();
-            this.$emit('shown');
-        },
-        hide () {
-            this.$refs.modal.hide();
-            this.$emit('hidden');
-        },
         crop () {
             if (this.outputType === 'base64') {
                 this.cropToBase64();

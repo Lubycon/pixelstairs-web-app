@@ -33,7 +33,8 @@ export default {
             artworkDesc: null,
 
             pageIndex: 0,
-            pageType: null
+            pageType: null,
+            isBusy: false
         };
     },
     methods: {
@@ -68,7 +69,7 @@ export default {
             }
 
             let contentId = null;
-
+            this.isBusy = true;
             this.postData()
             .then(res => {
                 contentId = res.result.id;
@@ -76,7 +77,9 @@ export default {
             }, err => {
                 if (err) {}
                 // Content data upload has been failed
+                this.isBusy = false;
             }).then(res => {
+                this.isBusy = false;
                 this.$router.push({
                     name: 'artwork-upload-success',
                     params: {
@@ -86,6 +89,7 @@ export default {
             }, err => {
                 if (err) {}
                 // File data upload has been failed
+                this.isBusy = false;
             });
         },
         postData () {
