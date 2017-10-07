@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const resolve = file => path.resolve(__dirname, file);
 
 const isProd = process.env.NODE_ENV === 'production';
+const isLocal = process.env.NODE_ENV === 'local';
 
 const app = express();
 app.use(cookieParser());
@@ -72,11 +73,16 @@ app.get('*', (req, res) => {
 
         if (err && err.code === 404) {
             res.status(404).redirect('/error/404');
-        } else {
+        }
+        else if (err && err.code === 419) {
+            res.status(200);
+        }
+        else {
             // !!Fatal Error!! Render Error Page or Redirect
             const errorTemplate = fs.readFileSync(resolve('./src/error.tmpl.html'), 'utf-8');
             res.end(errorTemplate);
-            console.error(`[ERR] error during render : ${req.url}\n${err}`);
+            console.error(`[ERR] error during render : ${req.url}`);
+            console.log('response err => ', err);
         }
     };
 
@@ -112,8 +118,14 @@ else {
     port = process.env.PORT || 3000;
 }
 
-let host = 'local.pixelstairs.com';
-
-app.listen(port, host, () => {
-    console.log(`server started at ${host}:${port}`);
-});
+if(isLocal) {
+    let host = 'local.pixelstairs.com';
+    app.listen(port, host, () => {
+        console.log(`server started at ${host}:${port}`);
+    });
+}
+else {
+    app.listen(port, () => {
+        console.log(`server started at 127.0.0.1:${port}`);
+    });
+}

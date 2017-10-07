@@ -17,14 +17,19 @@ export default {
     },
     data () {
         return {
-            logo: LOGOS.vp
+            logo: LOGOS.vp,
+            isBusy: false
         };
     },
     methods: {
         postData (authData) {
+            this.isBusy = true;
             APIService.resource('users.signin').post(authData)
             .then(res => {
-                this.setToken(res.result.token);
+                this.setToken({
+                    accessToken: res.result.access_token,
+                    refreshToken: res.result.refresh_token
+                });
                 this.setUserByAPI()
                 .then(res => {
                     this.authResolve();
@@ -47,9 +52,11 @@ export default {
             else {
                 this.$router.push({ name: 'home' });
             }
+            this.isBusy = false;
         },
         authReject (err) {
             console.log(err);
+            this.isBusy = false;
         },
         ...mapActions({
             setToken: 'setToken',

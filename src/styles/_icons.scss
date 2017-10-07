@@ -9,140 +9,143 @@
 }
 
 i {
-    /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: 'pxs-icons' !important;
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    line-height: 1;
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'pxs-icons' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
 
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.pxs-arrow-left:before {
-    content: "\e901";
+.pxs-angle-left:before {
+  content: "\e901";
 }
-.pxs-arrow-o-down:before {
-    content: "\e902";
+.pxs-angle-o-down:before {
+  content: "\e902";
 }
-.pxs-arrow-o-left:before {
-    content: "\e903";
+.pxs-angle-o-left:before {
+  content: "\e903";
 }
-.pxs-arrow-o-right:before {
-    content: "\e904";
+.pxs-angle-o-right:before {
+  content: "\e904";
 }
-.pxs-arrow-o-up:before {
-    content: "\e905";
+.pxs-angle-o-up:before {
+  content: "\e905";
 }
-.pxs-arrow-right:before {
-    content: "\e906";
+.pxs-angle-right:before {
+  content: "\e906";
 }
-.pxs-arrow-up:before {
-    content: "\e907";
+.pxs-angle-up:before {
+  content: "\e907";
 }
-.pxs-cencel:before {
-    content: "\e908";
+.pxs-cancel:before {
+  content: "\e908";
 }
-.pxs-cencel-o:before {
-    content: "\e909";
+.pxs-cancel-o:before {
+  content: "\e909";
 }
 .pxs-check:before {
-    content: "\e90a";
+  content: "\e90a";
 }
 .pxs-check-o:before {
-    content: "\e90b";
+  content: "\e90b";
 }
 .pxs-download:before {
-    content: "\e90c";
+  content: "\e90c";
 }
-.pxs-email:before {
-    content: "\e90d";
+.pxs-mail:before {
+  content: "\e90d";
 }
 .pxs-error:before {
-    content: "\e90e";
+  content: "\e90e";
 }
 .pxs-eye:before {
-    content: "\e90f";
+  content: "\e90f";
 }
-.pxs-eye-none:before {
-    content: "\e910";
+.pxs-no-eye:before {
+  content: "\e910";
 }
 .pxs-heart:before {
-    content: "\e911";
+  content: "\e911";
 }
 .pxs-heart-o:before {
-    content: "\e912";
+  content: "\e912";
 }
 .pxs-info:before {
-    content: "\e913";
+  content: "\e913";
 }
 .pxs-layout-full:before {
-    content: "\e914";
+  content: "\e914";
 }
 .pxs-layout-full-flex:before {
-    content: "\e915";
+  content: "\e915";
 }
 .pxs-layout-grid:before {
-    content: "\e916";
+  content: "\e916";
 }
 .pxs-layout-grid-flex:before {
-    content: "\e917";
+  content: "\e917";
 }
 .pxs-lock:before {
-    content: "\e918";
+  content: "\e918";
 }
 .pxs-minus:before {
-    content: "\e919";
+  content: "\e919";
 }
 .pxs-minus-o:before {
-    content: "\e91a";
+  content: "\e91a";
 }
 .pxs-pen:before {
-    content: "\e91b";
+  content: "\e91b";
 }
 .pxs-plus:before {
-    content: "\e91c";
+  content: "\e91c";
 }
 .pxs-plus-o:before {
-    content: "\e91d";
+  content: "\e91d";
 }
 .pxs-search:before {
-    content: "\e91e";
+  content: "\e91e";
 }
 .pxs-star:before {
-    content: "\e91f";
+  content: "\e91f";
 }
 .pxs-star-o:before {
-    content: "\e920";
+  content: "\e920";
 }
 .pxs-tag:before {
-    content: "\e921";
+  content: "\e921";
 }
 .pxs-tags:before {
-    content: "\e922";
+  content: "\e922";
 }
 .pxs-unlock:before {
-    content: "\e923";
+  content: "\e923";
 }
 .pxs-upload:before {
-    content: "\e924";
+  content: "\e924";
 }
 .pxs-user:before {
-    content: "\e925";
+  content: "\e925";
 }
 .pxs-user-minus:before {
-    content: "\e926";
+  content: "\e926";
 }
 .pxs-user-plus:before {
-    content: "\e927";
+  content: "\e927";
 }
 .pxs-zoom-in:before {
-    content: "\e928";
+  content: "\e928";
 }
 .pxs-zoom-out:before {
-    content: "\e929";
+  content: "\e929";
+}
+.pxs-spinner-1:before {
+  content: "\e97b";
 }

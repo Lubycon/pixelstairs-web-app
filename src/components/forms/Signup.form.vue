@@ -41,7 +41,10 @@
             and
             <router-link :to="{ name: 'privacy-policy' }" target="_blank">Privacy policy</router-link>.
         </small>
-        <b-button type="submit">Join us!</b-button>
+        <b-button type="submit">
+            <span v-show="!isBusy">Join us!</span>
+            <i v-show="isBusy" class="loading-ico pxs-spinner-1 spin"></i>
+        </b-button>
     </b-form>
 </div>
 </template>
@@ -72,6 +75,12 @@ import ValidateService from 'src/services/Validate.service';
 export default {
     name: 'Signup-form',
     mixins: [ isExistUserMixin, PasswordMixin ],
+    props: {
+        isBusy: {
+            type: Boolean,
+            default: false
+        }
+    },
     data () {
         return {
             email: null,

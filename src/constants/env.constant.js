@@ -16,12 +16,12 @@ function get (env) {
         s3BaseUrl = 'https://s3.ap-northeast-2.amazonaws.com/pixelstairs';
     }
     else if (env === 'development') {
-        apiBaseUrl = 'https://apidev.pixelstairs.com/v1';
-        s3BaseUrl = 'https://s3.ap-northeast-2.amazonaws.com/pixelstairs';
+        apiBaseUrl = 'https://dev.api.pixelstairs.com/v1';
+        s3BaseUrl = 'https://s3.ap-northeast-2.amazonaws.com/dev.pixelstairs';
     }
     else if (env === 'local') {
         apiBaseUrl = 'http://192.168.99.100:8080/v1';
-        s3BaseUrl = 'https://s3.ap-northeast-2.amazonaws.com/pixelstairs';
+        s3BaseUrl = 'https://s3.ap-northeast-2.amazonaws.com/dev.pixelstairs';
     }
 
     return {
