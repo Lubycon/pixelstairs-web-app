@@ -35,7 +35,12 @@ export default {
                     this.isBusy = false;
                 });
             }, err => {
-                console.log(err);
+                if (err) {
+                    this.$swal(`[Error - ${err.status}_${err.data.status.code}] ${err.data.status.msg}`);
+                }
+                else {
+                    this.$swal(`[Error - ${err.status}] Unknown Error`);
+                }
                 this.isBusy = false;
             });
         },

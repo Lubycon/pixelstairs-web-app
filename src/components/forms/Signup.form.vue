@@ -7,7 +7,7 @@
                 name="email"
                 v-model.trim="email"
                 placeholder="ex) evan1125@pixelstairs.com"
-                v-validate="'required|email'"
+                v-validate="'required|email|existEmail'"
                 :class="{ 'has-error': errors.has('email') }"
             />
             <b-form-text v-if="errors.has('email')" class="is-invalid">{{ errors.first('email') }}</b-form-text>
@@ -30,12 +30,17 @@
                 type="text"
                 name="name"
                 v-model.trim="name"
-                v-validate="{ rules: { required: true, regex: regex.name } }"
+                v-validate="{ rules: { required: true, regex: regex.name, existName: true } }"
                 :class="{ 'has-error': errors.has('name') }"
             />
             <b-form-text v-if="errors.has('name')" class="is-invalid">{{ errors.first('name') }}</b-form-text>
         </b-form-group>
-        <small>If you press the button below, it is assumed that you have agreed to our Terms of service and Privacy policy.</small>
+        <small>
+            If you press the button below, it is assumed that you have agreed to our
+            <router-link :to="{ name: 'terms-of-service' }" target="_blank">Terms of service</router-link>
+            and
+            <router-link :to="{ name: 'privacy-policy' }" target="_blank">Privacy policy</router-link>.
+        </small>
         <b-button type="submit">
             <span v-show="!isBusy">Join us!</span>
             <i v-show="isBusy" class="loading-ico pxs-spinner-1 spin"></i>
@@ -47,6 +52,14 @@
 <style lang="scss" scoped>
 @import 'src/styles/utils/__module__';
 
+small {
+    a {
+        color: $grey-900;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+}
+
 .btn[type="submit"] {
     margin: 20px 0;
     width: 100%;
@@ -55,12 +68,13 @@
 </style>
 
 <script>
+import { isExistUserMixin } from 'src/mixins/is-exist-user.mixin';
 import { PasswordMixin } from 'src/mixins/password.mixin';
 import ValidateService from 'src/services/Validate.service';
 
 export default {
     name: 'Signup-form',
-    mixins: [ PasswordMixin ],
+    mixins: [ isExistUserMixin, PasswordMixin ],
     props: {
         isBusy: {
             type: Boolean,

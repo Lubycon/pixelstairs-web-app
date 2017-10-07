@@ -7,9 +7,9 @@
                 <p>The Pixelstairs is dedicated to providing better opportunities</p>
                 <p>for their works and another inspired interaction with every artist in the world</p>
             </div>
-            <router-link :to="{ name: 'artwork-upload' }">
-                <button class="btn btn-primary btn-round">Upload my works</button>
-            </router-link>
+            <button class="btn btn-primary btn-round" @click="gotoUpload">
+                Upload my works
+            </button>
         </div>
     </home-jumbo>
     <div class="container">
@@ -40,6 +40,10 @@
             </li>
         </ul>
     </div>
+
+    <!-- MODAL -->
+    <signup-modal ref="signupModal"></signup-modal>
+    <!-- /MODAL -->
 </div>
 </template>
 

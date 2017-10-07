@@ -19,7 +19,7 @@ export const API_LIST = {
             info: `${prefix}/{id}`,
             exists: {
                 email: `${prefix}/exists/email`,
-                nickname: `${prefix}/exists/nickname`
+                name: `${prefix}/exists/nickname`
             },
             pwd: {
                 mail: `${prefix}/password/mail`,
