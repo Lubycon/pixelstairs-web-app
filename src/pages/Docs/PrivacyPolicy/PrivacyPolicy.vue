@@ -76,7 +76,7 @@
     <section>
         <h3 data-name="subtitle">Contact us</h3>
         <div data-name="content">
-            <p>If you have any questions about this Privacy Policy, the practices of this site, or your dealings with this site, please contact us at <a href="mailto:lubycon@gmail.com">lubycon@gmail.com</a></p>
+            <p>If you have any questions about this Privacy Policy, the practices of this site, or your dealings with this site, please contact us at <a href="mailto:contact@pixelstairs.com">contact@pixelstairs.com</a></p>
         </div>
     </section>
 </div>

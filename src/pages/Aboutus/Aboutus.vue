@@ -23,7 +23,7 @@
             </div>
             <div data-name="content">
                 <ul class="row" data-name="icon">
-                    <li class="col-12 col-sm-4" v-for="icon in introIcons">
+                    <li class="col-4" v-for="icon in introIcons">
                         <img :src="icon.icon" :title="icon.name">
                     </li>
                 </ul>
@@ -81,7 +81,7 @@
             </div>
             <div data-name="content">
                 <div data-name="icon">
-                    <img src="http://files.softicons.com/download/social-media-icons/flat-gradient-social-icons-by-guilherme-lima/png/512x512/CreativeCommons.png">
+                    <img src="http://www.iconsfind.com/wp-content/uploads/2016/11/20161102_581990af5cadf.png">
                 </div>
                 <p>
                     The importance of copyright in today's world where many kinds of creative contents are actively displayed<br>
@@ -122,7 +122,7 @@
                 </div>
                 <p>
                     If you have any questions about <strong>Pixelstairs</strong> practices or policies, further business with this service,<br>
-                    or requests for improvement, please click on the button below or contact us at <strong><a href="mailto:lubycon@gmail.com">lubycon@gmail.com</a></strong>.
+                    or requests for improvement, please click on the button below or contact us at <strong><a href="mailto:contact@pixelstairs.com">contact@pixelstairs.com</a></strong>.
                 </p>
             </div>
         </section>

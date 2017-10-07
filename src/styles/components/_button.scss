@@ -4,6 +4,10 @@
     color: $white;
     cursor: pointer;
 
+    @include mq('sm') {
+        font-size: 0.8rem;
+    }
+
     &.active {
         background-color: $bluegrey-900;
     }

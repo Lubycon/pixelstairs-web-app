@@ -62,6 +62,10 @@ section[data-section="forms"] {
 }
 
 section[data-section="control"] {
+    margin: {
+        left: auto;
+        right: auto;
+    }
     button.btn {
         padding: 10px 60px;
         @include mq('sm') {

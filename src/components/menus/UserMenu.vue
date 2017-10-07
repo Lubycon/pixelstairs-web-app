@@ -88,6 +88,9 @@
         right: 0;
         padding: $menu-padding $menu-padding;
         box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
+        @include mq('sm') {
+            width: 300px;
+        }
         a.dropdown-item {
             box-shadow: none;
             background-color: $white;
@@ -103,6 +106,9 @@
             margin-right: $menu-padding;
             img[data-name="user-profile-image"] {
                 @include circleFrame($profile-image-size);
+                @include mq('sm') {
+                    @include circleFrame($profile-image-size - 20px);
+                }
             }
         }
         div[data-name="user-info"] {
@@ -116,6 +122,9 @@
                     font-weight: bold;
                     vertical-align: middle;
                     margin-bottom: 0;
+                    @include mq('sm') {
+                        font-size: 16px;
+                    }
                 }
                 span {
                     margin-left: 10px;

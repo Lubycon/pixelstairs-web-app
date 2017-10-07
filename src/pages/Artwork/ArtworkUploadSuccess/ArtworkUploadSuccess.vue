@@ -10,14 +10,14 @@
             </p>
         </div>
         <div data-section="control" class="row">
-            <div class="col-12 col-sm-6">
+            <div class="col-12">
                 <router-link :to="{ name: 'artwork-detail', params: { artId } }">
                     <button class="btn">View uploaded Artwork</button>
                 </router-link>
             </div>
-            <div class="col-12 col-sm-6">
+            <div class="col-12">
                 <router-link :to="{ name: 'home' }">
-                    <button class="btn">Go to main</button>
+                    <button class="btn btn-border">Go to main</button>
                 </router-link>
             </div>
         </div>
@@ -25,7 +25,7 @@
 </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
     @import './ArtworkUploadSuccess';
 </style>
 

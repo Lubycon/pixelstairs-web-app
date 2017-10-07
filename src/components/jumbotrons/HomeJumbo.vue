@@ -1,5 +1,5 @@
 <template>
-<div v-cloak>
+<div class="home-jumbo" v-cloak>
     <div v-swiper:mySwiper="swiperOption">
         <div class="swiper-wrapper">
             <div class="swiper-slide" v-for="content in contents">
@@ -29,17 +29,33 @@
 @import 'src/styles/utils/__module__';
 .swiper-overlay-text {
     $margin: 10px;
+    @include mq('md') {
+        width: 80%;
+    }
     * {
         color: $white;
     }
     h1 {
         margin-bottom: $margin * 2;
+        @include mq('sm') {
+            font-size: 18px;
+        }
     }
     p {
         margin-bottom: $margin / 2;
+        @include mq('sm') {
+            font-size: 16px;
+        }
     }
-    button {
-        margin-top: $margin * 3;
+}
+</style>
+<style lang="scss">
+@import 'src/styles/utils/__module__';
+.home-jumbo .swiper-overlay-text {
+    .btn {
+        @include mq('sm') {
+            font-size: 14px;
+        }
     }
 }
 </style>

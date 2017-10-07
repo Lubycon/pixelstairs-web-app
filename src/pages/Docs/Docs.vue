@@ -2,10 +2,10 @@
 <div class="container document">
     <header>
         <nav class="row justify-content-center">
-            <div class="col-2">
+            <div class="col-6 col-lg-2">
                 <b-button :to="{ name: 'terms-of-service' }">Terms of service</b-button>
             </div>
-            <div class="col-2">
+            <div class="col-6 col-lg-2">
                 <b-button :to="{ name: 'privacy-policy' }">Privacy policy</b-button>
             </div>
         </nav>

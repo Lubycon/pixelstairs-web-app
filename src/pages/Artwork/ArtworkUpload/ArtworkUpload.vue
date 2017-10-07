@@ -33,25 +33,28 @@
                     />
                 </div>
             </section>
-            <section data-section="control">
+            <section
+                data-section="control"
+                class="row"
+                :class="{ 'justify-content-between': pageIndex > 0, 'justify-content-center': pageIndex < 1 }"
+            >
                 <button
                     v-if="pageIndex > 0"
-                    class="btn btn-round float-left"
+                    class="btn btn-round col-4"
                     @click="prevPage"
                 >
                     Prev
                 </button>
                 <button
                     v-if="pageIndex < formList.length"
-                    class="btn btn-round"
-                    :class="{ 'float-right': pageIndex > 0 }"
+                    class="btn btn-round col-4"
                     @click="nextPage"
                 >
                     {{ pageIndex > 0 ? 'Next' : 'Start'}}
                 </button>
                 <button
                     v-if="pageIndex >= formList.length"
-                    class="btn btn-round float-right"
+                    class="btn btn-round col-4"
                     @click="submit"
                 >
                     <span v-show="!isBusy">Submit</span>
@@ -64,7 +67,7 @@
 </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
     @import './ArtworkUpload';
 </style>
 
