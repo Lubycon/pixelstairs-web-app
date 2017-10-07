@@ -38,6 +38,12 @@
             />
         </li>
     </ul>
+    <div data-name="no-artworks" v-if="!firstUserContents.contents">
+        <p>You have no artwork</p>
+        <b-button :to="{ name: 'artwork-upload' }">
+            Upload
+        </b-button>
+    </div>
 </div>
 </template>
 

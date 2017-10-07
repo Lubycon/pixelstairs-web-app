@@ -44,3 +44,9 @@ ul.row[data-name="artworks"] {
         padding: 8px;
     }
 }
+div[data-name="no-artworks"] {
+    text-align: center;
+    p {
+        text-align: center;
+    }
+}
