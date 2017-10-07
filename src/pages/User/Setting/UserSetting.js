@@ -20,7 +20,8 @@ export default {
             newProfile: null,
             newProfileRaw: null,
             croppedNewProfileRaw: null,
-            newUsername: null
+            newUsername: null,
+            isBusy: false
         };
     },
     computed: {
@@ -67,14 +68,20 @@ export default {
                 data.profileImg.file = this.croppedNewProfileRaw;
             }
 
-            APIService.resource('users.info', { id: data.id }).put(data)
+            this.isBusy = true;
+            APIService.resource('users.me').put(data)
             .then(res => {
                 delete res.result.newsletterAccepted;
                 delete res.result.gender;
                 delete res.result.birthday;
 
                 let me = res.result;
-                this.setUser(me);
+                this.setUser(me).then(res => {
+                    this.isBusy = false;
+                });
+            }, err => {
+                if (err) {}
+                this.isBusy = false;
             });
         },
         ...mapActions({
