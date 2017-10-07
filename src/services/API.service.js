@@ -11,18 +11,10 @@ import { CUSTOM_HEADER_PREFIX } from '../constants';
 import { API_BASE_URL } from 'src/constants/env.constant';
 import { API_LIST } from '../constants/api.constant';
 
-const VERSION_KEY = `${CUSTOM_HEADER_PREFIX}version`;
-const AUTH_KEY = `${CUSTOM_HEADER_PREFIX}token`;
-
 class APIService {
     constructor (axios, API_LIST) {
         this._axios = axios.create({
-            baseURL: API_BASE_URL,
-            headers: {
-                common: {
-                    [VERSION_KEY]: '1.2.0'
-                }
-            }
+            baseURL: API_BASE_URL
         });
 
         this._apilist = this.generateAPI(API_LIST);
@@ -30,16 +22,27 @@ class APIService {
 
     set authToken (newToken) {
         this._myAuthToken = newToken;
-        this._axios.defaults.headers.common[AUTH_KEY] = this._myAuthToken;
+        this._axios.defaults.headers.common.Authorization = `Bearer ${newToken}`;
     }
 
     get authToken () {
         return this._myAuthToken;
     }
 
+    set refreshToken (newToken) {
+        this._myRefreshToken = newToken;
+        this._axios.defaults.headers.common[`${CUSTOM_HEADER_PREFIX}refresh-token`] = newToken;
+    }
+
+    get refreshToken () {
+        return this._myRefreshToken;
+    }
+
     destroyToken () {
         this._myAuthToken = null;
-        delete this._axios.defaults.headers.common[AUTH_KEY];
+        this._myRefreshToken = null;
+        delete this._axios.defaults.headers.common.Authorization;
+        delete this._axios.defaults.headers.common[`${CUSTOM_HEADER_PREFIX}refresh-token`];
     }
 
     resource (api, id = null) {
@@ -72,7 +75,6 @@ class APIService {
 
         this._axios.post(api, data)
         .then(res => {
-            console.log('=======API_SERVICE:GET RESPONSE!=======');
             defer.resolve(res.data);
         }, err => {
             defer.reject(this.onError(err));

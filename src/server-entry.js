@@ -16,10 +16,17 @@ export default context => {
 
         // SET AUTH DATA
         const AUTH_KEY = CookieService._encodeKey('auth');
-        const ENCODED_TOKEN = context.cookie[AUTH_KEY];
-        if (ENCODED_TOKEN) {
-            const TOKEN = CookieService._decode(ENCODED_TOKEN);
-            store.dispatch('setToken', TOKEN).then(res => {
+        const ENCODED_AUTH_TOKEN = context.cookie[AUTH_KEY];
+        const REFRESH_KEY = CookieService._encodeKey('refresh');
+        const ENCODED_REFRESH_TOKEN = context.cookie[REFRESH_KEY];
+
+        if (ENCODED_AUTH_TOKEN) {
+            const TOKEN = CookieService._decode(ENCODED_AUTH_TOKEN);
+            const REFRESH_TOKEN = CookieService._decode(ENCODED_REFRESH_TOKEN);
+            store.dispatch('setToken', {
+                accessToken: TOKEN,
+                refreshToken: REFRESH_TOKEN
+            }).then(res => {
                 store.dispatch('setUserByAPI').then(res => {
                     router.push(context.url);
                 });
