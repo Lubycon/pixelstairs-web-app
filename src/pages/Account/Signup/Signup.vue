@@ -9,7 +9,7 @@
         </div>
 
         <div class="card-body">
-            <signup-form @submit="postData"></signup-form>
+            <signup-form :is-busy="isBusy" @submit="postData"></signup-form>
         </div>
     </div>
 </div>

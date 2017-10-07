@@ -17,21 +17,26 @@ export default {
     },
     data () {
         return {
-            logo: LOGOS.vp
+            logo: LOGOS.vp,
+            isBusy: false
         };
     },
     methods: {
         postData (authData) {
+            this.isBusy = true;
             APIService.resource('users.signup').post(authData)
             .then(res => {
                 this.setToken({
                     accessToken: res.result.access_token,
                     refreshToken: res.result.refresh_token
                 });
-                this.setUserByAPI();
-                this.$router.push({ name: 'auth-grade' });
+                this.setUserByAPI().then(res => {
+                    this.$router.push({ name: 'auth-grade' });
+                    this.isBusy = false;
+                });
             }, err => {
                 console.log(err);
+                this.isBusy = false;
             });
         },
         ...mapActions({

@@ -3,7 +3,7 @@
     <router-link :to="{ name: 'artwork-detail', params: { artId } }">
         <div
             class="card-img-top artwork-card--image"
-            :style="{ 'background-image': thumbnail }"
+            :style="{ 'background-image': `url(${thumbnail})` }"
         >
             <img :src="image.file" :title="title" :alt="title">
         </div>

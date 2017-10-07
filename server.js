@@ -6,6 +6,7 @@ const cookieParser = require('cookie-parser');
 const resolve = file => path.resolve(__dirname, file);
 
 const isProd = process.env.NODE_ENV === 'production';
+const isLocal = process.env.NODE_ENV === 'local';
 
 const app = express();
 app.use(cookieParser());
@@ -117,8 +118,14 @@ else {
     port = process.env.PORT || 3000;
 }
 
-let host = 'local.pixelstairs.com';
-
-app.listen(port, host, () => {
-    console.log(`server started at ${host}:${port}`);
-});
+if(isLocal) {
+    let host = 'local.pixelstairs.com';
+    app.listen(port, host, () => {
+        console.log(`server started at ${host}:${port}`);
+    });
+}
+else {
+    app.listen(port, () => {
+        console.log(`server started at 127.0.0.1:${port}`);
+    });
+}
