@@ -34,6 +34,7 @@ Vue.use(Permission, {
 
 // only for Client
 if (process.browser) {
+    // Swiper
     const VueAwesomeSwiper = require('vue-awesome-swiper/ssr');
     Vue.use(VueAwesomeSwiper);
 

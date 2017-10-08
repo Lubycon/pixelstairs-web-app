@@ -8,12 +8,16 @@ import { mapGetters, mapActions } from 'vuex';
 import APIService from 'src/services/API.service';
 import HomeJumbo from 'src/components/jumbotrons/HomeJumbo.vue';
 import ArtworkCard from 'src/components/cards/ArtworkCard.vue';
+import InfiniteScroller from 'src/components/InfiniteScroller.vue';
 import SignupModal from 'src/components/modals/SignupModal.vue';
 
 export default {
     name: 'Home',
     components: {
-        HomeJumbo, ArtworkCard, SignupModal
+        HomeJumbo,
+        ArtworkCard,
+        InfiniteScroller,
+        SignupModal
     },
     asyncData ({ store }) {
         return store.dispatch('setArtworkList', {
@@ -26,7 +30,8 @@ export default {
             pageIndex: 2,
             totalCount: 0,
             loadingMsg: 'Loading...',
-            artworks: []
+            artworks: [],
+            isBusy: false
         };
     },
     computed: {
@@ -37,17 +42,20 @@ export default {
     },
     watch: {
         pageIndex (val) {
+            this.isBusy = true;
             return APIService.resource('contents.list').get({
                 pageIndex: this.pageIndex,
                 sort: 'latest:desc'
             }).then(res => {
                 this.totalCount = res.result.totalCount;
                 this.addToArtworkList(res.result.contents);
+                this.isBusy = false;
             });
         }
     },
     methods: {
         addToArtworkList (artworks) {
+            console.log(this.pageIndex);
             this.$set(this, 'artworks', [...this.artworks, ...artworks]);
         },
         gotoUpload () {
@@ -56,6 +64,11 @@ export default {
             }
             else {
                 this.$refs.signupModal.show();
+            }
+        },
+        addPageIndex () {
+            if (!this.isBusy) {
+                this.pageIndex++;
             }
         },
         hideModal () {
