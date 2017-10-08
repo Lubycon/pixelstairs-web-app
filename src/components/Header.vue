@@ -7,14 +7,23 @@
         </router-link>
     </div>
     <div class="col-4 header--user-menu">
+        <div>
+            <router-link 
+                class="content-upload-btn btn btn-round"
+                :to="{ name: 'artwork-upload' }"
+            >
+                File Upload
+            </router-link>
+        </div>
         <div v-if="isAuthorized">
             <user-menu></user-menu>
         </div>
         <div v-else>
-            <router-link :to="{ name: 'signin' }">
-                <button class="btn btn-round">
-                    Login
-                </button>
+            <router-link 
+                class="btn btn-round"
+                :to="{ name: 'signin' }"
+            >
+                Login
             </router-link>
         </div>
     </div>
@@ -47,6 +56,12 @@
     }
     .header--user-menu {
         text-align: right;
+        > div{
+            display:inline-block;
+            &:nth-child(1){
+                margin-right: 30px;   
+            }
+        }
         i {
             color: $white;
         }
