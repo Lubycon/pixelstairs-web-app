@@ -20,7 +20,7 @@ function get (env) {
         s3BaseUrl = 'https://s3.ap-northeast-2.amazonaws.com/dev.pixelstairs';
     }
     else if (env === 'local') {
-        apiBaseUrl = 'http://192.168.99.100:8080/v1';
+        apiBaseUrl = 'http://local.api.pixelstairs.com/v1';
         s3BaseUrl = 'https://s3.ap-northeast-2.amazonaws.com/dev.pixelstairs';
     }
 
