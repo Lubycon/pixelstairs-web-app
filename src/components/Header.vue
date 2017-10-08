@@ -7,17 +7,30 @@
         </router-link>
     </div>
     <div class="col-4 header--user-menu">
+        <div>
+            <button 
+                class="content-upload-btn btn btn-round"
+                @click="gotoUpload"
+            >
+                File Upload
+            </button>
+        </div>
         <div v-if="isAuthorized">
             <user-menu></user-menu>
         </div>
         <div v-else>
-            <router-link :to="{ name: 'signin' }">
-                <button class="btn btn-round">
-                    Login
-                </button>
+            <router-link 
+                class="btn btn-round"
+                :to="{ name: 'signin' }"
+            >
+                Login
             </router-link>
         </div>
     </div>
+    
+    <!-- MODAL -->
+    <signup-modal ref="signupModal"></signup-modal>
+    <!-- /MODAL -->
 </nav>
 </template>
 
@@ -47,6 +60,12 @@
     }
     .header--user-menu {
         text-align: right;
+        > div{
+            display:inline-block;
+            &:nth-child(1){
+                margin-right: 30px;   
+            }
+        }
         i {
             color: $white;
         }
@@ -59,11 +78,13 @@ import { mapGetters } from 'vuex';
 import { LOGOS } from 'src/constants';
 
 import UserMenu from 'src/components/menus/UserMenu.vue';
+import SignupModal from 'src/components/modals/SignupModal.vue';
 
 export default {
     name: 'GlobalHeader',
     components: {
-        UserMenu
+        UserMenu,
+        SignupModal
     },
     data () {
         return {
@@ -74,6 +95,16 @@ export default {
         ...mapGetters({
             isAuthorized: 'isAuthorized'
         })
+    },
+    methods: {
+        gotoUpload () {
+            if (this.isAuthorized) {
+                this.$router.push({ name: 'artwork-upload' });
+            }
+            else {
+                this.$refs.signupModal.show();
+            }
+        }
     }
 };
 </script>
