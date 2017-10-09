@@ -172,7 +172,7 @@ export default {
             destroyToken: 'destroyToken'
         }),
         signout () {
-            this.destroyToken();
+            this.destroyToken({ reload: true });
         }
     }
 };

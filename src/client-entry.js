@@ -15,6 +15,20 @@ const { app, router, store } = createApp();
 
 if (window.__INITIAL_STATE__) {
     store.replaceState(window.__INITIAL_STATE__);
+    if (store.state.auth && store.state.auth.accessToken) {
+        console.log('CLIENT SIDE GETTING TOKEN!');
+        console.log('A => ', store.state.auth.accessToken);
+        console.log('R => ', store.state.auth.refreshToken);
+        store.dispatch('setToken', {
+            accessToken: store.state.auth.accessToken,
+            refreshToken: store.state.auth.refreshToken
+        });
+    }
+    else {
+        store.dispatch('destroyToken', {
+            reload: false
+        });
+    }
 }
 
 router.onReady(() => {

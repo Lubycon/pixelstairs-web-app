@@ -19,17 +19,15 @@ export function setUserByAPI (store) {
     let defer = Q.defer();
     APIService.resource('users.me').get()
     .then(res => {
+        console.log('setUser => ', res);
         let user = res.result;
         store.commit('SET_USER', user);
         defer.resolve();
     }, err => {
-        if (err && err.status === 419) {
-            // @ERR TOKEN EXPIRED!
-            // Access token will be reset using Refresh token
-            reissuance(store).then(res => {
-                defer.resolve();
-            });
+        if (err) {
+            console.error(err);
         }
+        defer.reject();
     });
 
     return defer.promise;
@@ -42,37 +40,11 @@ export function setUser (store, user) {
     return defer.promise;
 }
 
-export function destroyToken (store) {
+export function destroyToken (store, { reload }) {
+    console.log('[log] STORE => token Destroy');
     let defer = Q.defer();
-    store.commit('DESTROY_TOKEN');
+    store.commit('DESTROY_TOKEN', { reload });
     defer.resolve();
-    return defer.promise;
-}
-
-function reissuance (store) {
-    let defer = Q.defer();
-    APIService.resource('users.refreshToken').get().then(res => {
-        setToken(store, {
-            accessToken: res.result,
-            refreshToken: APIService.refreshToken
-        }).then(res => {
-            setUserByAPI(store).then(res => {
-                defer.resolve();
-            });
-        });
-    }, err => {
-        if (err) {
-            destroyToken(store).then(res => {
-                defer.resolve();
-            });
-        }
-        else {
-            destroyToken(store).then(res => {
-                defer.resolve();
-            });
-        }
-    });
-
     return defer.promise;
 }
 

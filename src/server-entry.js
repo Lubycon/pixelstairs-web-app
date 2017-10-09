@@ -29,6 +29,9 @@ export default context => {
             }).then(res => {
                 store.dispatch('setUserByAPI').then(res => {
                     router.push(context.url);
+                }, err => {
+                    if (err) {}
+                    router.push(context.url);
                 });
             });
         }
