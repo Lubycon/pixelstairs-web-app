@@ -13,37 +13,41 @@
         </div>
     </home-jumbo>
     <div class="container">
-        <ul class="row cards-wrapper">
-            <infinite-scroller
-                :delay="10"
-                @trigger="addPageIndex"
-            >
-                <!-- SSR FOR SEO -->
-                <li class="col-12 col-md-6 col-lg-3" v-for="artwork in firstPageArtworks.contents">
-                    <artwork-card
-                        :art-id="artwork.id"
-                        :title="artwork.title"
-                        :image="artwork.image"
-                        :author-name="artwork.user.nickname"
-                        :author-profile="artwork.user.profileImg"
-                        :view-count="artwork.counts.view"
-                        :like-count="artwork.counts.like"
-                    />
-                </li>
-                <!-- /SSR FOR SEO -->
-                <li class="col-12 col-lg-4" v-for="artwork in artworks">
-                    <artwork-card
-                        :art-id="artwork.id"
-                        :title="artwork.title"
-                        :image="artwork.image"
-                        :author-name="artwork.user.nickname"
-                        :author-profile="artwork.user.profileImg"
-                        :view-count="artwork.counts.view"
-                        :like-count="artwork.counts.like"
-                    />
-                </li>
-            </infinite-scroller>
+        <ul
+            class="row cards-wrapper"
+            v-infinite-scroll="addPageIndex"
+            infinite-scroll-disabled="isBusy"
+            infinite-scroll-distance="10"
+        >
+            <!-- SSR FOR SEO -->
+            <li class="col-12 col-md-6 col-lg-3" v-for="artwork in firstPageArtworks.contents">
+                <artwork-card
+                    :art-id="artwork.id"
+                    :title="artwork.title"
+                    :image="artwork.image"
+                    :author-name="artwork.user.nickname"
+                    :author-profile="artwork.user.profileImg"
+                    :view-count="artwork.counts.view"
+                    :like-count="artwork.counts.like"
+                />
+            </li>
+            <!-- /SSR FOR SEO -->
+            <li class="col-12 col-md-6 col-lg-3" v-for="artwork in artworks">
+                <artwork-card
+                    :art-id="artwork.id"
+                    :title="artwork.title"
+                    :image="artwork.image"
+                    :author-name="artwork.user.nickname"
+                    :author-profile="artwork.user.profileImg"
+                    :view-count="artwork.counts.view"
+                    :like-count="artwork.counts.like"
+                />
+            </li>
         </ul>
+
+        <div v-show="isBusy" class="infinite-scroll-loading-indicator">
+            <i class="loading-ico pxs-spinner-1 spin"></i>
+        </div>
     </div>
 
     <!-- MODAL -->

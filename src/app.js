@@ -50,6 +50,9 @@ if (process.browser) {
         confirmButtonClass: 'btn btn-primary',
         cancelButtonClass: 'btn'
     });
+
+    const VueinfiniteScroll = require('vue-infinite-scroll');
+    Vue.use(VueinfiniteScroll);
 }
 
 export function createApp () {

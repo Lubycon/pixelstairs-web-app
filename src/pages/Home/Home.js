@@ -6,17 +6,17 @@
 */
 import { mapGetters, mapActions } from 'vuex';
 import APIService from 'src/services/API.service';
+import { PagerMixin } from 'src/mixins/pager.mixin';
 import HomeJumbo from 'src/components/jumbotrons/HomeJumbo.vue';
 import ArtworkCard from 'src/components/cards/ArtworkCard.vue';
-import InfiniteScroller from 'src/components/InfiniteScroller.vue';
 import SignupModal from 'src/components/modals/SignupModal.vue';
 
 export default {
     name: 'Home',
+    mixins: [ PagerMixin ],
     components: {
         HomeJumbo,
         ArtworkCard,
-        InfiniteScroller,
         SignupModal
     },
     asyncData ({ store }) {
@@ -27,11 +27,8 @@ export default {
     },
     data () {
         return {
-            pageIndex: 2,
-            totalCount: 0,
-            loadingMsg: 'Loading...',
-            artworks: [],
-            isBusy: false
+            pageIndex: 1,
+            artworks: []
         };
     },
     computed: {
@@ -41,15 +38,30 @@ export default {
         })
     },
     watch: {
-        pageIndex (val) {
+        pageIndex (pageIndex) {
+            if (this.isDone) {
+                return false;
+            }
+
             this.isBusy = true;
             return APIService.resource('contents.list').get({
-                pageIndex: this.pageIndex,
+                pageIndex,
                 sort: 'latest:desc'
             }).then(res => {
-                this.totalCount = res.result.totalCount;
-                this.addToArtworkList(res.result.contents);
-                this.isBusy = false;
+                if (!res.result.contents) {
+                    this.isDone = true;
+                    return false;
+                }
+                else {
+                    this.addToArtworkList(res.result.contents);
+                    this.isBusy = false;
+
+                    this.isPageDoneCheck({
+                        totalPageCount: res.result.totalCount,
+                        currentPageIndex: res.result.currentPage,
+                        lastPage: res.result.contents
+                    });
+                }
             });
         }
     },
@@ -64,11 +76,6 @@ export default {
             }
             else {
                 this.$refs.signupModal.show();
-            }
-        },
-        addPageIndex () {
-            if (!this.isBusy) {
-                this.pageIndex++;
             }
         },
         hideModal () {

@@ -6,3 +6,12 @@
         height: 50px;
     }
 }
+
+.infinite-scroll-loading-indicator {
+    text-align: center;
+    padding: 50px 0;
+    i {
+        color: $bluegrey-600;
+        font-size: 35px;
+    }
+}
