@@ -48,8 +48,9 @@ export default {
                 pageIndex,
                 sort: 'latest:desc'
             }).then(res => {
-                if (!res.result.contents) {
+                if (!res.result) {
                     this.isDone = true;
+                    this.isBusy = false;
                     return false;
                 }
                 else {
@@ -67,7 +68,6 @@ export default {
     },
     methods: {
         addToArtworkList (artworks) {
-            console.log(this.pageIndex);
             this.$set(this, 'artworks', [...this.artworks, ...artworks]);
         },
         gotoUpload () {
