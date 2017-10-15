@@ -22,7 +22,7 @@ import ErrorView from 'src/pages/ErrorView/ErrorView.vue';
 import Signin from 'src/pages/Account/Signin/Signin.vue';
 import Signup from 'src/pages/Account/Signup/Signup.vue';
 import Signdrop from 'src/pages/Account/Signdrop/Signdrop.vue';
-import FindPassword from 'src/pages/Account/FindPassword/FindPassword.vue';
+import AuthSendMail from 'src/pages/Account/AuthSendMail/AuthSendMail.vue';
 
 import AuthGrade from 'src/pages/Auth/AuthGrade/AuthGrade.vue';
 import AuthGradeLanding from 'src/pages/Auth/AuthGradeLanding/AuthGradeLanding.vue';
@@ -121,7 +121,7 @@ const router = new VueRouter({
         name: 'find-password',
         components: {
             header: Header,
-            content: FindPassword,
+            content: AuthSendMail,
             footer: Footer
         },
         meta: {

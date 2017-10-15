@@ -8,14 +8,13 @@
                 placeholder="ex) john0102@pixelstairs.com"
             />
         </b-form-group>
-        <b-button type="submit">Submit</b-button>
+        <b-button type="submit">
+            <span v-show="!isBusy">Submit</span>
+            <i v-show="isBusy" class="loading-ico pxs-spinner-1 spin"></i>
+        </b-button>
     </b-form>
 </div>
 </template>
-
-<style lang="scss" scoped>
-
-</style>
 
 <script>
 import APIService from 'src/services/API.service';
@@ -30,15 +29,24 @@ export default {
     },
     data () {
         return {
-            email: null
+            email: null,
+            isBusy: false
         };
     },
     methods: {
         submit () {
+            this.isBusy = true;
             return APIService.resource(this.api).post({
                 email: this.email
             }).then(res => {
-                this.$emit('submit', res);
+                this.isBusy = false;
+                this.$emit('submit', {
+                    res,
+                    email: this.email
+                });
+            }, err => {
+                if (err) {}
+                this.isBusy = false;
             });
         }
     }
