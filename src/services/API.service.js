@@ -77,7 +77,7 @@ class APIService {
             }, err => {
                 console.log('FINAL ERR => ', err);
                 if (err) {
-                    defer.reject();
+                    defer.reject(err);
                 }
             });
         });
@@ -101,7 +101,7 @@ class APIService {
             }, err => {
                 console.log('FINAL ERR => ', err);
                 if (err) {
-                    defer.reject();
+                    defer.reject(err);
                 }
             });
         });
@@ -125,7 +125,7 @@ class APIService {
             }, err => {
                 console.log('FINAL ERR => ', err);
                 if (err) {
-                    defer.reject();
+                    defer.reject(err);
                 }
             });
         });
@@ -149,7 +149,7 @@ class APIService {
             }, err => {
                 console.log('FINAL ERR => ', err);
                 if (err) {
-                    defer.reject();
+                    defer.reject(err);
                 }
             });
         });

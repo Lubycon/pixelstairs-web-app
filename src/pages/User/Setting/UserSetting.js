@@ -72,16 +72,20 @@ export default {
             APIService.resource('users.me').put(data)
             .then(res => {
                 delete res.result.newsletterAccepted;
-                delete res.result.gender;
-                delete res.result.birthday;
 
                 let me = res.result;
                 this.setUser(me).then(res => {
                     this.isBusy = false;
+                    this.$swal('Saved!');
                 });
             }, err => {
                 if (err) {}
                 this.isBusy = false;
+                console.log('Getting err => ', err);
+                this.$swal({
+                    title: `[Err ${err.data.status.code}]`,
+                    text: `${err.data.status.msg}`
+                });
             });
         },
         ...mapActions({
