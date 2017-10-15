@@ -13,7 +13,8 @@
                 />
             </b-form-group>
             <b-button type="submit">
-                Change
+                <span v-show="!isBusy">Change</span>
+                <i v-show="isBusy" class="loading-ico pxs-spinner-1 spin"></i>
             </b-button>
             <b-button type="button" class="btn-border" :to="{ name: 'home' }">
                 Cancel
