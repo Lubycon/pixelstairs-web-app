@@ -37,7 +37,7 @@ export function SET_USER (state, user) {
     }
 }
 
-export function DESTROY_TOKEN (state) {
+export function DESTROY_TOKEN (state, { reload }) {
     state.accessToken = null;
     state.refreshToken = null;
     state.user = {
@@ -52,7 +52,7 @@ export function DESTROY_TOKEN (state) {
     CookieService.clear('auth');
     CookieService.clear('refresh');
     CookieService.clear('user');
-    if (process.browser && location) {
+    if (process.browser && location && reload) {
         location.reload('/');
     }
 }
