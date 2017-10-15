@@ -1,5 +1,8 @@
 <template>
 <b-modal class="signin-modal" ref="modal" :hide-footer="true">
+    <span slot="modal-header-close">
+        <i class="pxs-cancel"></i>
+    </span>
     <div data-name="form-title">
         <h2>Is this your first time here?</h2>
         <p>Simply proceed to sign up and continue uploading your work!</p>
