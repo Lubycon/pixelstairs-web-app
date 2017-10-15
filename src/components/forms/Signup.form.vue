@@ -1,6 +1,6 @@
 <template>
 <div class="account-form">
-    <b-form v-show="!isBusy" @submit.prevent="submit" autocomplete="off" novalidate>
+    <b-form @submit.prevent="submit" autocomplete="off" novalidate>
         <b-form-group label="Email">
             <b-form-input
                 type="email"
