@@ -17,6 +17,9 @@ export const isExistUserMixin = {
         };
     },
     methods: {
+        // isExist -> true, false
+        // isInvalid -> false, true
+        // isExist에 not연산자를 붙혀서 isInvalid값을 리턴
         isExistEmail (value) {
             let defer = Q.defer();
             if (!this.email) {
@@ -24,7 +27,7 @@ export const isExistUserMixin = {
             }
             APIService.resource('users.exists.email').post({ email: this.email })
             .then(res => {
-                defer.resolve(res.result);
+                defer.resolve(!res.result);
             }, err => {
                 if (err) {
                     defer.resolve(false);
@@ -40,7 +43,7 @@ export const isExistUserMixin = {
             }
             APIService.resource('users.exists.name').post({ nickname: this.name })
             .then(res => {
-                defer.resolve(res.result);
+                defer.resolve(!res.result);
             }, err => {
                 if (err) {
                     defer.resolve(false);

@@ -1,5 +1,8 @@
 <template>
 <b-modal hide-footer ref="modal">
+    <span slot="modal-header-close">
+        <i class="pxs-cancel"></i>
+    </span>
     <no-ssr placeholder="Loading">
         <vueCropper
             ref="cropper"
