@@ -11,6 +11,7 @@ import { createApp } from './app';
 /* Global jQuery lib with expose-loader */
 import 'expose-loader?$!expose-loader?jQuery!jquery';
 
+const env = process.env.NODE_ENV;
 const { app, router, store } = createApp();
 
 if (window.__INITIAL_STATE__) {
@@ -29,6 +30,14 @@ if (window.__INITIAL_STATE__) {
             reload: false
         });
     }
+}
+
+if (env === 'production') {
+    if(!window.console) window.console = {};
+    const methods = ["log", "debug", "warn", "info"];
+    methods.forEach(method => {
+        console[method] = function() {};
+    });
 }
 
 router.onReady(() => {
