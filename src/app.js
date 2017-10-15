@@ -37,6 +37,7 @@ Vue.use(Permission, {
 
 // only for Client
 if (process.browser) {
+    // Swiper
     const VueAwesomeSwiper = require('vue-awesome-swiper/ssr');
     Vue.use(VueAwesomeSwiper);
 
@@ -52,6 +53,9 @@ if (process.browser) {
         confirmButtonClass: 'btn btn-primary',
         cancelButtonClass: 'btn'
     });
+
+    const VueinfiniteScroll = require('vue-infinite-scroll');
+    Vue.use(VueinfiniteScroll);
 }
 
 // Service init

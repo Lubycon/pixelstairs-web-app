@@ -53,6 +53,7 @@
     "vue": "^2.4.2",
     "vue-awesome-swiper": "^2.6.4",
     "vue-cropper": "^0.2.3",
+    "vue-infinite-scroll": "^2.0.2",
     "vue-meta": "^1.2.0",
     "vue-moment": "^2.0.2",
     "vue-no-ssr": "^0.2.0",

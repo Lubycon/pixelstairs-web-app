@@ -6,14 +6,18 @@
 */
 import { mapGetters, mapActions } from 'vuex';
 import APIService from 'src/services/API.service';
+import { PagerMixin } from 'src/mixins/pager.mixin';
 import HomeJumbo from 'src/components/jumbotrons/HomeJumbo.vue';
 import ArtworkCard from 'src/components/cards/ArtworkCard.vue';
 import SignupModal from 'src/components/modals/SignupModal.vue';
 
 export default {
     name: 'Home',
+    mixins: [ PagerMixin ],
     components: {
-        HomeJumbo, ArtworkCard, SignupModal
+        HomeJumbo,
+        ArtworkCard,
+        SignupModal
     },
     asyncData ({ store }) {
         return store.dispatch('setArtworkList', {
@@ -23,9 +27,7 @@ export default {
     },
     data () {
         return {
-            pageIndex: 2,
-            totalCount: 0,
-            loadingMsg: 'Loading...',
+            pageIndex: 1,
             artworks: []
         };
     },
@@ -36,13 +38,31 @@ export default {
         })
     },
     watch: {
-        pageIndex (val) {
+        pageIndex (pageIndex) {
+            if (this.isDone) {
+                return false;
+            }
+
+            this.isBusy = true;
             return APIService.resource('contents.list').get({
-                pageIndex: this.pageIndex,
+                pageIndex,
                 sort: 'latest:desc'
             }).then(res => {
-                this.totalCount = res.result.totalCount;
-                this.addToArtworkList(res.result.contents);
+                if (!res.result) {
+                    this.isDone = true;
+                    this.isBusy = false;
+                    return false;
+                }
+                else {
+                    this.addToArtworkList(res.result.contents);
+                    this.isBusy = false;
+
+                    this.isPageDoneCheck({
+                        totalPageCount: res.result.totalCount,
+                        currentPageIndex: res.result.currentPage,
+                        lastPage: res.result.contents
+                    });
+                }
             });
         }
     },

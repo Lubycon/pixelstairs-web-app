@@ -6,11 +6,13 @@
 */
 import { mapGetters, mapActions } from 'vuex';
 import APIService from 'src/services/API.service';
+import { PagerMixin } from 'src/mixins/pager.mixin';
 import { DEFAULT_USER_PROFILE } from 'src/constants';
 import ArtworkCard from 'src/components/cards/ArtworkCard.vue';
 
 export default {
     name: 'UserProfile',
+    mixins: [ PagerMixin ],
     components: {
         ArtworkCard
     },
@@ -27,7 +29,6 @@ export default {
         return {
             defaultProfile: DEFAULT_USER_PROFILE,
             pageIndex: 2,
-            totalCount: 0,
             artworks: []
         };
     },
@@ -44,11 +45,30 @@ export default {
     },
     watch: {
         pageIndex (val) {
+            if (this.isDone) {
+                return false;
+            }
+
+            this.isBusy = true;
             return APIService.resource('contents.list').get({
-                pageIndex: this.pageIndex
+                pageIndex: this.pageIndex,
+                filter: `userId:${this.$route.params.userId}`
             }).then(res => {
-                this.totalCount = res.result.totalCount;
-                this.addToArtworkList(res.result.contents);
+                if (!res.result) {
+                    this.isDone = true;
+                    this.isBusy = false;
+                    return false;
+                }
+                else {
+                    this.addToArtworkList(res.result.contents);
+                    this.isBusy = false;
+
+                    this.isPageDoneCheck({
+                        totalPageCount: res.result.totalCount,
+                        currentPageIndex: res.result.currentPage,
+                        lastPage: res.result.contents
+                    });
+                }
             });
         }
     },
@@ -59,6 +79,11 @@ export default {
         ...mapActions({
             clearUserData: 'clearUserDetailView'
         })
+    },
+    mounted () {
+        if (!this.firstUserContents.contents) {
+            this.isDone = true;
+        }
     },
     destroyed () {
         this.clearUserData();
