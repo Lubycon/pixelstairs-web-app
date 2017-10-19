@@ -13,6 +13,21 @@
         </div>
     </home-jumbo>
     <div class="container">
+        <div class="row filters-wrapper">
+            <ul>
+                <li>
+                    <button 
+                        class="active" 
+                        type="button"
+                    >인기</button>
+                </li>
+                <li>
+                    <button 
+                        type="button"
+                    >최신</button>
+                </li>
+            </ul>
+        </div>
         <ul class="row cards-wrapper">
             <!-- SSR FOR SEO -->
             <li class="col-12 col-md-6 col-lg-3" v-for="artwork in firstPageArtworks.contents">
