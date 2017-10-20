@@ -13,6 +13,8 @@ import { sync } from 'vuex-router-sync';
 
 import { PERMISSIONS } from 'src/constants';
 
+import APIService from 'src/services/API.service';
+
 // Bootstrap
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
 Vue.use(BootstrapVue);
@@ -25,6 +27,7 @@ Vue.use(VeeValidate);
 import VueMoment from 'vue-moment';
 Vue.use(VueMoment);
 
+// Permission
 import Permission from 'src/plugin/Permission.plugin';
 Vue.use(Permission, {
     router,
@@ -34,6 +37,7 @@ Vue.use(Permission, {
 
 // only for Client
 if (process.browser) {
+    // Swiper
     const VueAwesomeSwiper = require('vue-awesome-swiper/ssr');
     Vue.use(VueAwesomeSwiper);
 
@@ -49,7 +53,13 @@ if (process.browser) {
         confirmButtonClass: 'btn btn-primary',
         cancelButtonClass: 'btn'
     });
+
+    const VueinfiniteScroll = require('vue-infinite-scroll');
+    Vue.use(VueinfiniteScroll);
 }
+
+// Service init
+APIService.init({ store, router });
 
 export function createApp () {
     sync(store, router);

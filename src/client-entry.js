@@ -11,10 +11,35 @@ import { createApp } from './app';
 /* Global jQuery lib with expose-loader */
 import 'expose-loader?$!expose-loader?jQuery!jquery';
 
+const env = process.env.NODE_ENV;
 const { app, router, store } = createApp();
+
+if (env === 'production') {
+    if (!window.console) {
+        window.console = {};
+    }
+    const methods = ['log', 'debug', 'warn', 'info'];
+    methods.forEach(method => {
+        console[method] = function () {};
+    });
+}
 
 if (window.__INITIAL_STATE__) {
     store.replaceState(window.__INITIAL_STATE__);
+    if (store.state.auth && store.state.auth.accessToken) {
+        console.log('CLIENT SIDE GETTING TOKEN!');
+        console.log('A => ', store.state.auth.accessToken);
+        console.log('R => ', store.state.auth.refreshToken);
+        store.dispatch('setToken', {
+            accessToken: store.state.auth.accessToken,
+            refreshToken: store.state.auth.refreshToken
+        });
+    }
+    else {
+        store.dispatch('destroyToken', {
+            reload: false
+        });
+    }
 }
 
 router.onReady(() => {

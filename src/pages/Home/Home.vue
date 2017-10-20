@@ -28,7 +28,12 @@
                 </li>
             </ul>
         </div>
-        <ul class="row cards-wrapper">
+        <ul
+            class="row cards-wrapper"
+            v-infinite-scroll="addPageIndex"
+            infinite-scroll-disabled="isBusy"
+            infinite-scroll-distance="10"
+        >
             <!-- SSR FOR SEO -->
             <li class="col-12 col-md-6 col-lg-3" v-for="artwork in firstPageArtworks.contents">
                 <artwork-card
@@ -42,7 +47,7 @@
                 />
             </li>
             <!-- /SSR FOR SEO -->
-            <li class="col-12 col-lg-4" v-for="artwork in artworks">
+            <li class="col-12 col-md-6 col-lg-3" v-for="artwork in artworks">
                 <artwork-card
                     :art-id="artwork.id"
                     :title="artwork.title"
@@ -54,6 +59,10 @@
                 />
             </li>
         </ul>
+
+        <div v-show="isBusy" class="infinite-scroll-loading-indicator">
+            <i class="loading-ico pxs-spinner-1 spin"></i>
+        </div>
     </div>
 
     <!-- MODAL -->
