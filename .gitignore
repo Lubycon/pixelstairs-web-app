@@ -12,6 +12,7 @@ npm-debug.log
 #Built Files
 dist/
 dist-back/
+logs/
 
 #OSX
 .DS_Store
