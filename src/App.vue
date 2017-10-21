@@ -15,6 +15,8 @@
 </style>
 
 <script>
+import $ from 'jquery';
+
 export default {
     name: 'App',
     metaInfo: {
@@ -90,6 +92,11 @@ export default {
             }`,
             type: 'application/ld+json'
         }]
+    },
+    mounted () {
+        this.$nextTick(function () {
+            $(document).find('#global-loading-indicator').fadeOut(500);
+        });
     }
 };
 </script>
