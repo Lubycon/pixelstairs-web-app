@@ -55,7 +55,17 @@ export default {
             this.isBusy = false;
         },
         authReject (err) {
-            console.log(err);
+            if (err && err.data) {
+                if (err.data.status.code === '0061') {
+                    this.$swal('Please check your email address or password!');
+                }
+                else {
+                    this.$swal('Oh...Something is wrong');
+                }
+            }
+            else {
+                this.$swal('Oh...Something is wrong');
+            }
             this.isBusy = false;
         },
         ...mapActions({
