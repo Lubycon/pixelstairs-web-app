@@ -129,3 +129,8 @@ else {
         console.log(`server started at 127.0.0.1:${port}`);
     });
 }
+
+process.on('uncaughtException', function (err) {
+    console.log(err.stack);
+    process.exit();
+});

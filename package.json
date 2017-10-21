@@ -16,13 +16,16 @@
   "license": "MIT",
   "homepage": "https://pixelstairs.com",
   "scripts": {
-    "start": "NODE_ENV=production forever start server.js",
-    "start:dev": "NODE_ENV=development forever start server.js",
-    "start:local": "NODE_ENV=local forever start server.js",
+    "start": "NODE_ENV=production forever start -al forever.log -ao out.log -ae err.log server.js",
+    "start:dev": "NODE_ENV=development forever start -al logs/forever.log -ao logs/out.log -ae logs/err.log server.js",
+    "start:local": "NODE_ENV=local forever start -al logs/forever.log -ao logs/out.log -ae logs/err.log server.js",
     "stop": "forever stopall",
+    "restart": "forever restartall",
+
     "serve:local": "cross-env NODE_ENV=local node server",
     "serve:dev": "cross-env NODE_ENV=development node server",
     "serve:prod": "cross-env NODE_ENV=production node server",
+
     "build:client:prod": "cross-env NODE_ENV=production webpack --config ./build/webpack.client.config.js --progress --hide-modules",
     "build:client:dev": "cross-env NODE_ENV=development webpack --config ./build/webpack.client.config.js --progress --hide-modules",
     "build:client:local": "cross-env NODE_ENV=local webpack --config ./build/webpack.client.config.js --progress --hide-modules",
