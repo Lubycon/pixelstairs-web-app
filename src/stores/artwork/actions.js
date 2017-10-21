@@ -6,37 +6,30 @@
 */
 
 import APIService from 'src/services/API.service';
+import ARTWORK_STORE from 'src/constants/artwork.store.constant';
 
-export function setArtworkDetailView (store, id) {
-    return APIService.resource('contents.detail', {
-        id
-    }).get().then(res => {
-        store.commit('SET_ARTWORK_DETAIL_VIEW', res.result);
-    });
-}
-
-export function clearArtworkDetailView (store) {
-    store.commit('CLEAR_ARTWORK_DETAIL_VIEW');
-}
-
-export function setArtworkList (store, opt) {
-    return APIService.resource('contents.list').get(opt).then(res => {
-        store.commit('SET_ARTWORK_LIST', res.result);
-    });
-}
-
-export function clearArtworkList (store) {
-    store.commit('CLEAR_ARTWORK_LIST');
-}
-
-export function setArtworkLike (store, bool) {
-    store.commit('SET_ARTWORK_LIKE', bool);
-}
-
-export default {
-    setArtworkDetailView,
-    clearArtworkDetailView,
-    setArtworkList,
-    clearArtworkList,
-    setArtworkLike
+const artworkActions = {
+    [ARTWORK_STORE.SET.DETAIL] (store, id) {
+        return APIService.resource('contents.detail', {
+            id
+        }).get().then(res => {
+            store.commit(ARTWORK_STORE.SET.DETAIL, res.result);
+        });
+    },
+    [ARTWORK_STORE.DESTROY.DETAIL] (store) {
+        store.commit(ARTWORK_STORE.DESTROY.DETAIL);
+    },
+    [ARTWORK_STORE.SET.LIST] (store, opt) {
+        return APIService.resource('contents.list').get(opt).then(res => {
+            store.commit(ARTWORK_STORE.SET.LIST, res.result);
+        });
+    },
+    [ARTWORK_STORE.DESTROY.LIST] (store) {
+        store.commit(ARTWORK_STORE.DESTROY.LIST);
+    },
+    [ARTWORK_STORE.SET.LIKE] (store, bool) {
+        store.commit(ARTWORK_STORE.SET.LIKE, bool);
+    }
 };
+
+export default artworkActions;

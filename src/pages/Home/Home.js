@@ -10,6 +10,7 @@ import { PagerMixin } from 'src/mixins/pager.mixin';
 import HomeJumbo from 'src/components/jumbotrons/HomeJumbo.vue';
 import ArtworkCard from 'src/components/cards/ArtworkCard.vue';
 import SignupModal from 'src/components/modals/SignupModal.vue';
+import ARTWORK_STORE from 'src/constants/artwork.store.constant';
 
 export default {
     name: 'Home',
@@ -20,7 +21,7 @@ export default {
         SignupModal
     },
     asyncData ({ store }) {
-        return store.dispatch('setArtworkList', {
+        return store.dispatch(ARTWORK_STORE.SET.LIST, {
             pageIndex: 1,
             sort: 'latest:desc'
         });
@@ -34,7 +35,7 @@ export default {
     computed: {
         ...mapGetters({
             isAuthorized: 'isAuthorized',
-            firstPageArtworks: 'getArtworkList'
+            firstPageArtworks: ARTWORK_STORE.GET.LIST
         })
     },
     watch: {
@@ -82,7 +83,7 @@ export default {
             this.$refs.signupModal.hide();
         },
         ...mapActions({
-            clearArtworks: 'clearArtworkList'
+            clearArtworks: ARTWORK_STORE.DESTROY.LIST
         })
     },
     destroyed () {

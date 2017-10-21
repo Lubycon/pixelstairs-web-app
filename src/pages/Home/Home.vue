@@ -13,6 +13,21 @@
         </div>
     </home-jumbo>
     <div class="container">
+        <div class="row filters-wrapper">
+            <ul>
+                <li>
+                    <button 
+                        class="active" 
+                        type="button"
+                    >인기</button>
+                </li>
+                <li>
+                    <button 
+                        type="button"
+                    >최신</button>
+                </li>
+            </ul>
+        </div>
         <ul
             class="row cards-wrapper"
             v-infinite-scroll="addPageIndex"

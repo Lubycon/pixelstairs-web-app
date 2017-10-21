@@ -9,6 +9,7 @@ import APIService from 'src/services/API.service';
 import ImageService from 'src/services/Image.service';
 import TagInput from 'src/components/Tag.vue';
 import LikeButton from 'src/components/buttons/LikeButton.vue';
+import ARTWORK_STORE from 'src/constants/artwork.store.constant';
 
 export default {
     name: 'ArtworkDetail',
@@ -36,7 +37,7 @@ export default {
         }
     },
     asyncData ({ store, route }) {
-        return store.dispatch('setArtworkDetailView', route.params.artId);
+        return store.dispatch(ARTWORK_STORE.SET.DETAIL, route.params.artId);
     },
     computed: {
         artworkImage () {
@@ -49,7 +50,7 @@ export default {
             return ImageService.getUserProfile(this.artworkData.user.profileImg);
         },
         ...mapGetters({
-            artworkData: 'getArtworkDetailView'
+            artworkData: ARTWORK_STORE.GET.DETAIL
         })
     },
     methods: {
@@ -75,8 +76,8 @@ export default {
             });
         },
         ...mapActions({
-            setArtworkLike: 'setArtworkLike',
-            clearArtwork: 'clearArtworkDetailView'
+            setArtworkLike: ARTWORK_STORE.SET.LIKE,
+            clearArtwork: ARTWORK_STORE.DESTROY.DETAIL
         })
     },
     mounted () {
