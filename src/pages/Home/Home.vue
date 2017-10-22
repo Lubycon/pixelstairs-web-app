@@ -17,9 +17,9 @@
             <ul>
                 <li v-for="filter in filtering">
                     <button
-                        :class="{ 'active': filter.filterKey === currentFilterd, 'is-wait': preventClickable }"
+                        :class="{ 'active': filter.filterKey === currentFilterd, 'is-wait': !isClickable }"
                         type="button"
-                        @click="filteringArtwork(filter.filterKey)"
+                        @click="filteringArtworks(filter.filterKey)"
                     >{{filter.filterName}}</button>
                 </li>
             </ul>
