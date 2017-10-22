@@ -20,7 +20,7 @@ export default context => {
         const REFRESH_KEY = CookieService._encodeKey('refresh');
         const ENCODED_REFRESH_TOKEN = context.cookie[REFRESH_KEY];
 
-        if (ENCODED_AUTH_TOKEN) {
+        if (ENCODED_AUTH_TOKEN && ENCODED_REFRESH_TOKEN) {
             const TOKEN = CookieService._decode(ENCODED_AUTH_TOKEN);
             const REFRESH_TOKEN = CookieService._decode(ENCODED_REFRESH_TOKEN);
             store.dispatch('setToken', {
