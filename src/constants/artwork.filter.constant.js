@@ -6,9 +6,9 @@
  */
 
 export const ARTWORK_FILTER_TYPE = [{
-    filterKey: 'featured',
-    filterName: 'Featured'
-}, {
     filterKey: 'latest',
     filterName: 'Latest'
+}, {
+    filterKey: 'featured',
+    filterName: 'Featured'
 }];
