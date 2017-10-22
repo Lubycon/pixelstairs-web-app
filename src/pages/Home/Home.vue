@@ -15,16 +15,12 @@
     <div class="container">
         <div class="row filters-wrapper">
             <ul>
-                <li>
-                    <button 
-                        class="active" 
+                <li v-for="filter in filtering">
+                    <button
+                        :class="{ 'active': filter.filterKey === currentFilterd, 'is-wait': !isClickable }"
                         type="button"
-                    >인기</button>
-                </li>
-                <li>
-                    <button 
-                        type="button"
-                    >최신</button>
+                        @click="filteringArtworks(filter.filterKey)"
+                    >{{filter.filterName}}</button>
                 </li>
             </ul>
         </div>

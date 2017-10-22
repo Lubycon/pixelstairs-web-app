@@ -35,6 +35,9 @@
                             background-color:#383838;
                         }
                     }
+                    &.is-wait{
+                        cursor:wait;
+                    }
                 }
             }
         }
