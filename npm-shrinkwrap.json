@@ -835,7 +835,7 @@
     },
     "bodymovin": {
       "version": "4.10.2",
-      "from": "bodymovin@latest",
+      "from": "https://registry.npmjs.org/bodymovin/-/bodymovin-4.10.2.tgz",
       "resolved": "https://registry.npmjs.org/bodymovin/-/bodymovin-4.10.2.tgz"
     },
     "boolbase": {
