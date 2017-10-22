@@ -71,6 +71,7 @@ class APIService {
         }, err => {
             if (err) {
                 console.error('API GET ERROR!');
+                console.error(err.stack);
             }
             this.errorHandler(err).then(res => {
                 defer.resolve(res.data);
