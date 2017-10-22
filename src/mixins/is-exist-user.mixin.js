@@ -22,10 +22,10 @@ export const isExistUserMixin = {
         // isExist에 not연산자를 붙혀서 isInvalid값을 리턴
         isExistEmail (value) {
             let defer = Q.defer();
-            if (!this.email) {
-                return;
+            if (!value) {
+                defer.resolve(false);
             }
-            APIService.resource('users.exists.email').post({ email: this.email })
+            APIService.resource('users.exists.email').post({ email: value })
             .then(res => {
                 defer.resolve(!res.result);
             }, err => {
@@ -39,7 +39,7 @@ export const isExistUserMixin = {
         isExistName (value) {
             let defer = Q.defer();
             if (!this.name) {
-                return;
+                defer.resolve(false);
             }
             APIService.resource('users.exists.name').post({ nickname: this.name })
             .then(res => {
