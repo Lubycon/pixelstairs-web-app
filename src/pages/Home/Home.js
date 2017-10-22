@@ -11,6 +11,7 @@ import HomeJumbo from 'src/components/jumbotrons/HomeJumbo.vue';
 import ArtworkCard from 'src/components/cards/ArtworkCard.vue';
 import SignupModal from 'src/components/modals/SignupModal.vue';
 import ARTWORK_STORE from 'src/constants/artwork.store.constant';
+import { ARTWORK_FILTER_TYPE } from 'src/constants/artwork.filter.constant';
 
 export default {
     name: 'Home',
@@ -29,6 +30,9 @@ export default {
     data () {
         return {
             pageIndex: 1,
+            isClickable: true,
+            filtering: ARTWORK_FILTER_TYPE,
+            currentFilterd: ARTWORK_FILTER_TYPE[0].filterKey,
             artworks: []
         };
     },
@@ -84,7 +88,39 @@ export default {
         },
         ...mapActions({
             clearArtworks: ARTWORK_STORE.DESTROY.LIST
-        })
+        }),
+        filteringArtworks (filterKey) {
+            /**
+             * @name filteringArtwork
+             * @param { a:String, b: { pageIndex: Number, sort: String } }
+             * @returns { sort value: latest, featured }
+             * @description 최신, 인기순에 대한 filtering을 한다.
+             */
+            if (filterKey === this.currentFilterd || !this.isClickable) {
+                // Prevent click same filter button && loading
+                return false;
+            }
+            this.isClickable = false;
+            this.currentFilterd = filterKey;
+            this.initializeArtworks();
+            this.$store.dispatch(ARTWORK_STORE.SET.LIST, {
+                pageIndex: 1,
+                sort: `${filterKey}:desc`
+            })
+            .then(res => {
+                this.isBusy = false;
+                this.isClickable = true;
+            });
+        },
+        initializeArtworks () {
+            /**
+             * @name initializeArtworks
+             * @description artwork를 filtering 하기 전, store 및 Local data list를 초기화 하는 함수
+             */
+            this.isBusy = true;
+            this.clearArtworks();
+            this.artworks = [];
+        }
     },
     destroyed () {
         this.clearArtworks();

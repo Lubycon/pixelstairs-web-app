@@ -9,6 +9,7 @@
                 placeholder="ex) evan1125@pixelstairs.com"
                 v-validate="'required|email|existEmail'"
                 :class="{ 'has-error': errors.has('email') }"
+                autocomplete="off"
             />
             <b-form-text v-if="errors.has('email')" class="is-invalid">{{ errors.first('email') }}</b-form-text>
         </b-form-group>

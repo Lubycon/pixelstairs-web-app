@@ -90,6 +90,10 @@ app.get('*', (req, res) => {
      * Render Start
      */
     const context = { url: req.url, cookie: req.cookies };
+    console.log(context);
+    if (!context.url) {
+        console.error('[ERR] context url is not exist!!', context);
+    }
 
     renderer.renderToStream(context)
     .once('data', () => {
