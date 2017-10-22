@@ -11,6 +11,7 @@ import HomeJumbo from 'src/components/jumbotrons/HomeJumbo.vue';
 import ArtworkCard from 'src/components/cards/ArtworkCard.vue';
 import SignupModal from 'src/components/modals/SignupModal.vue';
 import ARTWORK_STORE from 'src/constants/artwork.store.constant';
+import { ARTWORK_FILTER_TYPE } from 'src/constants/artwork.filter.constant';
 
 export default {
     name: 'Home',
@@ -29,11 +30,9 @@ export default {
     data () {
         return {
             pageIndex: 1,
-            filtering: {
-                featured: 'featured',
-                latest: 'latest'
-            },
-            currentFilterd: 'latest',
+            preventClickable: false,
+            filtering: ARTWORK_FILTER_TYPE,
+            currentFilterd: ARTWORK_FILTER_TYPE[0].filterKey,
             artworks: []
         };
     },
@@ -90,28 +89,28 @@ export default {
         ...mapActions({
             clearArtworks: ARTWORK_STORE.DESTROY.LIST
         }),
-        filteringArtwork (e) {
+        filteringArtwork (filterKey) {
             /**
              * @name filteringArtwork
              * @param { a:String, b: { pageIndex: Number, sort: String } }
              * @returns { sort value: latest, featured }
              * @description 최신, 인기순에 대한 filtering을 한다.
              */
-            const filteringFlag = e.target.getAttribute('filtering');
-
-            if (filteringFlag === this.currentFilterd) {
-                // Prevent click same filter button
+            this.preventClickable = true;
+            if (filterKey === this.currentFilterd && !this.preventClickable) {
+                console.log('prevent clickable');
+                // Prevent click same filter button && loading
                 return false;
             }
-            this.currentFilterd = filteringFlag;
+            this.currentFilterd = filterKey;
             this.initializeArtworks();
-            
             this.$store.dispatch(ARTWORK_STORE.SET.LIST, {
                 pageIndex: 1,
-                sort: `${filteringFlag}:desc`
+                sort: `${filterKey}:desc`
             })
             .then(res => {
                 this.isBusy = false;
+                this.preventClickable = false;
             });
         },
         initializeArtworks () {
