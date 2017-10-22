@@ -11,9 +11,18 @@ export default {
     components: {
         SendMailForm
     },
+    data () {
+        return {
+            email: null,
+            isDone: false
+        };
+    },
     methods: {
-        submit (res) {
-            console.log(res.result);
+        submit ({ res, email }) {
+            if (res.status.code === '0000') {
+                this.isDone = true;
+                this.$set(this, 'email', email);
+            }
         }
     }
 };

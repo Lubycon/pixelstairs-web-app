@@ -11,7 +11,8 @@ export default {
     name: 'AuthPassword',
     data () {
         return {
-            password: null
+            password: null,
+            isBusy: false
         };
     },
     computed: {
@@ -26,16 +27,17 @@ export default {
                 password: this.password
             };
 
+            this.isBusy = true;
             this.checkPassword(data).then(res => {
                 if (res.result.validity) {
                     this.createToken();
                 }
                 else {
-                    this.rejectHandler('This is wrong password::DEBUG');
+                    this.rejectHandler('Please make sure your password!');
                 }
             }, err => {
                 if (err) {
-                    this.rejectHandler('This is wrong password err::DEBUG');
+                    this.rejectHandler('Please make sure your password!');
                 }
             });
         },
@@ -53,12 +55,13 @@ export default {
                 });
             }, err => {
                 if (err) {
-                    this.rejectHandler('Token generating has been failed::DEBUG');
+                    this.rejectHandler('[Err] Token generating has been failed');
                 }
             });
         },
         rejectHandler (msg) {
-            alert(msg);
+            this.isBusy = false;
+            this.$swal(msg);
         }
     }
 };

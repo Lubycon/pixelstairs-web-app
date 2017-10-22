@@ -71,13 +71,14 @@ class APIService {
         }, err => {
             if (err) {
                 console.error('API GET ERROR!');
+                console.error(err.stack);
             }
             this.errorHandler(err).then(res => {
                 defer.resolve(res.data);
             }, err => {
                 console.log('FINAL ERR => ', err);
                 if (err) {
-                    defer.reject();
+                    defer.reject(err);
                 }
             });
         });
@@ -101,7 +102,7 @@ class APIService {
             }, err => {
                 console.log('FINAL ERR => ', err);
                 if (err) {
-                    defer.reject();
+                    defer.reject(err);
                 }
             });
         });
@@ -125,7 +126,7 @@ class APIService {
             }, err => {
                 console.log('FINAL ERR => ', err);
                 if (err) {
-                    defer.reject();
+                    defer.reject(err);
                 }
             });
         });
@@ -149,7 +150,7 @@ class APIService {
             }, err => {
                 console.log('FINAL ERR => ', err);
                 if (err) {
-                    defer.reject();
+                    defer.reject(err);
                 }
             });
         });
