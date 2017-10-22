@@ -29,6 +29,11 @@ export default {
     data () {
         return {
             pageIndex: 1,
+            filtering: {
+                featured: 'featured',
+                latest: 'latest'
+            },
+            currentFilterd: 'latest',
             artworks: []
         };
     },
@@ -84,7 +89,40 @@ export default {
         },
         ...mapActions({
             clearArtworks: ARTWORK_STORE.DESTROY.LIST
-        })
+        }),
+        filteringArtwork (e) {
+            /**
+             * @name filteringArtwork
+             * @param { a:String, b: { pageIndex: Number, sort: String } }
+             * @returns { sort value: latest, featured }
+             * @description 최신, 인기순에 대한 filtering을 한다.
+             */
+            const filteringFlag = e.target.getAttribute('filtering');
+
+            if (filteringFlag === this.currentFilterd) {
+                // Prevent click same filter button
+                return false;
+            }
+            this.currentFilterd = filteringFlag;
+            this.initializeArtworks();
+            
+            this.$store.dispatch(ARTWORK_STORE.SET.LIST, {
+                pageIndex: 1,
+                sort: `${filteringFlag}:desc`
+            })
+            .then(res => {
+                this.isBusy = false;
+            });
+        },
+        initializeArtworks () {
+            /**
+             * @name initializeArtworks
+             * @description artwork를 filtering 하기 전, store 및 Local data list를 초기화 하는 함수
+             */
+            this.isBusy = true;
+            this.clearArtworks();
+            this.artworks = [];
+        }
     },
     destroyed () {
         this.clearArtworks();

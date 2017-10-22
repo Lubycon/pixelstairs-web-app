@@ -16,14 +16,19 @@
         <div class="row filters-wrapper">
             <ul>
                 <li>
-                    <button 
-                        class="active" 
+                    <button
+                        :class="currentFilterd == filtering.featured ? 'active': ''"
                         type="button"
+                        :filtering="filtering.featured"
+                        @click="filteringArtwork"
                     >인기</button>
                 </li>
                 <li>
-                    <button 
+                    <button
+                        :class="currentFilterd == filtering.latest ? 'active': ''" 
                         type="button"
+                        @click="filteringArtwork"
+                        :filtering="filtering.latest"
                     >최신</button>
                 </li>
             </ul>
