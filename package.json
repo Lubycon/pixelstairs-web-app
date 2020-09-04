@@ -58,7 +58,7 @@
     "vue-cropper": "^0.2.3",
     "vue-infinite-scroll": "^2.0.2",
     "vue-meta": "^1.2.0",
-    "vue-moment": "^2.0.2",
+    "vue-moment": "^4.1.0",
     "vue-no-ssr": "^0.2.0",
     "vue-router": "^2.7.0",
     "vue-server-renderer": "^2.3.4",
